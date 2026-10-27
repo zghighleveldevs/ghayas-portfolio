@@ -19,6 +19,55 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+/* ---------- Theme switch (light / dark) ---------- */
+const root = document.documentElement;
+const themeBtn = $("#themeToggle");
+const themeMeta = $('meta[name="theme-color"]');
+const CAL_COLORS = {
+  dark:  { background_color: "1c1f24", text_color: "ece8df", primary_color: "c8a15a" },
+  light: { background_color: "ffffff", text_color: "17181b", primary_color: "9a7432" },
+};
+
+function calendlyUrl(url, theme) {
+  const u = new URL(url, location.href);
+  Object.entries(CAL_COLORS[theme]).forEach(([k, v]) => u.searchParams.set(k, v));
+  return u.toString();
+}
+
+function applyTheme(theme, animate) {
+  if (animate && !reduceMotion) {
+    root.classList.add("theme-anim");
+    setTimeout(() => root.classList.remove("theme-anim"), 500);
+  }
+  root.setAttribute("data-theme", theme);
+  const next = theme === "dark" ? "light" : "dark";
+  themeBtn?.setAttribute("aria-label", `Switch to ${next} theme`);
+  themeMeta?.setAttribute("content", theme === "dark" ? "#14161A" : "#F3F3F1");
+
+  // Calendly: set colours before it loads, or reload the embed if already loaded
+  const cal = $(".calendly-inline-widget");
+  if (cal) {
+    cal.dataset.url = calendlyUrl(cal.dataset.url, theme);
+    const frame = $("iframe", cal);
+    if (frame) frame.src = calendlyUrl(frame.src, theme);
+  }
+}
+
+applyTheme(root.getAttribute("data-theme") || "dark", false);
+
+themeBtn?.addEventListener("click", () => {
+  const theme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(theme, true);
+  try { localStorage.setItem("theme", theme); } catch {}
+});
+
+// Follow the device setting live, unless the visitor picked a theme themselves
+window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => {
+  let saved = null;
+  try { saved = localStorage.getItem("theme"); } catch {}
+  if (!saved) applyTheme(e.matches ? "light" : "dark", true);
+});
+
 /* ---------- Page load sequence ---------- */
 requestAnimationFrame(() => document.documentElement.classList.add("is-loaded"));
 
