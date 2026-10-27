@@ -361,13 +361,16 @@ body.menu-open { overflow: hidden; }
 .work-grid { display: grid; gap: 1rem; }
 @media (min-width: 640px) {
   .work-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  .project-feature { grid-column: 1 / -1; }
-  .work-grid > .project:last-child { grid-column: 1 / -1; }
+  .project-feature, .project-wide { grid-column: 1 / -1; }
 }
 @media (min-width: 1024px) {
   .work-grid { grid-template-columns: repeat(3, 1fr); }
   .project-feature { grid-column: span 2; grid-row: span 2; }
-  .work-grid > .project:last-child { grid-column: auto; }
+  /* Wide card: screenshot left, details right */
+  .work-grid > .project-wide { grid-column: 1 / -1; display: grid; grid-template-columns: 2fr 1fr; align-items: center; }
+  .work-grid > .project-wide .project-shot { margin: .5rem 0 .5rem .5rem; aspect-ratio: 1200 / 590; }
+  .project-wide .project-info { padding: 1.5rem 2rem; }
+  .project-wide .project-info h3 { font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.4rem); }
 }
 
 .project {
