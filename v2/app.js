@@ -153,3 +153,24 @@ const PROJECTS = [
 })();
 
 $("#yr").textContent = new Date().getFullYear();
+
+/* Service-line popups */
+(function svcModals() {
+  $$(".svm").forEach(d => {
+    $$(".svm-inc li", d).forEach((li, k) => li.style.setProperty("--k", k));
+    const close = () => d.close();
+    $(".svm-x", d).addEventListener("click", close);
+    d.addEventListener("click", e => { if (e.target === d) close(); });
+    d.addEventListener("close", () => document.body.classList.remove("svm-open"));
+    $$("[data-close]", d).forEach(a => a.addEventListener("click", () => {
+      if (a.dataset.need) { const sel = $("#t"); if (sel) sel.value = a.dataset.need; }
+      close();
+    }));
+  });
+  $$("[data-svc]").forEach(a => a.addEventListener("click", e => {
+    const d = document.getElementById("svm" + a.dataset.svc);
+    if (!d?.showModal) return;
+    e.preventDefault();
+    d.showModal(); document.body.classList.add("svm-open");
+  }));
+})();
