@@ -719,3 +719,5 @@ body.menu-open { overflow: hidden; }
 .skill h3:has(.badge-real) { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .proof-gallery-3 .proof-thumbs { grid-template-columns: repeat(3, 1fr); }
 .proof-gallery-3 .skill-proof img, .proof-gallery-3 .proof-thumb img { object-position: center top; }
+.proof-gallery-2 .proof-thumbs { grid-template-columns: repeat(4, 1fr); }
+.proof-gallery-2 .skill-proof img { object-position: center top; }
