@@ -1,5 +1,7 @@
 /* Ghayas Ahmed | v2 interactions (no dependencies) */
-const CONFIG = { FORM_ENDPOINT: "", EMAIL: "zghighleveldevs@gmail.com" };
+/* Form messages are emailed to EMAIL through FormSubmit (formsubmit.co).
+   The very first submission sends a one-time "Activate" email to that inbox; click it once. */
+const CONFIG = { FORM_ENDPOINT: "https://formsubmit.co/ajax/zghighleveldevs@gmail.com", EMAIL: "zghighleveldevs@gmail.com" };
 const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -144,11 +146,18 @@ const PROJECTS = [
       location.href = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent("Project enquiry from " + d.name)}&body=${encodeURIComponent(body)}`;
       status.className = "status good"; status.textContent = "Your email app should open with the message ready to send."; return;
     }
+    const btn = f.querySelector('button[type="submit"]'), label = btn.innerHTML;
+    btn.disabled = true; btn.textContent = "Sending…";
     try {
-      const r = await fetch(CONFIG.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...d, source: "Portfolio v2" }) });
-      if (!r.ok) throw 0;
-      f.reset(); status.className = "status good"; status.textContent = "Message sent. You’ll get a reply within 24 hours.";
-    } catch { status.className = "status bad"; status.textContent = `The message didn’t send. Email ${CONFIG.EMAIL} directly instead.`; }
+      const r = await fetch(CONFIG.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ Name: d.name, Email: d.email, "I am a": d.who, "Service needed": d.need, Message: d.message,
+          _subject: `New project enquiry from ${d.name}`, _replyto: d.email, _template: "table", _captcha: "false", _honey: d._honey || "" }) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || j.success === "false" || j.success === false) throw 0;
+      f.reset(); $$(".f", f).forEach(x => x.classList.remove("ok"));
+      status.className = "status good"; status.textContent = "Message sent. You’ll get a reply within 24 hours.";
+      btn.disabled = false; btn.innerHTML = label;
+    } catch { status.className = "status bad"; status.textContent = `The message didn’t send. Email ${CONFIG.EMAIL} directly instead.`; btn.disabled = false; btn.innerHTML = label; }
   });
 })();
 

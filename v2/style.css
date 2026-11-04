@@ -547,3 +547,29 @@ body.svm-open { overflow: hidden; }
 .rev-more { margin-top: 2.5rem; text-align: center; font: 700 .74rem var(--head); text-transform: uppercase; letter-spacing: .14em; color: var(--muted); display: flex; gap: 1rem; align-items: center; justify-content: center; }
 .rev-more::before, .rev-more::after { content: ""; width: 40px; height: 1px; background: var(--line); }
 .rev-row { margin-top: 1.25rem; }
+
+/* ---------- Booking calendar popup ---------- */
+.cal { margin: auto; border: 0; padding: 0; background: transparent; width: min(760px, calc(100vw - 1.5rem)); max-height: calc(100dvh - 1.5rem); overflow: visible; }
+.cal::backdrop { background: rgba(8,8,14,.7); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.cal[open] .cal-card { animation: svmIn .4s var(--ease) both; }
+.cal-card { display: flex; flex-direction: column; max-height: calc(100dvh - 1.5rem); border-radius: 24px; overflow: hidden; background: #fff; box-shadow: 0 40px 90px -30px rgba(0,0,0,.6); border-top: 4px solid var(--red); }
+.cal-head { display: flex; align-items: center; gap: .8rem; padding: 1rem 1.1rem .7rem 1.25rem; }
+.cal-ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: #FDECEA; flex-shrink: 0; }
+.cal-ic svg { width: 20px; height: 20px; fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cal-head strong { display: block; font: 800 1.05rem var(--head); }
+.cal-head small { font-size: .8rem; color: var(--muted); }
+.cal-x { margin-left: auto; width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--soft); color: var(--ink-2); display: grid; place-items: center; cursor: pointer; transition: background-color .2s; }
+.cal-x:hover { background: #FDECEA; color: var(--red); }
+.cal-steps { display: flex; gap: .5rem; padding: 0 1.25rem .8rem; }
+.cal-steps span { padding: .28rem .75rem; border-radius: 999px; font: 700 .72rem var(--head); color: var(--muted); background: var(--soft); border: 1px solid var(--line); transition: all .3s; }
+.cal-steps span.on { color: #fff; background: var(--red); border-color: var(--red); }
+.cal-body { position: relative; flex: 1; min-height: 0; border-top: 1px solid var(--line); }
+.cal-body iframe { display: block; width: 100%; height: min(680px, calc(100dvh - 12rem)); border: 0; }
+.cal-loading { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: .8rem; color: var(--muted); font-size: .9rem; background: #fff; }
+.cal-loading span { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #FDECEA; border-top-color: var(--red); animation: spin .9s linear infinite; }
+.cal-alt { display: block; padding: .7rem; text-align: center; font-size: .78rem; color: var(--muted); border-top: 1px solid var(--line); }
+.cal-alt:hover { color: var(--red); }
+
+/* Honeypot + highlighted main client in the strip */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.mq-track span.mq-main { color: var(--red); filter: none; }
