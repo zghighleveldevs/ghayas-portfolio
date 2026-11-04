@@ -142,7 +142,7 @@ const PROJECTS = [
     if (res.includes(false)) { fields[res.indexOf(false)].focus(); status.className = "status bad"; status.textContent = "Check the highlighted fields."; return; }
     const d = Object.fromEntries(new FormData(f));
     if (!CONFIG.FORM_ENDPOINT) {
-      const body = `Name: ${d.name}\nEmail: ${d.email}\nI am a: ${d.who}\nService: ${d.need}\n\n${d.message}`;
+      const body = `Name: ${d.name}\nEmail: ${d.email}\nPhone: ${d.phone}\nI am a: ${d.who}\nService: ${d.need}\n\n${d.message}`;
       location.href = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent("Project enquiry from " + d.name)}&body=${encodeURIComponent(body)}`;
       status.className = "status good"; status.textContent = "Your email app should open with the message ready to send."; return;
     }
@@ -150,13 +150,14 @@ const PROJECTS = [
     btn.disabled = true; btn.textContent = "Sending…";
     try {
       const r = await fetch(CONFIG.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ Name: d.name, Email: d.email, "I am a": d.who, "Service needed": d.need, Message: d.message,
+        body: JSON.stringify({ Name: d.name, Email: d.email, Phone: d.phone, "I am a": d.who, "Service needed": d.need, Message: d.message,
           _subject: `New project enquiry from ${d.name}`, _replyto: d.email, _template: "table", _captcha: "false", _honey: d._honey || "" }) });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || j.success === "false" || j.success === false) throw 0;
-      f.reset(); $$(".f", f).forEach(x => x.classList.remove("ok"));
-      status.className = "status good"; status.textContent = "Message sent. You’ll get a reply within 24 hours.";
-      btn.disabled = false; btn.innerHTML = label;
+      // hand the details to the thank-you page (pre-fills the booking calendar)
+      try { sessionStorage.setItem("zgLead", JSON.stringify({ name: d.name, email: d.email, need: d.need })); } catch {}
+      status.className = "status good"; status.textContent = "Message sent. Taking you to the next step…";
+      location.href = "/v2/thank-you/?name=" + encodeURIComponent(d.name.split(" ")[0]);
     } catch { status.className = "status bad"; status.textContent = `The message didn’t send. Email ${CONFIG.EMAIL} directly instead.`; btn.disabled = false; btn.innerHTML = label; }
   });
 })();

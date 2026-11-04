@@ -579,3 +579,71 @@ body.svm-open { overflow: hidden; }
 .brand:hover .brand-logo { transform: scale(1.03); }
 @media (max-width: 400px) { .brand .brand-logo { height: 32px; } }
 .ftr-id .ftr-logo { width: auto; height: 42px; border: 0; border-radius: 0; object-fit: contain; }
+
+/* ---------- Thank-you page ---------- */
+.ty-page { background: #fff; }
+.ty-hero { position: relative; padding: calc(var(--hdr) + 3rem) 0 3rem; text-align: center; overflow: hidden;
+  background: radial-gradient(55% 70% at 50% 0%, rgba(249,115,22,.14), transparent 70%), radial-gradient(40% 50% at 10% 30%, rgba(229,40,30,.07), transparent 70%), linear-gradient(180deg, #FFF8F4, #fff); }
+.ty-hero-in { display: grid; justify-items: center; }
+.ty-check { width: 84px; height: 84px; margin-bottom: 1.25rem; border-radius: 50%; display: grid; place-items: center; background: #fff; box-shadow: 0 0 0 10px rgba(34,197,94,.08), 0 20px 40px -18px rgba(22,163,74,.6); }
+.ty-check svg { width: 60px; height: 60px; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ty-check circle { stroke: #22C55E; stroke-width: 3; stroke-dasharray: 151; stroke-dashoffset: 151; animation: tyDraw .7s var(--ease) .1s forwards; }
+.ty-check path { stroke: #16A34A; stroke-width: 4; stroke-dasharray: 40; stroke-dashoffset: 40; animation: tyDraw .45s var(--ease) .65s forwards; }
+.ty-check.sm { width: 60px; height: 60px; margin: 0 auto .8rem; } .ty-check.sm svg { width: 42px; height: 42px; }
+@keyframes tyDraw { to { stroke-dashoffset: 0; } }
+.ty-h1 { margin-top: 1rem; font: 900 clamp(2rem, 1.3rem + 3vw, 3.3rem)/1.08 var(--head); letter-spacing: -.025em; max-width: 46rem; text-wrap: balance; }
+.ty-h1 .grad-text { display: block; }
+.ty-lead { margin-top: 1rem; color: var(--ink-2); font-size: 1.06rem; max-width: 38rem; }
+.ty-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin-top: 2rem; }
+.ty-steps li { display: flex; align-items: center; gap: .65rem; padding: .6rem 1rem .6rem .6rem; border-radius: 999px; background: #fff; border: 1px solid var(--line); text-align: left; box-shadow: 0 8px 20px -16px rgba(0,0,0,.3); }
+.ty-steps span { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 800 .8rem var(--head); color: var(--muted); background: var(--soft); border: 1px solid var(--line); flex-shrink: 0; }
+.ty-steps strong { display: block; font: 800 .86rem var(--head); }
+.ty-steps small { font-size: .72rem; color: var(--muted); }
+.ty-steps li.done span { color: #fff; background: #22C55E; border-color: #22C55E; font-size: 0; }
+.ty-steps li.done span::after { content: "✓"; font-size: .85rem; }
+.ty-steps li.now { border-color: #FAD1CC; box-shadow: 0 0 0 3px rgba(229,40,30,.08); }
+.ty-steps li.now span { color: #fff; background: var(--red); border-color: var(--red); animation: ping 2s infinite; }
+
+.ty-book { padding: 1rem 0 5rem; }
+.ty-book-in { display: grid; gap: 1.5rem; align-items: start; }
+@media (min-width: 980px) { .ty-book-in { grid-template-columns: 340px 1fr; gap: 2rem; } .ty-side { position: sticky; top: calc(var(--hdr) + 1.5rem); } }
+.ty-side { padding: 1.6rem; border-radius: 24px; color: var(--d-ink); background: radial-gradient(70% 50% at 0% 0%, rgba(229,40,30,.3), transparent 70%), #0E0E16; box-shadow: 0 30px 60px -30px rgba(20,5,5,.7); }
+.ty-kicker { display: inline-flex; align-items: center; gap: .5rem; font: 800 .7rem var(--head); text-transform: uppercase; letter-spacing: .14em; color: #FF8A7A; }
+.ty-side h2 { margin-top: .6rem; font: 900 1.45rem/1.15 var(--head); color: #fff; }
+.ty-list { display: grid; gap: .9rem; margin-top: 1.25rem; }
+.ty-list li { display: flex; gap: .8rem; }
+.ty-list b { font: 900 .9rem var(--head); color: #FF8A7A; padding-top: .1rem; }
+.ty-list strong { display: block; font: 700 .95rem var(--head); color: #fff; }
+.ty-list span { font-size: .82rem; color: var(--d-muted); }
+.ty-meta { display: grid; gap: .55rem; margin-top: 1.4rem; padding: 1rem 0; border-block: 1px solid rgba(255,255,255,.08); }
+.ty-meta div { display: flex; align-items: center; gap: .6rem; font-size: .86rem; color: #E4E4EC; }
+.ty-meta .i { color: #FF8A7A; }
+.ty-host { display: flex; gap: .75rem; align-items: center; margin-top: 1.2rem; }
+.ty-host img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; object-position: center 20%; box-shadow: 0 0 0 2px rgba(229,40,30,.6); }
+.ty-host strong { display: block; font: 800 .92rem var(--head); color: #fff; }
+.ty-host span { font-size: .75rem; color: var(--d-muted); }
+
+.ty-cal { position: relative; border-radius: 24px; overflow: hidden; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--red); box-shadow: 0 30px 70px -36px rgba(20,10,10,.45); }
+.ty-cal-head { display: flex; align-items: center; gap: .8rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--line); }
+.ty-cal-head strong { display: block; font: 800 1.02rem var(--head); }
+.ty-cal-head small { font-size: .78rem; color: var(--muted); }
+.ty-live { margin-left: auto; display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .7rem; border-radius: 999px; font: 700 .7rem var(--head); color: #15803D; background: #DCFCE7; white-space: nowrap; }
+.ty-live i { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; animation: ping 2s infinite; }
+@media (max-width: 520px) { .ty-live { display: none; } }
+.ty-cal-body { position: relative; }
+.ty-cal-body iframe { display: block; width: 100%; height: 720px; border: 0; }
+@media (max-width: 640px) { .ty-cal-body iframe { height: 980px; } }
+.ty-booked { position: absolute; inset: 70px 0 auto; margin: 0 auto; width: min(420px, 90%); padding: 1.5rem; border-radius: 20px; text-align: center; background: #fff; border: 1px solid #BBF7D0; box-shadow: 0 30px 60px -20px rgba(0,0,0,.35); animation: svmIn .4s var(--ease) both; }
+.ty-booked h3 { font: 900 1.4rem var(--head); }
+.ty-booked p { margin-top: .4rem; color: var(--ink-2); font-size: .92rem; }
+
+.ty-more { padding: 0 0 4.5rem; }
+.ty-more-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem; padding: 1.5rem 1.75rem; border-radius: 22px; background: var(--soft); border: 1px solid var(--line); }
+.ty-more h2 { font: 900 1.3rem var(--head); }
+.ty-more p { color: var(--muted); font-size: .92rem; }
+.ty-more-btns { display: flex; flex-wrap: wrap; gap: .6rem; }
+@media (max-width: 520px) { .ty-more-btns .btn { flex: 1 1 100%; } }
+.ty-page .ftr { padding: 1.4rem 0; }
+.ty-h1 { text-transform: none; }
+.ty-h1 #tyName { display: inline; }
+@media (max-width: 979px) { .ty-cal { order: -1; } }
