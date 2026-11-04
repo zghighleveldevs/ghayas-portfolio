@@ -126,6 +126,8 @@ const revealObs = new IntersectionObserver(entries => {
     const i = Math.max(0, siblings.indexOf(el));
     el.style.transitionDelay = `${Math.min(i, 5) * 70}ms`;
     el.classList.add("in");
+    // clear the stagger delay afterwards so hover effects respond instantly
+    setTimeout(() => { el.style.transitionDelay = ""; }, 1200);
     revealObs.unobserve(el);
   });
 }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
@@ -388,6 +390,7 @@ $$("[data-need]").forEach(btn => btn.addEventListener("click", () => {
     items = list; opener = from; show(i);
     if (!dlg.open) dlg.showModal();
   }
+  window.zgLightbox = open;
 
   // Single screenshots
   $$("[data-lightbox]").forEach(btn => btn.addEventListener("click", () =>
@@ -444,101 +447,77 @@ $$("[data-need]").forEach(btn => btn.addEventListener("click", () => {
   dlg.addEventListener("close", () => opener?.focus());
 })();
 
-/* ---------- Skills showcase: tabs, auto-advance, tilt ---------- */
-(function skills() {
-  const root = $("#skShowcase");
-  if (!root) return;
-  const tabs = $$(".sk-tab", root);
-  const panels = tabs.map(t => document.getElementById(t.getAttribute("aria-controls")));
-  const stage = $(".sk-stage", root);
-  const DUR = 7000;
-  let cur = 0, auto = !reduceMotion, visible = false;
-  root.style.setProperty("--sk-dur", DUR + "ms");
+/* ---------- Skills bento: cycling media, toasts, A2P tracker, spotlight ---------- */
+(function bento() {
+  const tiles = $$(".bt");
+  if (!tiles.length) return;
 
-  // stagger index for chips
-  panels.forEach(p => $$(".sk-chips li", p).forEach((li, i) => li.style.setProperty("--i", i)));
-
-  function activate(i, { focus = false, user = false } = {}) {
-    if (user) stopAuto();
-    if (i === cur && !user) return;
-    const prevPanel = panels[cur];
-    cur = (i + tabs.length) % tabs.length;
-    tabs.forEach((t, j) => {
-      const on = j === cur;
-      t.classList.toggle("is-active", on);
-      t.setAttribute("aria-selected", String(on));
-      t.tabIndex = on ? 0 : -1;
-    });
-    panels.forEach((p, j) => {
-      const on = j === cur;
-      p.classList.toggle("is-active", on);
-      p.toggleAttribute("inert", !on);
-      if (!on) p.classList.remove("is-entering");
-    });
-    const p = panels[cur];
-    if (!reduceMotion && p !== prevPanel) { p.classList.remove("is-entering"); void p.offsetWidth; p.classList.add("is-entering"); }
-    // keep the active pill in view on the phone tab row (without scrolling the page)
-    const row = tabs[cur].parentElement;
-    if (row.scrollWidth > row.clientWidth) {
-      const x = row.scrollLeft + tabs[cur].getBoundingClientRect().left - row.getBoundingClientRect().left - 16;
-      row.scrollTo({ left: x, behavior: reduceMotion ? "auto" : "smooth" });
-    }
-    if (focus) tabs[cur].focus();
-    restartBar();
-  }
-
-  // auto-advance: driven by the progress bar's animationend
-  function restartBar() {
-    root.classList.remove("is-auto");
-    if (!auto || !visible) return;
-    void root.offsetWidth;
-    root.classList.add("is-auto");
-  }
-  function stopAuto() { auto = false; root.classList.remove("is-auto"); }
-  tabs.forEach(t => $(".sk-tab-bar", t).addEventListener("animationend", () => { if (auto) activate(cur + 1); }));
-
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; restartBar(); }, { threshold: 0.35 }).observe(root);
-  root.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") root.classList.add("is-paused"); });
-  root.addEventListener("pointerleave", () => root.classList.remove("is-paused"));
-  root.addEventListener("focusin", () => root.classList.add("is-paused"));
-  root.addEventListener("focusout", () => root.classList.remove("is-paused"));
-  panels.forEach(p => p.querySelector("[data-gallery]")?.addEventListener("gallery:select", stopAuto));
-
-  tabs.forEach((t, i) => {
-    t.addEventListener("click", () => activate(i, { user: true }));
-    t.addEventListener("keydown", e => {
-      const k = e.key;
-      if (["ArrowDown", "ArrowRight"].includes(k)) { e.preventDefault(); activate(cur + 1, { focus: true, user: true }); }
-      if (["ArrowUp", "ArrowLeft"].includes(k)) { e.preventDefault(); activate(cur - 1, { focus: true, user: true }); }
-      if (k === "Home") { e.preventDefault(); activate(0, { focus: true, user: true }); }
-      if (k === "End") { e.preventDefault(); activate(tabs.length - 1, { focus: true, user: true }); }
+  // Click a tile's media -> lightbox with every screenshot in it (title + description)
+  $$("[data-lightbox-group]").forEach(media => {
+    media.addEventListener("click", () => {
+      const imgs = $$("img", media);
+      const on = imgs.findIndex(im => im.classList.contains("is-on"));
+      const list = imgs.map(im => ({ src: im.currentSrc || im.src, alt: im.alt, title: im.dataset.title, desc: im.dataset.desc }));
+      window.zgLightbox?.(list, Math.max(0, on), media);
     });
   });
 
-  // pointer light on the stage + 3D tilt on the app window (mouse only)
-  if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
-    stage.addEventListener("pointermove", e => {
-      const r = stage.getBoundingClientRect();
-      stage.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      stage.style.setProperty("--my", `${e.clientY - r.top}px`);
-    });
-    $$(".sk-frame", root).forEach(f => {
-      f.addEventListener("pointermove", e => {
-        const r = f.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-        f.classList.add("is-tilting");
-        f.style.setProperty("--ry", `${(x - .5) * 6}deg`);
-        f.style.setProperty("--rx", `${(.5 - y) * 5}deg`);
-        f.style.setProperty("--gx", `${x * 100}%`);
-        f.style.setProperty("--gy", `${y * 100}%`);
-      });
-      f.addEventListener("pointerleave", () => {
-        f.classList.remove("is-tilting");
-        f.style.setProperty("--rx", "0deg"); f.style.setProperty("--ry", "0deg");
-      });
-    });
-  }
+  // Run timers only while a tile is on screen
+  const whenVisible = (el, start, stop) => new IntersectionObserver(([e]) => e.isIntersecting ? start() : stop(), { threshold: .35 }).observe(el);
 
-  // deep link: #skills-email etc. not needed; links to #a2p / #work work as normal
-  panels[0].classList.add("is-entering");
+  // Crossfading screenshots (workflows + pipelines)
+  $$(".bt-cycle").forEach((media, k) => {
+    const imgs = $$(".bt-img", media);
+    const cap = $(".bt-caption", media);
+    if (imgs.length < 2 || reduceMotion) return;
+    let i = 0, t = null, paused = false;
+    const step = () => {
+      if (paused) return;
+      imgs[i].classList.remove("is-on");
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add("is-on");
+      if (cap) { cap.classList.add("is-swapping"); setTimeout(() => { cap.textContent = imgs[i].dataset.title; cap.classList.remove("is-swapping"); }, 350); }
+    };
+    media.addEventListener("pointerenter", () => paused = true);
+    media.addEventListener("pointerleave", () => paused = false);
+    whenVisible(media, () => { if (!t) t = setInterval(step, 4200 + k * 700); }, () => { clearInterval(t); t = null; });
+  });
+
+  // Workflow notifications pop in one after another, then reset
+  $$(".bt-toasts").forEach(box => {
+    const toasts = $$(".bt-toast", box);
+    if (reduceMotion) { toasts.forEach(x => x.classList.add("is-on")); return; }
+    let n = 0, t = null;
+    const tick = () => {
+      if (n < toasts.length) { toasts[n].classList.add("is-on"); n++; }
+      else { toasts.forEach(x => x.classList.remove("is-on")); n = 0; }
+    };
+    whenVisible(box.closest(".bt"), () => { if (!t) { tick(); t = setInterval(tick, 1600); } }, () => { clearInterval(t); t = null; });
+  });
+
+  // A2P: count up to 100 and tick the steps, repeating while visible
+  $$(".bt-a2p").forEach(tile => {
+    const steps = $$(".bt-track li", tile), num = $("[data-bt-count]", tile);
+    let timers = [];
+    const run = () => {
+      timers.forEach(clearTimeout); timers = [];
+      steps.forEach(li => li.classList.remove("done"));
+      if (reduceMotion) { steps.forEach(li => li.classList.add("done")); return; }
+      const t0 = performance.now();
+      const count = now => { const p = Math.min(1, (now - t0) / 1600); num.textContent = Math.round(100 * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(count); };
+      requestAnimationFrame(count);
+      steps.forEach((li, i) => timers.push(setTimeout(() => li.classList.add("done"), 450 + i * 550)));
+    };
+    let loop = null;
+    whenVisible(tile, () => { if (!loop) { run(); loop = setInterval(run, 7000); } }, () => { clearInterval(loop); loop = null; });
+  });
+
+  // Cursor spotlight inside each tile
+  if (window.matchMedia("(hover: hover)").matches) {
+    tiles.forEach(t => t.addEventListener("pointermove", e => {
+      const r = t.getBoundingClientRect();
+      t.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      t.style.setProperty("--my", `${e.clientY - r.top}px`);
+    }));
+  }
 })();
