@@ -393,19 +393,40 @@ $$("[data-need]").forEach(btn => btn.addEventListener("click", () => {
   $$("[data-lightbox]").forEach(btn => btn.addEventListener("click", () =>
     open([{ src: btn.dataset.lightbox, alt: btn.querySelector("img")?.alt, title: "", desc: btn.dataset.caption }], 0, btn)));
 
-  // Galleries: thumbnails swap the main image + description; main image opens the lightbox
+  // Galleries: thumbnails crossfade the main image + description; main image opens the lightbox
   $$("[data-gallery]").forEach(g => {
     const main = $("[data-gallery-main]", g), mainImg = $("img", main), desc = $(".proof-desc", g);
     const thumbs = $$(".proof-thumb", g);
-    const list = thumbs.map(t => ({ src: t.dataset.src, alt: t.dataset.alt, title: t.dataset.title, desc: t.dataset.desc, w: t.dataset.w, h: t.dataset.h }));
+    const list = thumbs.map(t => ({ src: t.dataset.src, pos: t.dataset.pos || "", alt: t.dataset.alt, title: t.dataset.title, desc: t.dataset.desc, href: t.dataset.href, w: t.dataset.w, h: t.dataset.h }));
+    if (!list.length) list.push({ src: mainImg.src, alt: mainImg.alt, title: desc?.querySelector("strong")?.textContent, desc: "" });
     let cur = 0;
+    const renderDesc = it => {
+      desc.replaceChildren();
+      const st = document.createElement("strong"); st.textContent = it.title;
+      desc.append(st, it.desc);
+      if (it.href) {
+        const a = document.createElement("a");
+        a.href = it.href; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Visit live site";
+        desc.append(" ", a);
+      }
+      if (!reduceMotion) { desc.classList.remove("is-swapping"); void desc.offsetWidth; desc.classList.add("is-swapping"); }
+    };
     const select = i => {
+      if (i === cur) return;
       cur = i;
       const it = list[i];
-      mainImg.src = it.src; mainImg.alt = it.alt; mainImg.width = it.w; mainImg.height = it.h;
+      const apply = () => {
+        mainImg.src = it.src; mainImg.alt = it.alt; mainImg.width = it.w; mainImg.height = it.h;
+        mainImg.style.objectPosition = it.pos;
+        const done = () => mainImg.classList.remove("is-swapping");
+        mainImg.complete ? requestAnimationFrame(done) : mainImg.addEventListener("load", done, { once: true });
+      };
+      if (reduceMotion) apply();
+      else { mainImg.classList.add("is-swapping"); setTimeout(apply, 220); }
       main.setAttribute("aria-label", "Enlarge screenshot: " + it.title);
-      desc.innerHTML = ""; const st = document.createElement("strong"); st.textContent = it.title; desc.append(st, it.desc);
+      renderDesc(it);
       thumbs.forEach((t, j) => { t.classList.toggle("is-on", j === i); t.toggleAttribute("aria-current", j === i); });
+      g.dispatchEvent(new CustomEvent("gallery:select"));
     };
     thumbs.forEach((t, i) => t.addEventListener("click", () => select(i)));
     main.addEventListener("click", () => open(list, cur, main));
@@ -421,4 +442,103 @@ $$("[data-need]").forEach(btn => btn.addEventListener("click", () => {
   $(".lightbox-close", dlg).addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
   dlg.addEventListener("close", () => opener?.focus());
+})();
+
+/* ---------- Skills showcase: tabs, auto-advance, tilt ---------- */
+(function skills() {
+  const root = $("#skShowcase");
+  if (!root) return;
+  const tabs = $$(".sk-tab", root);
+  const panels = tabs.map(t => document.getElementById(t.getAttribute("aria-controls")));
+  const stage = $(".sk-stage", root);
+  const DUR = 7000;
+  let cur = 0, auto = !reduceMotion, visible = false;
+  root.style.setProperty("--sk-dur", DUR + "ms");
+
+  // stagger index for chips
+  panels.forEach(p => $$(".sk-chips li", p).forEach((li, i) => li.style.setProperty("--i", i)));
+
+  function activate(i, { focus = false, user = false } = {}) {
+    if (user) stopAuto();
+    if (i === cur && !user) return;
+    const prevPanel = panels[cur];
+    cur = (i + tabs.length) % tabs.length;
+    tabs.forEach((t, j) => {
+      const on = j === cur;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach((p, j) => {
+      const on = j === cur;
+      p.classList.toggle("is-active", on);
+      p.toggleAttribute("inert", !on);
+      if (!on) p.classList.remove("is-entering");
+    });
+    const p = panels[cur];
+    if (!reduceMotion && p !== prevPanel) { p.classList.remove("is-entering"); void p.offsetWidth; p.classList.add("is-entering"); }
+    // keep the active pill in view on the phone tab row (without scrolling the page)
+    const row = tabs[cur].parentElement;
+    if (row.scrollWidth > row.clientWidth) {
+      const x = row.scrollLeft + tabs[cur].getBoundingClientRect().left - row.getBoundingClientRect().left - 16;
+      row.scrollTo({ left: x, behavior: reduceMotion ? "auto" : "smooth" });
+    }
+    if (focus) tabs[cur].focus();
+    restartBar();
+  }
+
+  // auto-advance: driven by the progress bar's animationend
+  function restartBar() {
+    root.classList.remove("is-auto");
+    if (!auto || !visible) return;
+    void root.offsetWidth;
+    root.classList.add("is-auto");
+  }
+  function stopAuto() { auto = false; root.classList.remove("is-auto"); }
+  tabs.forEach(t => $(".sk-tab-bar", t).addEventListener("animationend", () => { if (auto) activate(cur + 1); }));
+
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; restartBar(); }, { threshold: 0.35 }).observe(root);
+  root.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") root.classList.add("is-paused"); });
+  root.addEventListener("pointerleave", () => root.classList.remove("is-paused"));
+  root.addEventListener("focusin", () => root.classList.add("is-paused"));
+  root.addEventListener("focusout", () => root.classList.remove("is-paused"));
+  panels.forEach(p => p.querySelector("[data-gallery]")?.addEventListener("gallery:select", stopAuto));
+
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => activate(i, { user: true }));
+    t.addEventListener("keydown", e => {
+      const k = e.key;
+      if (["ArrowDown", "ArrowRight"].includes(k)) { e.preventDefault(); activate(cur + 1, { focus: true, user: true }); }
+      if (["ArrowUp", "ArrowLeft"].includes(k)) { e.preventDefault(); activate(cur - 1, { focus: true, user: true }); }
+      if (k === "Home") { e.preventDefault(); activate(0, { focus: true, user: true }); }
+      if (k === "End") { e.preventDefault(); activate(tabs.length - 1, { focus: true, user: true }); }
+    });
+  });
+
+  // pointer light on the stage + 3D tilt on the app window (mouse only)
+  if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+    stage.addEventListener("pointermove", e => {
+      const r = stage.getBoundingClientRect();
+      stage.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      stage.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+    $$(".sk-frame", root).forEach(f => {
+      f.addEventListener("pointermove", e => {
+        const r = f.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        f.classList.add("is-tilting");
+        f.style.setProperty("--ry", `${(x - .5) * 6}deg`);
+        f.style.setProperty("--rx", `${(.5 - y) * 5}deg`);
+        f.style.setProperty("--gx", `${x * 100}%`);
+        f.style.setProperty("--gy", `${y * 100}%`);
+      });
+      f.addEventListener("pointerleave", () => {
+        f.classList.remove("is-tilting");
+        f.style.setProperty("--rx", "0deg"); f.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
+  // deep link: #skills-email etc. not needed; links to #a2p / #work work as normal
+  panels[0].classList.add("is-entering");
 })();

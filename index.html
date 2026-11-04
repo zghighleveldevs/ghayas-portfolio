@@ -229,126 +229,228 @@
     </div>
   </section>
 
-  <!-- ============ SKILLS ============ -->
+  <!-- ============ SKILLS (interactive showcase) ============ -->
   <section class="section" id="skills">
     <div class="container">
       <header class="section-head reveal">
         <h2 class="section-title">What I build inside GoHighLevel</h2>
-        <p class="section-lede">Chosen around where your business is losing leads today, not sold as a fixed package.</p>
+        <p class="section-lede">Chosen around where your business is losing leads today, not sold as a fixed package. Pick a skill to see the work behind it.</p>
       </header>
 
-      <div class="skills-grid">
-        <article class="skill reveal">
-          <button type="button" class="skill-proof" data-lightbox="assets/img/proof-subaccounts.webp" data-caption="Example: sub-accounts and snapshots" aria-label="Enlarge screenshot: Example: sub-accounts and snapshots">
-            <img src="assets/img/proof-subaccounts.webp" alt="Example agency view listing sub-accounts, snapshots and A2P status" width="1600" height="1000" loading="lazy" decoding="async">
-            <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      <div class="sk" id="skShowcase">
+        <div class="sk-tabs" role="tablist" aria-label="Skills">
+          <button class="sk-tab is-active" role="tab" id="sk-t-agency" aria-controls="sk-p-agency" aria-selected="true" tabindex="0">
+            <svg class="sk-tab-icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1M10 21v-4h4v4"/></svg>
+            <span class="sk-tab-text"><strong>Agency setup</strong><small>Sub-accounts, snapshots and structure built from zero.</small></span>
+            <span class="sk-tab-bar" aria-hidden="true"></span>
           </button>
-          <p class="proof-cap">Example: sub-accounts and snapshots</p>
-          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1M10 21v-4h4v4"/></svg>
-          <h3>Agency setup</h3>
-          <p>The foundation your team or clients use every day, built from zero.</p>
-          <ul class="chips"><li>Sub-accounts</li><li>Snapshots</li><li>Account structure</li><li>CRM setup</li></ul>
-        </article>
-
-        <article class="skill reveal">
-          <div class="proof-gallery proof-gallery-2" data-gallery>
-            <button type="button" class="skill-proof" data-gallery-main aria-label="Enlarge screenshot: Real build: email nurture with engagement branches">
-              <img src="assets/img/workflow-email-nurture.webp" alt="GoHighLevel workflow: email, one-day wait, then branches for opened, clicked, unsubscribed, spam, bounced and no response" width="1600" height="686" loading="lazy" decoding="async">
-              <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
-            </button>
-            <div class="proof-thumbs" role="group" aria-label="Workflow screenshots">
-            <button type="button" class="proof-thumb is-on" data-src="assets/img/workflow-email-nurture.webp" data-w="1600" data-h="686" data-title="Real build: email nurture with engagement branches" data-desc="Sends an email, waits a day, then branches on what the contact did. Opens and clicks lead to the next email, or exit once they’ve booked. Unsubscribes, spam complaints and bounces are tagged and set to Do Not Disturb." data-alt="GoHighLevel workflow: email, one-day wait, then branches for opened, clicked, unsubscribed, spam, bounced and no response" aria-label="Show: Real build: email nurture with engagement branches" aria-current="true">
-              <img src="assets/img/workflow-email-nurture.webp" alt="" width="1600" height="686" loading="lazy" decoding="async">
-            </button>
-            <button type="button" class="proof-thumb" data-src="assets/img/proof-workflow.webp" data-w="1600" data-h="1000" data-title="Example: new-lead follow-up workflow" data-desc="A form submission triggers an instant SMS and email, then the workflow checks whether the lead booked: booked leads move stage and get reminders, the rest get a nudge and a call task." data-alt="Example workflow: form submitted, SMS, email, wait, then branches for booked and not booked" aria-label="Show: Example: new-lead follow-up workflow">
-              <img src="assets/img/proof-workflow.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
-            </button>
-            </div>
-            <p class="proof-desc" aria-live="polite"><strong>Real build: email nurture with engagement branches</strong>Sends an email, waits a day, then branches on what the contact did. Opens and clicks lead to the next email, or exit once they’ve booked. Unsubscribes, spam complaints and bounces are tagged and set to Do Not Disturb.</p>
-          </div>
-          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-          <h3>Workflows and automation <span class="badge-real">Real builds</span></h3>
-          <p>Systems that follow up when you can’t.</p>
-          <ul class="chips"><li>Missed-call text-back</li><li>Review requests</li><li>Nurture sequences</li><li>AI automations</li></ul>
-        </article>
-
-        <article class="skill reveal">
-          <a class="proof-strip" href="#work" aria-label="See the live funnel and website builds">
-            <img src="assets/img/client-success-machine.webp" alt="" width="760" height="374" loading="lazy" decoding="async">
-            <img src="assets/img/7-steps-sales-mastery.webp" alt="" width="1200" height="590" loading="lazy" decoding="async">
-            <img src="assets/img/she-reigns-creative.webp" alt="" width="760" height="378" loading="lazy" decoding="async">
-          </a>
-          <p class="proof-cap"><a href="#work">See the 4 live builds in Work</a></p>
-          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4Z"/></svg>
-          <h3>Funnels and websites</h3>
-          <p>Landing pages and booking flows built to convert, not just to exist.</p>
-          <ul class="chips"><li>Sales pages</li><li>Application funnels</li><li>Membership sites</li><li>Booking flows</li></ul>
-        </article>
-
-        <article class="skill reveal">
-          <div class="proof-gallery" data-gallery>
-            <button type="button" class="skill-proof" data-gallery-main aria-label="Enlarge screenshot: WiserWeb: sales pipeline">
-              <img src="assets/img/pipeline-wiserweb-board.webp" alt="WiserWeb opportunities board with New Lead, Contacted, Proposal Sent and Closed stages" width="1600" height="728" loading="lazy" decoding="async">
-              <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
-            </button>
-            <div class="proof-thumbs" role="group" aria-label="Pipeline screenshots">
-            <button type="button" class="proof-thumb is-on" data-src="assets/img/pipeline-wiserweb-board.webp" data-w="1600" data-h="728" data-title="WiserWeb: sales pipeline" data-desc="Opportunity board in WiserWeb’s white-label account. Leads move from New Lead to Contacted, Proposal Sent and Closed, and each card has SMS, tags, notes, tasks and booking one click away." data-alt="WiserWeb opportunities board with New Lead, Contacted, Proposal Sent and Closed stages" aria-label="Show: WiserWeb: sales pipeline" aria-current="true">
-              <img src="assets/img/pipeline-wiserweb-board.webp" alt="" width="1600" height="728" loading="lazy" decoding="async">
-            </button>
-            <button type="button" class="proof-thumb" data-src="assets/img/pipeline-wiserweb-dashboard.webp" data-w="1600" data-h="753" data-title="WiserWeb: pipeline dashboard" data-desc="Reporting dashboard showing opportunity status, pipeline value, conversion rate, funnel and stage distribution, so the owner sees how deals are moving at a glance." data-alt="WiserWeb dashboard with opportunity status, value, conversion, funnel and stage distribution widgets" aria-label="Show: WiserWeb: pipeline dashboard">
-              <img src="assets/img/pipeline-wiserweb-dashboard.webp" alt="" width="1600" height="753" loading="lazy" decoding="async">
-            </button>
-            <button type="button" class="proof-thumb" data-src="assets/img/pipeline-influx-board.webp" data-w="1600" data-h="728" data-title="Influx: branded pipeline" data-desc="The same pipeline structure in Influx, another white-label agency, with its own logo, colours and colour-coded stages." data-alt="Influx opportunities board with colour-coded New Lead, Contacted, Proposal Sent and Closed stages" aria-label="Show: Influx: branded pipeline">
-              <img src="assets/img/pipeline-influx-board.webp" alt="" width="1600" height="728" loading="lazy" decoding="async">
-            </button>
-            <button type="button" class="proof-thumb" data-src="assets/img/pipeline-wiserweb-conversations.webp" data-w="1600" data-h="756" data-title="WiserWeb: conversations linked to deals" data-desc="When an opportunity is created it’s logged in the contact’s conversation, so SMS, WhatsApp and email replies sit right next to the deal." data-alt="WiserWeb conversation view showing an opportunity created event beside SMS, WhatsApp and email" aria-label="Show: WiserWeb: conversations linked to deals">
-              <img src="assets/img/pipeline-wiserweb-conversations.webp" alt="" width="1600" height="756" loading="lazy" decoding="async">
-            </button>
-            </div>
-            <p class="proof-desc" aria-live="polite"><strong>WiserWeb: sales pipeline</strong>Opportunity board in WiserWeb’s white-label account. Leads move from New Lead to Contacted, Proposal Sent and Closed, and each card has SMS, tags, notes, tasks and booking one click away.</p>
-          </div>
-          <svg class="skill-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></svg>
-          <h3>Pipelines and opportunities <span class="badge-real">Real builds</span></h3>
-          <p>Every lead becomes an opportunity in a stage you can see, with its value, conversations and bookings in one place.</p>
-          <ul class="chips"><li>Sales pipelines</li><li>Opportunity tracking</li><li>Pipeline dashboards</li><li>Calendars and reminders</li></ul>
-        </article>
-
-        <article class="skill reveal">
-          <div class="proof-gallery proof-gallery-3" data-gallery>
-            <button type="button" class="skill-proof" data-gallery-main aria-label="Enlarge screenshot: Consultation offer email">
-              <img src="assets/img/email-consultation-offer.webp" alt="Consultation offer email for an aesthetics clinic, shown on desktop and phone" width="1600" height="1000" loading="lazy" decoding="async">
-              <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
-            </button>
-            <div class="proof-thumbs" role="group" aria-label="Email template designs">
-            <button type="button" class="proof-thumb is-on" data-src="assets/img/email-consultation-offer.webp" data-w="1600" data-h="1000" data-title="Consultation offer email" data-desc="Promotional email with an offer banner, a single booking button and three quick benefits. It personalises with the contact’s first name and stacks into one column on phones." data-alt="Consultation offer email for an aesthetics clinic, shown on desktop and phone" aria-label="Show: Consultation offer email" aria-current="true">
-              <img src="assets/img/email-consultation-offer.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
-            </button>
-            <button type="button" class="proof-thumb" data-src="assets/img/email-appointment-reminder.webp" data-w="1600" data-h="1000" data-title="Appointment reminder email" data-desc="Sent by a workflow before each booking. It pulls the date, time and address from the appointment, with add-to-calendar and reschedule buttons and a short prep checklist." data-alt="Appointment reminder email with date, time, address and reschedule button, shown on desktop and phone" aria-label="Show: Appointment reminder email">
-              <img src="assets/img/email-appointment-reminder.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
-            </button>
-            <button type="button" class="proof-thumb" data-src="assets/img/email-review-request.webp" data-w="1600" data-h="1000" data-title="Review request email" data-desc="Goes out after a visit. Every star links to the business’s Google review page, unhappy clients are invited to reply privately, and a rebooking prompt brings them back." data-alt="Review request email with five tappable stars and a Google review button, shown on desktop and phone" aria-label="Show: Review request email">
-              <img src="assets/img/email-review-request.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
-            </button>
-            </div>
-            <p class="proof-desc" aria-live="polite"><strong>Consultation offer email</strong>Promotional email with an offer banner, a single booking button and three quick benefits. It personalises with the contact’s first name and stacks into one column on phones.</p>
-          </div>
-          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
-          <h3>Email and SMS campaigns <span class="badge-real">Built for GHL</span></h3>
-          <p>Branded emails that work in every inbox, set up with GHL merge fields and sent by workflows at the right moment.</p>
-          <ul class="chips"><li>Email templates</li><li>Appointment reminders</li><li>Review requests</li><li>SMS campaigns</li></ul>
-        </article>
-
-        <article class="skill skill-a2p reveal">
-          <button type="button" class="skill-proof" data-lightbox="assets/img/proof-a2p-approved.webp" data-caption="Example: approved A2P registration" aria-label="Enlarge screenshot: Example: approved A2P registration">
-            <img src="assets/img/proof-a2p-approved.webp" alt="Example A2P registration screen showing brand verified and campaign approved" width="1600" height="1000" loading="lazy" decoding="async">
-            <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+          <button class="sk-tab" role="tab" id="sk-t-workflows" aria-controls="sk-p-workflows" aria-selected="false" tabindex="-1">
+            <svg class="sk-tab-icon" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+            <span class="sk-tab-text"><strong>Workflows and automation</strong><small>Follow-up that runs when you can’t.</small></span>
+            <span class="sk-tab-bar" aria-hidden="true"></span>
           </button>
-          <p class="proof-cap">Example: approved A2P registration. <a href="#a2p">See the guarantee</a></p>
-          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.2 2.2 4.4-4.6"/></svg>
-          <h3>A2P 10DLC verification <span class="badge-guarantee">Approval guaranteed</span></h3>
-          <p>Brand and campaign registration done right, so your texts get delivered instead of blocked.</p>
-          <ul class="chips"><li>Brand registration</li><li>Campaign use case</li><li>Opt-in compliance</li><li>Resubmissions</li></ul>
-        </article>
+          <button class="sk-tab" role="tab" id="sk-t-funnels" aria-controls="sk-p-funnels" aria-selected="false" tabindex="-1">
+            <svg class="sk-tab-icon" viewBox="0 0 24 24"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4Z"/></svg>
+            <span class="sk-tab-text"><strong>Funnels and websites</strong><small>Pages built to convert, not just to exist.</small></span>
+            <span class="sk-tab-bar" aria-hidden="true"></span>
+          </button>
+          <button class="sk-tab" role="tab" id="sk-t-pipelines" aria-controls="sk-p-pipelines" aria-selected="false" tabindex="-1">
+            <svg class="sk-tab-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></svg>
+            <span class="sk-tab-text"><strong>Pipelines and opportunities</strong><small>Every lead in a stage you can see.</small></span>
+            <span class="sk-tab-bar" aria-hidden="true"></span>
+          </button>
+          <button class="sk-tab" role="tab" id="sk-t-email" aria-controls="sk-p-email" aria-selected="false" tabindex="-1">
+            <svg class="sk-tab-icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+            <span class="sk-tab-text"><strong>Email and SMS campaigns</strong><small>Branded emails sent at the right moment.</small></span>
+            <span class="sk-tab-bar" aria-hidden="true"></span>
+          </button>
+          <button class="sk-tab" role="tab" id="sk-t-a2p" aria-controls="sk-p-a2p" aria-selected="false" tabindex="-1">
+            <svg class="sk-tab-icon" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.2 2.2 4.4-4.6"/></svg>
+            <span class="sk-tab-text"><strong>A2P 10DLC verification</strong><small>Registration done right. Approval guaranteed.</small></span>
+            <span class="sk-tab-bar" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="sk-stage">
+          <div class="sk-panel is-active" role="tabpanel" id="sk-p-agency" aria-labelledby="sk-t-agency">
+            <div class="sk-head">
+              <div class="sk-title"><h3>Agency setup</h3><span class="sk-badge sk-badge-ex">Example</span></div>
+              <p class="sk-lead">The foundation your team or clients use every day: sub-accounts, snapshots, users and CRM structure, set up so every new client launches the same proven way.</p>
+              <ul class="chips sk-chips"><li>Sub-accounts</li><li>Snapshots</li><li>Account structure</li><li>CRM setup</li></ul>
+            </div>
+            <div class="sk-gallery is-single" data-gallery>
+              <div class="sk-frame">
+                <div class="sk-frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>Agency view</span></div>
+                <button type="button" class="sk-shot" data-gallery-main aria-label="Enlarge screenshot: Example: sub-accounts and snapshots">
+                  <img src="assets/img/proof-subaccounts.webp" alt="Example agency view listing sub-accounts, snapshots and A2P status" style="object-position:left top" width="1600" height="1000" loading="lazy" decoding="async">
+                  <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                </button>
+                <span class="sk-glare" aria-hidden="true"></span>
+              </div>
+              <div class="sk-foot">
+                <div class="proof-thumbs" role="group" aria-label="Agency setup screenshots">
+                <button type="button" class="proof-thumb is-on" data-src="assets/img/proof-subaccounts.webp" data-pos="left top" data-w="1600" data-h="1000" data-title="Example: sub-accounts and snapshots" data-desc="An agency view listing each client sub-account, the snapshot it was built from, and its A2P status." data-alt="Example agency view listing sub-accounts, snapshots and A2P status" aria-label="Show: Example: sub-accounts and snapshots" aria-current="true">
+                  <img src="assets/img/proof-subaccounts.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+                </button>
+                </div>
+                <p class="proof-desc" aria-live="polite"><strong>Example: sub-accounts and snapshots</strong>An agency view listing each client sub-account, the snapshot it was built from, and its A2P status.</p>
+              </div>
+            </div>
+          </div>
+          <div class="sk-panel" role="tabpanel" id="sk-p-workflows" aria-labelledby="sk-t-workflows" inert>
+            <div class="sk-head">
+              <div class="sk-title"><h3>Workflows and automation</h3><span class="sk-badge sk-badge-real">Real builds</span></div>
+              <p class="sk-lead">Workflows that react to what each lead does: missed-call text-back, nurture sequences, review requests and AI automations that keep follow-up going around the clock.</p>
+              <ul class="chips sk-chips"><li>Missed-call text-back</li><li>Review requests</li><li>Nurture sequences</li><li>AI automations</li></ul>
+            </div>
+            <div class="sk-gallery" data-gallery>
+              <div class="sk-frame">
+                <div class="sk-frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>Automation › Workflows</span></div>
+                <button type="button" class="sk-shot" data-gallery-main aria-label="Enlarge screenshot: Real build: email nurture with engagement branches">
+                  <img src="assets/img/workflow-email-nurture.webp" alt="GoHighLevel workflow: email, one-day wait, then branches for opened, clicked, unsubscribed, spam, bounced and no response" width="1600" height="686" loading="lazy" decoding="async">
+                  <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                </button>
+                <span class="sk-glare" aria-hidden="true"></span>
+              </div>
+              <div class="sk-foot">
+                <div class="proof-thumbs" role="group" aria-label="Workflows and automation screenshots">
+                <button type="button" class="proof-thumb is-on" data-src="assets/img/workflow-email-nurture.webp" data-w="1600" data-h="686" data-title="Real build: email nurture with engagement branches" data-desc="Sends an email, waits a day, then branches on what the contact did. Opens and clicks lead to the next email, or exit once they’ve booked. Unsubscribes, spam complaints and bounces are tagged and set to Do Not Disturb." data-alt="GoHighLevel workflow: email, one-day wait, then branches for opened, clicked, unsubscribed, spam, bounced and no response" aria-label="Show: Real build: email nurture with engagement branches" aria-current="true">
+                  <img src="assets/img/workflow-email-nurture.webp" alt="" width="1600" height="686" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/proof-workflow.webp" data-w="1600" data-h="1000" data-title="Example: new-lead follow-up workflow" data-desc="A form submission triggers an instant SMS and email, then the workflow checks whether the lead booked. Booked leads move stage and get reminders; the rest get a nudge and a call task." data-alt="Example workflow: form submitted, SMS, email, wait, then branches for booked and not booked" aria-label="Show: Example: new-lead follow-up workflow">
+                  <img src="assets/img/proof-workflow.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+                </button>
+                </div>
+                <p class="proof-desc" aria-live="polite"><strong>Real build: email nurture with engagement branches</strong>Sends an email, waits a day, then branches on what the contact did. Opens and clicks lead to the next email, or exit once they’ve booked. Unsubscribes, spam complaints and bounces are tagged and set to Do Not Disturb.</p>
+              </div>
+            </div>
+          </div>
+          <div class="sk-panel" role="tabpanel" id="sk-p-funnels" aria-labelledby="sk-t-funnels" inert>
+            <div class="sk-head">
+              <div class="sk-title"><h3>Funnels and websites</h3><span class="sk-badge sk-badge-real">Live sites</span></div>
+              <p class="sk-lead">Sales pages, application funnels, membership sites and booking flows built in GoHighLevel, connected straight to your pipeline and follow-up.</p>
+              <ul class="chips sk-chips"><li>Sales pages</li><li>Application funnels</li><li>Membership sites</li><li>Booking flows</li></ul>
+              <a class="sk-cta" href="#work">See all client work <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+            <div class="sk-gallery" data-gallery>
+              <div class="sk-frame">
+                <div class="sk-frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>Sites › Funnels</span></div>
+                <button type="button" class="sk-shot" data-gallery-main aria-label="Enlarge screenshot: 7 Steps to Sales Mastery">
+                  <img src="assets/img/7-steps-sales-mastery.webp" alt="7 Steps to Sales Mastery homepage" width="1200" height="590" loading="lazy" decoding="async">
+                  <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                </button>
+                <span class="sk-glare" aria-hidden="true"></span>
+              </div>
+              <div class="sk-foot">
+                <div class="proof-thumbs" role="group" aria-label="Funnels and websites screenshots">
+                <button type="button" class="proof-thumb is-on" data-src="assets/img/7-steps-sales-mastery.webp" data-w="1200" data-h="590" data-title="7 Steps to Sales Mastery" data-desc="Sales coaching site for Paul Broome, built around a 2-minute Sales Leak Assessment that turns visitors into booked discovery calls." data-alt="7 Steps to Sales Mastery homepage" data-href="https://7stepstosalesmastery.com/" aria-label="Show: 7 Steps to Sales Mastery" aria-current="true">
+                  <img src="assets/img/7-steps-sales-mastery.webp" alt="" width="1200" height="590" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/client-success-machine.webp" data-w="760" data-h="374" data-title="Client Success Machine" data-desc="Sales platform site with account sign-up and member login, built for lead capture." data-alt="Client Success Machine homepage" data-href="https://clientsuccessmachine.com/" aria-label="Show: Client Success Machine">
+                  <img src="assets/img/client-success-machine.webp" alt="" width="760" height="374" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/she-reigns-creative.webp" data-w="760" data-h="378" data-title="She Reigns Creative" data-desc="Website and funnel built end to end in GoHighLevel." data-alt="She Reigns Creative homepage" data-href="https://shereignscreative.com" aria-label="Show: She Reigns Creative">
+                  <img src="assets/img/she-reigns-creative.webp" alt="" width="760" height="378" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/dropship-unlocked.webp" data-w="760" data-h="376" data-title="Dropship Unlocked" data-desc="Website and funnel built end to end in GoHighLevel." data-alt="Dropship Unlocked homepage" data-href="https://dropshipunlocked.com/" aria-label="Show: Dropship Unlocked">
+                  <img src="assets/img/dropship-unlocked.webp" alt="" width="760" height="376" loading="lazy" decoding="async">
+                </button>
+                </div>
+                <p class="proof-desc" aria-live="polite"><strong>7 Steps to Sales Mastery</strong>Sales coaching site for Paul Broome, built around a 2-minute Sales Leak Assessment that turns visitors into booked discovery calls. <a href="https://7stepstosalesmastery.com/" target="_blank" rel="noopener">Visit live site</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="sk-panel" role="tabpanel" id="sk-p-pipelines" aria-labelledby="sk-t-pipelines" inert>
+            <div class="sk-head">
+              <div class="sk-title"><h3>Pipelines and opportunities</h3><span class="sk-badge sk-badge-real">Real builds</span></div>
+              <p class="sk-lead">Every lead becomes an opportunity in a stage you can see, with its value, conversations, tasks and bookings in one place, plus dashboards that show how deals are moving.</p>
+              <ul class="chips sk-chips"><li>Sales pipelines</li><li>Opportunity tracking</li><li>Pipeline dashboards</li><li>Calendars and reminders</li></ul>
+            </div>
+            <div class="sk-gallery" data-gallery>
+              <div class="sk-frame">
+                <div class="sk-frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>Opportunities</span></div>
+                <button type="button" class="sk-shot" data-gallery-main aria-label="Enlarge screenshot: WiserWeb: sales pipeline">
+                  <img src="assets/img/pipeline-wiserweb-board.webp" alt="WiserWeb opportunities board with New Lead, Contacted, Proposal Sent and Closed stages" style="object-position:left top" width="1600" height="728" loading="lazy" decoding="async">
+                  <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                </button>
+                <span class="sk-glare" aria-hidden="true"></span>
+              </div>
+              <div class="sk-foot">
+                <div class="proof-thumbs" role="group" aria-label="Pipelines and opportunities screenshots">
+                <button type="button" class="proof-thumb is-on" data-src="assets/img/pipeline-wiserweb-board.webp" data-pos="left top" data-w="1600" data-h="728" data-title="WiserWeb: sales pipeline" data-desc="Opportunity board in WiserWeb’s white-label account. Leads move from New Lead to Contacted, Proposal Sent and Closed, with SMS, tags, notes, tasks and booking one click away on each card." data-alt="WiserWeb opportunities board with New Lead, Contacted, Proposal Sent and Closed stages" aria-label="Show: WiserWeb: sales pipeline" aria-current="true">
+                  <img src="assets/img/pipeline-wiserweb-board.webp" alt="" width="1600" height="728" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/pipeline-wiserweb-dashboard.webp" data-pos="left top" data-w="1600" data-h="753" data-title="WiserWeb: pipeline dashboard" data-desc="Reporting dashboard showing opportunity status, pipeline value, conversion rate, funnel and stage distribution, so the owner sees how deals are moving at a glance." data-alt="WiserWeb dashboard with opportunity status, value, conversion, funnel and stage distribution widgets" aria-label="Show: WiserWeb: pipeline dashboard">
+                  <img src="assets/img/pipeline-wiserweb-dashboard.webp" alt="" width="1600" height="753" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/pipeline-influx-board.webp" data-pos="left top" data-w="1600" data-h="728" data-title="Influx: branded pipeline" data-desc="The same pipeline structure in Influx, another white-label agency, with its own logo, colours and colour-coded stages." data-alt="Influx opportunities board with colour-coded stages" aria-label="Show: Influx: branded pipeline">
+                  <img src="assets/img/pipeline-influx-board.webp" alt="" width="1600" height="728" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/pipeline-wiserweb-conversations.webp" data-pos="left top" data-w="1600" data-h="756" data-title="WiserWeb: conversations linked to deals" data-desc="When an opportunity is created it’s logged in the contact’s conversation, so SMS, WhatsApp and email replies sit right next to the deal." data-alt="WiserWeb conversation view showing an opportunity created event beside SMS, WhatsApp and email" aria-label="Show: WiserWeb: conversations linked to deals">
+                  <img src="assets/img/pipeline-wiserweb-conversations.webp" alt="" width="1600" height="756" loading="lazy" decoding="async">
+                </button>
+                </div>
+                <p class="proof-desc" aria-live="polite"><strong>WiserWeb: sales pipeline</strong>Opportunity board in WiserWeb’s white-label account. Leads move from New Lead to Contacted, Proposal Sent and Closed, with SMS, tags, notes, tasks and booking one click away on each card.</p>
+              </div>
+            </div>
+          </div>
+          <div class="sk-panel" role="tabpanel" id="sk-p-email" aria-labelledby="sk-t-email" inert>
+            <div class="sk-head">
+              <div class="sk-title"><h3>Email and SMS campaigns</h3><span class="sk-badge sk-badge-real">Built for GHL</span></div>
+              <p class="sk-lead">Branded emails that render well in every inbox, set up with GHL merge fields and sent by workflows at the right moment: offers, reminders and review requests.</p>
+              <ul class="chips sk-chips"><li>Email templates</li><li>Appointment reminders</li><li>Review requests</li><li>SMS campaigns</li></ul>
+            </div>
+            <div class="sk-gallery" data-gallery>
+              <div class="sk-frame">
+                <div class="sk-frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>Marketing › Email templates</span></div>
+                <button type="button" class="sk-shot" data-gallery-main aria-label="Enlarge screenshot: Consultation offer email">
+                  <img src="assets/img/email-consultation-offer.webp" alt="Consultation offer email shown on desktop and phone" width="1600" height="1000" loading="lazy" decoding="async">
+                  <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                </button>
+                <span class="sk-glare" aria-hidden="true"></span>
+              </div>
+              <div class="sk-foot">
+                <div class="proof-thumbs" role="group" aria-label="Email and SMS campaigns screenshots">
+                <button type="button" class="proof-thumb is-on" data-src="assets/img/email-consultation-offer.webp" data-w="1600" data-h="1000" data-title="Consultation offer email" data-desc="Promotional email with an offer banner, a single booking button and three quick benefits. It personalises with the contact’s first name and stacks into one column on phones." data-alt="Consultation offer email shown on desktop and phone" aria-label="Show: Consultation offer email" aria-current="true">
+                  <img src="assets/img/email-consultation-offer.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/email-appointment-reminder.webp" data-w="1600" data-h="1000" data-title="Appointment reminder email" data-desc="Sent by a workflow before each booking. It pulls the date, time and address from the appointment, with add-to-calendar and reschedule buttons and a short prep checklist." data-alt="Appointment reminder email shown on desktop and phone" aria-label="Show: Appointment reminder email">
+                  <img src="assets/img/email-appointment-reminder.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+                </button>
+                <button type="button" class="proof-thumb" data-src="assets/img/email-review-request.webp" data-w="1600" data-h="1000" data-title="Review request email" data-desc="Goes out after a visit. Every star links to the Google review page, unhappy clients are invited to reply privately, and a rebooking prompt brings them back." data-alt="Review request email shown on desktop and phone" aria-label="Show: Review request email">
+                  <img src="assets/img/email-review-request.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+                </button>
+                </div>
+                <p class="proof-desc" aria-live="polite"><strong>Consultation offer email</strong>Promotional email with an offer banner, a single booking button and three quick benefits. It personalises with the contact’s first name and stacks into one column on phones.</p>
+              </div>
+            </div>
+          </div>
+          <div class="sk-panel" role="tabpanel" id="sk-p-a2p" aria-labelledby="sk-t-a2p" inert>
+            <div class="sk-head">
+              <div class="sk-title"><h3>A2P 10DLC verification</h3><span class="sk-badge sk-badge-won">Approval guaranteed</span></div>
+              <p class="sk-lead">Brand and campaign registration prepared to carrier rules, so your texts get delivered instead of blocked. If a campaign is rejected, I fix and resubmit it free until it’s approved.</p>
+              <ul class="chips sk-chips"><li>Brand registration</li><li>Campaign use case</li><li>Opt-in compliance</li><li>Resubmissions</li></ul>
+              <a class="sk-cta" href="#a2p">See the guarantee <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+            <div class="sk-gallery is-single" data-gallery>
+              <div class="sk-frame">
+                <div class="sk-frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>Trust center</span></div>
+                <button type="button" class="sk-shot" data-gallery-main aria-label="Enlarge screenshot: Example: approved A2P registration">
+                  <img src="assets/img/proof-a2p-approved.webp" alt="Example A2P registration screen showing brand verified and campaign approved" width="1600" height="1000" loading="lazy" decoding="async">
+                  <span class="proof-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                </button>
+                <span class="sk-glare" aria-hidden="true"></span>
+              </div>
+              <div class="sk-foot">
+                <div class="proof-thumbs" role="group" aria-label="A2P 10DLC verification screenshots">
+                <button type="button" class="proof-thumb is-on" data-src="assets/img/proof-a2p-approved.webp" data-w="1600" data-h="1000" data-title="Example: approved A2P registration" data-desc="A registration screen with the brand verified and the campaign approved, after business details, use case, opt-in and sample messages were prepared." data-alt="Example A2P registration screen showing brand verified and campaign approved" aria-label="Show: Example: approved A2P registration" aria-current="true">
+                  <img src="assets/img/proof-a2p-approved.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+                </button>
+                </div>
+                <p class="proof-desc" aria-live="polite"><strong>Example: approved A2P registration</strong>A registration screen with the brand verified and the campaign approved, after business details, use case, opt-in and sample messages were prepared.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
