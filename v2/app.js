@@ -174,3 +174,17 @@ $("#yr").textContent = new Date().getFullYear();
     d.showModal(); document.body.classList.add("svm-open");
   }));
 })();
+
+/* Testimonial showreel: custom play overlay, pause other videos */
+(function reel() {
+  const box = $("#reel"), v = $("#reelVideo");
+  if (!box || !v) return;
+  const play = () => { v.controls = true; v.play().catch(() => {}); };
+  $("#reelPlay").addEventListener("click", play);
+  $("#reelBtn").addEventListener("click", () => { box.scrollIntoView({ behavior: RM ? "auto" : "smooth", block: "center" }); play(); });
+  v.addEventListener("play", () => box.classList.add("playing"));
+  v.addEventListener("ended", () => { box.classList.remove("playing"); v.controls = false; v.load(); });
+  v.addEventListener("loadedmetadata", () => { const d = Math.floor(v.duration); if (d) $("#reelDur").textContent = `${Math.floor(d / 60)}:${String(d % 60).padStart(2, "0")}`; });
+  // only one video plays at a time
+  document.addEventListener("play", e => { $$("video").forEach(x => { if (x !== e.target) x.pause(); }); }, true);
+})();
