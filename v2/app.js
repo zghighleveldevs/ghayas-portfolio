@@ -148,17 +148,28 @@ const PROJECTS = [
     }
     const btn = f.querySelector('button[type="submit"]'), label = btn.innerHTML;
     btn.disabled = true; btn.textContent = "Sending…";
-    try {
-      const r = await fetch(CONFIG.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ Name: d.name, Email: d.email, Phone: d.phone, "I am a": d.who, "Service needed": d.need, Message: d.message,
-          _subject: `New project enquiry from ${d.name}`, _replyto: d.email, _template: "table", _captcha: "false", _honey: d._honey || "" }) });
-      const j = await r.json().catch(() => ({}));
-      if (!r.ok || j.success === "false" || j.success === false) throw 0;
-      // hand the details to the thank-you page (pre-fills the booking calendar)
+    const payload = { Name: d.name, Email: d.email, Phone: d.phone, "I am a": d.who, "Service needed": d.need, Message: d.message,
+      _subject: `New project enquiry from ${d.name}`, _replyto: d.email, _template: "table", _captcha: "false", _honey: d._honey || "" };
+    const goThankYou = () => {
       try { sessionStorage.setItem("zgLead", JSON.stringify({ name: d.name, email: d.email, need: d.need })); } catch {}
-      status.className = "status good"; status.textContent = "Message sent. Taking you to the next step…";
       location.href = "/v2/thank-you/?name=" + encodeURIComponent(d.name.split(" ")[0]);
-    } catch { status.className = "status bad"; status.textContent = `The message didn’t send. Email ${CONFIG.EMAIL} directly instead.`; btn.disabled = false; btn.innerHTML = label; }
+    };
+    // keepalive lets the request finish even after we move to the thank-you page
+    const send = fetch(CONFIG.FORM_ENDPOINT, { method: "POST", keepalive: true,
+      headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) })
+      .then(r => r.json().catch(() => ({})).then(j => ({ ok: r.ok, j })));
+    const timeout = new Promise(res => setTimeout(() => res({ timeout: true }), 2500));
+    try {
+      const res = await Promise.race([send, timeout]);
+      // Sent, still sending (timed out but keepalive continues), or FormSubmit asking for one-time activation: all go ahead
+      const activation = res.j && /activat/i.test(res.j.message || "");
+      if (res.timeout || res.ok || activation) { status.className = "status good"; status.textContent = "Message sent. Taking you to the next step…"; goThankYou(); return; }
+      throw new Error((res.j && res.j.message) || "send failed");
+    } catch {
+      status.className = "status bad";
+      status.textContent = `The message didn’t send. Email ${CONFIG.EMAIL} or WhatsApp +92 310 4168315 instead.`;
+      btn.disabled = false; btn.innerHTML = label;
+    }
   });
 })();
 
