@@ -24,8 +24,8 @@ const root = document.documentElement;
 const themeBtn = $("#themeToggle");
 const themeMeta = $('meta[name="theme-color"]');
 const CAL_COLORS = {
-  dark:  { background_color: "1c1f24", text_color: "ece8df", primary_color: "c8a15a" },
-  light: { background_color: "ffffff", text_color: "17181b", primary_color: "9a7432" },
+  dark:  { background_color: "181a31", text_color: "ecebfa", primary_color: "8e7cf6" },
+  light: { background_color: "ffffff", text_color: "16152b", primary_color: "6c5ce7" },
 };
 
 function calendlyUrl(url, theme) {
@@ -42,7 +42,7 @@ function applyTheme(theme, animate) {
   root.setAttribute("data-theme", theme);
   const next = theme === "dark" ? "light" : "dark";
   themeBtn?.setAttribute("aria-label", `Switch to ${next} theme`);
-  themeMeta?.setAttribute("content", theme === "dark" ? "#14161A" : "#F3F3F1");
+  themeMeta?.setAttribute("content", theme === "dark" ? "#0F1020" : "#F5F5FA");
 
   // Calendly: set colours before it loads, or reload the embed if already loaded
   const cal = $(".calendly-inline-widget");
