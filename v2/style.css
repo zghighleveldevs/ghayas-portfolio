@@ -573,3 +573,9 @@ body.svm-open { overflow: hidden; }
 /* Honeypot + highlighted main client in the strip */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .mq-track span.mq-main { color: var(--red); filter: none; }
+
+/* Brand logo */
+.brand .brand-logo { width: auto; height: 40px; border-radius: 0 !important; box-shadow: none !important; object-fit: contain !important; transition: transform .3s var(--ease); }
+.brand:hover .brand-logo { transform: scale(1.03); }
+@media (max-width: 400px) { .brand .brand-logo { height: 32px; } }
+.ftr-id .ftr-logo { width: auto; height: 42px; border: 0; border-radius: 0; object-fit: contain; }
