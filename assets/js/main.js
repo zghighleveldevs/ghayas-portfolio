@@ -346,3 +346,22 @@ if (book) {
 /* ---------- Footer year ---------- */
 const yr = $("#year");
 if (yr) yr.textContent = new Date().getFullYear();
+
+/* ---------- A2P tracker: ticks each stage once when visible ---------- */
+(function a2pTrack() {
+  const track = $("#a2pTrack");
+  if (!track) return;
+  const steps = $$("li", track);
+  const io = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    io.disconnect();
+    steps.forEach((li, i) => setTimeout(() => li.classList.add("done"), reduceMotion ? 0 : 400 + i * 650));
+  }, { threshold: 0.5 });
+  io.observe(track);
+})();
+
+/* ---------- Buttons that pre-select the form topic ---------- */
+$$("[data-need]").forEach(btn => btn.addEventListener("click", () => {
+  const sel = $("#f-need");
+  if (sel) { sel.value = btn.dataset.need; sel.dispatchEvent(new Event("change")); }
+}));
