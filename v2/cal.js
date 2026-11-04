@@ -27,7 +27,10 @@
     if (!/calendly\.com$/.test(new URL(e.origin).hostname)) return;
     const ev = e.data && e.data.event;
     if (ev === "calendly.date_and_time_selected") dlg.querySelectorAll(".cal-steps span").forEach((s, i) => s.classList.toggle("on", i === 1));
-    if (ev === "calendly.event_scheduled") dlg.querySelectorAll(".cal-steps span").forEach(s => s.classList.add("on"));
+    if (ev === "calendly.event_scheduled") {
+      dlg.querySelectorAll(".cal-steps span").forEach(s => s.classList.add("on"));
+      if (dlg.open) setTimeout(() => { location.href = "/v2/booked/"; }, 900);   // only for bookings made in this popup
+    }
   });
   function open(e) {
     if (!dlg.showModal) return;              // very old browsers: follow the link

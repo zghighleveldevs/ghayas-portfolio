@@ -647,3 +647,43 @@ body.svm-open { overflow: hidden; }
 .ty-h1 { text-transform: none; }
 .ty-h1 #tyName { display: inline; }
 @media (max-width: 979px) { .ty-cal { order: -1; } }
+
+/* ---------- Booked (call confirmed) page ---------- */
+.tag-green { background: #DCFCE7; color: #15803D; border-color: #BBF7D0; }
+.bk-hero { position: relative; }
+.bk-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.bk-confetti i { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 2px; opacity: 0; animation: bkFall 3s cubic-bezier(.2,.6,.4,1) forwards; }
+@keyframes bkFall { 0% { opacity: 1; transform: translate(0, 0) rotate(0); } 100% { opacity: 0; transform: translate(var(--x), 520px) rotate(var(--r)); } }
+.bk-main { padding: 1rem 0 3rem; }
+.bk-grid { display: grid; gap: 1.25rem; }
+@media (min-width: 960px) {
+  .bk-grid { grid-template-columns: 1.15fr .85fr; grid-template-areas: "next host" "prep host" "prep change"; align-items: start; }
+  .bk-next { grid-area: next; } .bk-prep { grid-area: prep; } .bk-host { grid-area: host; } .bk-change { grid-area: change; }
+}
+.bk-card { padding: 1.5rem 1.6rem; border-radius: 22px; background: #fff; border: 1px solid var(--line); box-shadow: 0 16px 40px -28px rgba(20,10,10,.35); --c: var(--red); }
+.bk-card h2 { display: flex; align-items: center; gap: .7rem; font: 800 1.15rem var(--head); }
+.bk-timeline { display: grid; gap: 1rem; margin-top: 1.25rem; position: relative; }
+.bk-timeline::before { content: ""; position: absolute; left: 14px; top: 14px; bottom: 14px; width: 2px; background: linear-gradient(var(--red), var(--orange), #22C55E); opacity: .35; }
+.bk-timeline li { position: relative; display: flex; gap: .9rem; }
+.bk-timeline b { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; font: 800 .8rem var(--head); color: #fff; background: linear-gradient(135deg, var(--red), var(--orange)); box-shadow: 0 6px 14px -6px rgba(229,40,30,.7); position: relative; z-index: 1; }
+.bk-timeline strong { display: block; font: 800 .98rem var(--head); }
+.bk-timeline span { font-size: .88rem; color: var(--ink-2); }
+.bk-ticks .i { color: #16A34A; }
+.bk-host { border-radius: 22px; overflow: hidden; color: var(--d-ink); background: radial-gradient(80% 50% at 0% 0%, rgba(229,40,30,.3), transparent 70%), #0E0E16; box-shadow: 0 30px 60px -30px rgba(20,5,5,.7); }
+.bk-host > img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; object-position: center 22%; }
+.bk-host-body { padding: 1.3rem 1.4rem 1.5rem; display: grid; gap: .3rem; }
+.bk-host-body > strong { font: 900 1.25rem var(--head); color: #fff; margin-top: .3rem; }
+.bk-host-body > span { font-size: .82rem; color: var(--d-muted); }
+.bk-host-body > p:not(.ty-kicker) { margin-top: .5rem; font-size: .9rem; color: #D6D6E0; }
+.bk-contact { display: flex; gap: .6rem; margin-top: 1rem; }
+.bk-contact a { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: .45rem; padding: .65rem; border-radius: 12px; font: 700 .85rem var(--head); color: #fff; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); transition: background-color .25s, border-color .25s; }
+.bk-contact a:hover { background: rgba(229,40,30,.18); border-color: rgba(229,40,30,.6); }
+.bk-reel-wrap { padding: 0 0 4.5rem; }
+.bk-reel { display: grid; gap: 1.5rem; align-items: center; padding: 1.75rem; border-radius: 26px; color: var(--d-ink); overflow: hidden; background: radial-gradient(60% 80% at 100% 50%, rgba(249,115,22,.25), transparent 70%), #0E0E16; }
+@media (min-width: 760px) { .bk-reel { grid-template-columns: 1fr 200px; padding: 2rem 2.25rem; } }
+.bk-reel h2 { margin-top: .5rem; font: 900 clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem)/1.15 var(--head); color: #fff; }
+.bk-reel-copy > p:not(.ty-kicker) { margin-top: .5rem; color: var(--d-muted); }
+.bk-reel .ty-more-btns { margin-top: 1.2rem; }
+.bk-reel img { width: 100%; max-width: 200px; justify-self: center; aspect-ratio: 9 / 14; object-fit: cover; border-radius: 18px; box-shadow: 0 0 0 6px rgba(255,255,255,.05), 0 20px 40px -20px rgba(0,0,0,.8); transform: rotate(3deg); }
+@media (max-width: 759px) { .bk-reel img { display: none; } }
+.ty-h1 #bkName { display: inline; }

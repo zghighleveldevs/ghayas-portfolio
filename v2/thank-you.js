@@ -29,7 +29,8 @@
     if (ev === "calendly.event_scheduled") {
       document.querySelectorAll(".ty-steps li").forEach(li => { li.classList.remove("now"); li.classList.add("done"); });
       document.getElementById("tyBooked").hidden = false;
-      try { sessionStorage.removeItem("zgLead"); } catch {}
+      const first = (document.getElementById("tyName").textContent || "").replace(/^,\s*/, "");
+      setTimeout(() => { location.href = "/v2/booked/" + (first ? "?name=" + encodeURIComponent(first) : ""); }, 1400);
     }
   });
 })();
