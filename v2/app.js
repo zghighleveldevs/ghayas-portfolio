@@ -93,7 +93,7 @@ const PROJECTS = [
   PROJECTS.forEach((p, i) => {
     const b = document.createElement("button");
     b.type = "button"; b.className = "pf-item"; b.setAttribute("role", "tab");
-    b.innerHTML = `<img src="../assets/img/${p.img}.webp" alt="" loading="lazy"><span><small>0${i + 1} · ${p.kind}</small><strong></strong></span><svg class="i chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>`;
+    b.innerHTML = `<img src="/assets/img/${p.img}.webp" alt="" loading="lazy"><span><small>0${i + 1} · ${p.kind}</small><strong></strong></span><svg class="i chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>`;
     b.querySelector("strong").textContent = p.title;
     b.addEventListener("click", () => show(i));
     list.appendChild(b);
@@ -102,7 +102,7 @@ const PROJECTS = [
   function show(i) {
     cur = i; const p = PROJECTS[i];
     $$(".pf-item", list).forEach((b, j) => b.setAttribute("aria-selected", String(j === i)));
-    const set = () => { img.src = `../assets/img/${p.img}.webp`; img.alt = p.title; const done = () => img.classList.remove("swap"); img.complete ? requestAnimationFrame(done) : img.addEventListener("load", done, { once: true }); };
+    const set = () => { img.src = `/assets/img/${p.img}.webp`; img.alt = p.title; const done = () => img.classList.remove("swap"); img.complete ? requestAnimationFrame(done) : img.addEventListener("load", done, { once: true }); };
     if (RM) set(); else { img.classList.add("swap"); setTimeout(set, 220); }
     q("plKicker").textContent = `Project ${i + 1} · ${p.kind}`;
     q("plTitle").textContent = p.title;
