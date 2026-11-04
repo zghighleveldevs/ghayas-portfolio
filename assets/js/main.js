@@ -366,19 +366,58 @@ $$("[data-need]").forEach(btn => btn.addEventListener("click", () => {
   if (sel) { sel.value = btn.dataset.need; sel.dispatchEvent(new Event("change")); }
 }));
 
-/* ---------- Screenshot lightbox ---------- */
+/* ---------- Screenshot lightbox (single images and galleries) ---------- */
 (function lightbox() {
   const dlg = $("#lightbox");
   if (!dlg || typeof dlg.showModal !== "function") return;
-  const img = $("#lightboxImg"), cap = $("#lightboxCap");
-  let opener = null;
-  $$("[data-lightbox]").forEach(btn => btn.addEventListener("click", () => {
-    opener = btn;
-    img.src = btn.dataset.lightbox;
-    img.alt = btn.querySelector("img")?.alt || "";
-    cap.textContent = btn.dataset.caption || "";
-    dlg.showModal();
-  }));
+  const img = $("#lightboxImg"), title = $("#lightboxTitle"), cap = $("#lightboxCap"), count = $("#lightboxCount");
+  const prev = $(".lightbox-prev", dlg), next = $(".lightbox-next", dlg);
+  let items = [], idx = 0, opener = null;
+
+  function show(i) {
+    idx = (i + items.length) % items.length;
+    const it = items[idx];
+    img.src = it.src; img.alt = it.alt || "";
+    title.textContent = it.title || "";
+    cap.textContent = it.desc || "";
+    const multi = items.length > 1;
+    count.textContent = multi ? `${idx + 1} / ${items.length}` : "";
+    prev.hidden = next.hidden = !multi;
+  }
+  function open(list, i, from) {
+    items = list; opener = from; show(i);
+    if (!dlg.open) dlg.showModal();
+  }
+
+  // Single screenshots
+  $$("[data-lightbox]").forEach(btn => btn.addEventListener("click", () =>
+    open([{ src: btn.dataset.lightbox, alt: btn.querySelector("img")?.alt, title: "", desc: btn.dataset.caption }], 0, btn)));
+
+  // Galleries: thumbnails swap the main image + description; main image opens the lightbox
+  $$("[data-gallery]").forEach(g => {
+    const main = $("[data-gallery-main]", g), mainImg = $("img", main), desc = $(".proof-desc", g);
+    const thumbs = $$(".proof-thumb", g);
+    const list = thumbs.map(t => ({ src: t.dataset.src, alt: t.dataset.alt, title: t.dataset.title, desc: t.dataset.desc, w: t.dataset.w, h: t.dataset.h }));
+    let cur = 0;
+    const select = i => {
+      cur = i;
+      const it = list[i];
+      mainImg.src = it.src; mainImg.alt = it.alt; mainImg.width = it.w; mainImg.height = it.h;
+      main.setAttribute("aria-label", "Enlarge screenshot: " + it.title);
+      desc.innerHTML = ""; const st = document.createElement("strong"); st.textContent = it.title; desc.append(st, it.desc);
+      thumbs.forEach((t, j) => { t.classList.toggle("is-on", j === i); t.toggleAttribute("aria-current", j === i); });
+    };
+    thumbs.forEach((t, i) => t.addEventListener("click", () => select(i)));
+    main.addEventListener("click", () => open(list, cur, main));
+  });
+
+  prev.addEventListener("click", () => show(idx - 1));
+  next.addEventListener("click", () => show(idx + 1));
+  dlg.addEventListener("keydown", e => {
+    if (items.length < 2) return;
+    if (e.key === "ArrowLeft") show(idx - 1);
+    if (e.key === "ArrowRight") show(idx + 1);
+  });
   $(".lightbox-close", dlg).addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
   dlg.addEventListener("close", () => opener?.focus());
