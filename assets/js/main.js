@@ -365,3 +365,21 @@ $$("[data-need]").forEach(btn => btn.addEventListener("click", () => {
   const sel = $("#f-need");
   if (sel) { sel.value = btn.dataset.need; sel.dispatchEvent(new Event("change")); }
 }));
+
+/* ---------- Screenshot lightbox ---------- */
+(function lightbox() {
+  const dlg = $("#lightbox");
+  if (!dlg || typeof dlg.showModal !== "function") return;
+  const img = $("#lightboxImg"), cap = $("#lightboxCap");
+  let opener = null;
+  $$("[data-lightbox]").forEach(btn => btn.addEventListener("click", () => {
+    opener = btn;
+    img.src = btn.dataset.lightbox;
+    img.alt = btn.querySelector("img")?.alt || "";
+    cap.textContent = btn.dataset.caption || "";
+    dlg.showModal();
+  }));
+  $(".lightbox-close", dlg).addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener("close", () => opener?.focus());
+})();
