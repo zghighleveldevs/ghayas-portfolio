@@ -1739,3 +1739,37 @@ body.svm-open { overflow: hidden; }
 .ct-cal .ty-cal-head strong { color: var(--ink); }
 @media (max-width: 480px) { .ct-way-t { font-size: .86rem; } .ct-ic { width: 40px; height: 40px; } }
 @media (max-width: 999px) { .ct-plane { display: none; } }
+
+/* ---------- "Everything inside GoHighLevel" hub ---------- */
+.hub-wrap { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 1000px) { .hub-wrap { grid-template-columns: .9fr 1.1fr; gap: 3rem; } }
+.hub-copy { display: grid; justify-items: start; }
+.hub-copy .h2, .hub-copy .sub { text-align: left; margin-left: 0; }
+.hub-pts { display: grid; gap: .6rem; margin-top: 1.4rem; width: 100%; }
+.hub-pts li { display: grid; padding: .8rem 1rem .8rem 2.8rem; border-radius: 14px; background: #fff; border: 1px solid var(--line); position: relative; }
+.hub-pts li::before { content: ""; position: absolute; left: 1rem; top: 1rem; width: 20px; height: 20px; border-radius: 50%; background: var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.hub-pts b { font: 800 .98rem var(--head); } .hub-pts span { font-size: .86rem; color: var(--muted); }
+.hub { --r: 215px; position: relative; width: min(560px, 100%); aspect-ratio: 1; margin: 0 auto; }
+.hub-orbit { position: absolute; inset: 0; }
+.hub-n { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.hub-line { position: absolute; left: 0; top: -1px; width: calc(var(--r) - 40px); height: 2px; transform-origin: left center; transform: rotate(var(--a)); background: linear-gradient(90deg, rgba(229,40,30,.35), color-mix(in srgb, var(--c) 45%, transparent)); }
+.hub-line i { position: absolute; top: -3px; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); animation: hubPulse 2.8s linear infinite; animation-delay: calc(var(--k) * -.31s); }
+@keyframes hubPulse { 0% { left: 100%; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: 0; opacity: 0; } }
+.hub-node { position: absolute; left: 0; top: 0; display: grid; justify-items: center; gap: .35rem; width: 104px; text-align: center; transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(var(--a) * -1)) translate(-50%, -50%); }
+.hub-ic { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: #fff; border: 1px solid var(--line); box-shadow: 0 16px 30px -18px color-mix(in srgb, var(--c) 70%, transparent); transition: transform .35s var(--ease); }
+.hub-n:hover .hub-ic { transform: translateY(-4px) scale(1.06); }
+.hub-ic svg { width: 26px; height: 26px; fill: none; stroke: var(--c); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.hub-node b { font: 800 .76rem/1.2 var(--head); color: var(--ink); }
+.hub-core { position: absolute; left: 50%; top: 50%; width: 170px; height: 170px; transform: translate(-50%, -50%); display: grid; place-items: center; }
+.hub-core-ring { position: absolute; inset: -14px; border-radius: 50%; border: 2px dashed rgba(229,40,30,.3); animation: spin 30s linear infinite; }
+.hub-core-in { position: relative; width: 100%; height: 100%; border-radius: 50%; display: grid; place-content: center; justify-items: center; text-align: center; color: #fff; background: radial-gradient(circle at 30% 25%, #FF7A4D, #E5281E 60%, #A3160F); box-shadow: 0 0 0 10px rgba(229,40,30,.12), 0 30px 60px -20px rgba(229,40,30,.7); animation: hubBeat 3s ease-in-out infinite; }
+.hub-core-in small { font: 700 .66rem var(--head); letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+.hub-core-in strong { font: 900 1.25rem/1.1 var(--head); }
+.hub-core-in em { font: 600 .72rem var(--body); font-style: normal; opacity: .85; }
+@keyframes hubBeat { 50% { box-shadow: 0 0 0 18px rgba(229,40,30,.08), 0 30px 60px -20px rgba(229,40,30,.7); } }
+@media (max-width: 600px) {
+  .hub { --r: 128px; width: 100%; max-width: 360px; }
+  .hub-core { width: 112px; height: 112px; } .hub-core-in strong { font-size: .92rem; } .hub-core-in em { display: none; }
+  .hub-node { width: 76px; } .hub-ic { width: 42px; height: 42px; border-radius: 13px; } .hub-ic svg { width: 20px; height: 20px; } .hub-node b { font-size: .62rem; }
+}
+@media (prefers-reduced-motion: reduce) { .hub-line i, .hub-core-ring, .hub-core-in { animation: none; } }

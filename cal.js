@@ -9,7 +9,7 @@
     <div class="cal-card">
       <div class="cal-head">
         <span class="cal-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>
-        <div><strong>Free Discovery Call</strong><small>30 minutes · websites, ads &amp; automation</small></div>
+        <div><strong>Free Discovery Call</strong><small>30 minutes · GoHighLevel, ads &amp; automation</small></div>
         <button type="button" class="cal-x" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
       </div>
       <div class="cal-steps"><span class="on">1. Choose a time</span><span>2. Your details</span></div>
