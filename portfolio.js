@@ -47,7 +47,7 @@
   $$(".pf-f").forEach(function (b) {
     b.addEventListener("click", function () {
       $$(".pf-f").forEach(function (x) { x.classList.toggle("on", x === b); });
-      var f = b.dataset.f, first = new Map(cards.map(function (c) { return [c, c.getBoundingClientRect()]; }));
+      var f = b.dataset.f; grid.dataset.f = f; var first = new Map(cards.map(function (c) { return [c, c.getBoundingClientRect()]; }));
       cards.forEach(function (c) { c.hidden = !(f === "all" || c.dataset.cat === f); });
       if (RM) return;
       cards.forEach(function (c) {

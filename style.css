@@ -1342,3 +1342,6 @@ body.svm-open { overflow: hidden; }
 .w3-fade { display: none; }
 .w3-scene { -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 82%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 82%, transparent 100%); }
 .pm-media { background: #F4F4F7; }
+@media (min-width: 1040px) { .pc-grid[data-f=video] { grid-template-columns: repeat(4, 1fr); } }
+.pc-grid[data-f=video] .pc-video .pc-shot { aspect-ratio: 4 / 5; }
+.pm-media:has(.pm-video) .pm-video { max-height: 78vh; }
