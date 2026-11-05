@@ -41,3 +41,23 @@
   var qs = $$(".wq");
   qs.forEach(function (d) { d.addEventListener("toggle", function () { if (d.open) qs.forEach(function (o) { if (o !== d) o.open = false; }); }); });
 })();
+/* 3D skills ring */
+(function () {
+  var ring = document.getElementById("wrRing"); if (!ring) return;
+  var faces = [].slice.call(ring.children), tabs = [].slice.call(document.querySelectorAll(".wr-tab")), n = faces.length, cur = 0, timer = null, vis = false;
+  var RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function go(i) {
+    cur = (i + n) % n;
+    ring.style.setProperty("--a", (-cur * 360 / n) + "deg");
+    faces.forEach(function (f, k) { f.classList.toggle("on", k === cur); var d = Math.abs(((k - cur) % n + n) % n); d = Math.min(d, n - d); f.style.setProperty("--d", d); });
+    tabs.forEach(function (t, k) { t.classList.toggle("on", k === cur); t.setAttribute("aria-selected", k === cur); });
+  }
+  function play() { stop(); if (!RM && vis) timer = setInterval(function () { go(cur + 1); }, 3000); }
+  function stop() { clearInterval(timer); timer = null; }
+  tabs.forEach(function (t, k) { t.addEventListener("click", function () { go(k); play(); }); });
+  faces.forEach(function (f, k) { f.addEventListener("click", function () { go(k); play(); }); });
+  var scene = document.getElementById("wrScene");
+  scene.addEventListener("pointerenter", stop); scene.addEventListener("pointerleave", play);
+  new IntersectionObserver(function (es) { vis = es[0].isIntersecting; vis ? play() : stop(); }, { threshold: .3 }).observe(scene);
+  go(0);
+})();
