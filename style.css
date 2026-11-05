@@ -1669,3 +1669,7 @@ body.svm-open { overflow: hidden; }
 .js .rcs.rv.in { transform: none; }
 @media (max-width: 899px) { .rcs-card { width: min(300px, 82%); } .rcs-num { font-size: 6rem; top: -1.4rem; } }
 .rcs-num { display: none; }
+/* review story cards: straight, no tilt */
+.rcs-card, .rcs:nth-child(even) .rcs-card { transform: none !important; }
+.js .rcs.rv { transform: translateY(30px); }
+.js .rcs.rv.in { transform: none; }
