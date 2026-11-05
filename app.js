@@ -152,7 +152,7 @@ const PROJECTS = [
       _subject: `New project enquiry from ${d.name}`, _replyto: d.email, _template: "table", _captcha: "false", _honey: d._honey || "" };
     const goThankYou = () => {
       try { sessionStorage.setItem("zgLead", JSON.stringify({ name: d.name, email: d.email, need: d.need })); } catch {}
-      location.href = "/v2/thank-you/?name=" + encodeURIComponent(d.name.split(" ")[0]);
+      location.href = "/thank-you/?name=" + encodeURIComponent(d.name.split(" ")[0]);
     };
     // keepalive lets the request finish even after we move to the thank-you page
     const send = fetch(CONFIG.FORM_ENDPOINT, { method: "POST", keepalive: true,

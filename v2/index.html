@@ -3,425 +3,572 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ghayas Ahmed | GoHighLevel Developer &amp; Automation Specialist</title>
-  <meta name="description" content="Ghayas Ahmed builds complete GoHighLevel systems: CRM, workflows, AI follow-up, funnels, pipelines and A2P registration for agencies and growing businesses.">
-  <meta name="theme-color" content="#E5281E">
+  <title>Ghayas Ahmed | ZG HighLevel Devs: GoHighLevel systems for agencies and businesses</title>
+  <meta name="description" content="Full GoHighLevel builds by Ghayas Ahmed: funnels, pipelines, workflows and campaigns that follow up with every lead automatically. 25+ clients across industries.">
+  <meta name="theme-color" content="#0F1020">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ZG HighLevel Devs: GoHighLevel systems that follow up for you">
+  <meta property="og:description" content="Funnels, pipelines, automations and campaigns built end to end in GoHighLevel.">
+  <meta property="og:image" content="/assets/img/client-success-machine.webp">
+
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+  <!-- Enables load/scroll animations only when JS runs (no flash, no hidden content without JS) -->
+  <!-- Theme: saved choice, else the device setting. Runs before paint (no flash). -->
+  <script>
+    (function () {
+      var d = document.documentElement, t;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      d.setAttribute("data-theme", t);
+      d.classList.add("js");
+    })();
+  </script>
+
+  <!-- Fonts: Instrument Serif (display) + Geist (text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/v2/style.css">
-  <script>document.documentElement.classList.add("js");</script>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ HEADER ============ -->
-<header class="hdr" id="hdr">
-  <div class="wrap hdr-in">
-    <a href="#top" class="brand" aria-label="ZG HighLevel Devs, home">
-      <img class="brand-logo" src="/assets/img/logo-brand-red.webp" alt="ZG HighLevel Devs" width="526" height="96">
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#top" class="brand" aria-label="ZG HighLevel Devs, back to top">
+      <img class="logo-dark" src="/assets/img/logo.webp" alt="ZG HighLevel Devs" width="526" height="96">
+      <img class="logo-light" src="/assets/img/logo-light.webp" alt="ZG HighLevel Devs" width="526" height="96">
     </a>
-    <nav class="nav" aria-label="Primary">
-      <a href="/v2/about/">About</a><a href="#services">Services</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#process">Process</a><a href="#portfolio">Portfolio</a><a href="#why">Why Me</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
     </nav>
-    <a href="https://calendly.com/zghighleveldevs/30min" class="btn btn-red btn-sm hdr-cta" data-cal>Book Consultation <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><span></span><span></span></button>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
+        <svg class="i icon-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11Z"/></svg>
+        <svg class="i icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a href="#contact" class="btn btn-small btn-outline header-cta">Book a call</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
-<div class="mnav" id="mnav" hidden>
-  <nav aria-label="Mobile"><a href="/v2/about/">About</a><a href="#services">Services</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#process">Process</a><a href="#portfolio">Portfolio</a><a href="#why">Why Me</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
-  <a href="https://calendly.com/zghighleveldevs/30min" class="btn btn-red btn-block" data-cal>Book Consultation</a>
+
+<!-- Mobile menu (blurred overlay) -->
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <nav aria-label="Mobile">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#process">Process</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="mobile-menu-foot">
+    <a href="#book" class="btn btn-primary btn-block">Book a 30-minute call</a>
+    <a href="mailto:zghighleveldevs@gmail.com" class="mobile-menu-mail">zghighleveldevs@gmail.com</a>
+  </div>
 </div>
 
 <main id="main">
 
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <div class="wrap hero-in">
-    <div class="hero-copy">
-      <p class="chip-line rv"><b>GoHighLevel Developer</b><i></i>Serving Agencies, Businesses &amp; Coaches</p>
-      <h1 class="rv">
-        <span>GHL Systems &amp;</span>
-        <span>Automation</span>
-        <span class="grad">For Growing</span>
-        <span class="grad grad-2">Businesses</span>
-      </h1>
-      <p class="lead rv">I help agencies, business owners and coaches build complete GoHighLevel systems: CRM, workflows, AI follow-up, funnels and pipelines that handle most of their lead follow-up on their own.</p>
-      <ul class="pillars rv">
-        <li><strong>CRM &amp; Automation</strong><small class="c-red">Workflows &amp; Pipelines</small></li>
-        <li><strong>AI Voice &amp; Follow-up</strong><small class="c-orange">Smart Automations</small></li>
-        <li><strong>Funnels &amp; Websites</strong><small class="c-green">Built To Convert</small></li>
-      </ul>
-      <div class="cta-row rv">
-        <a href="#contact" class="btn btn-red">Discuss Your Project <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#portfolio" class="btn btn-white">See My Work</a>
-      </div>
-    </div>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker" data-load>
+          <span class="status-dot" aria-hidden="true"></span>
+          Ghayas Ahmed, GoHighLevel developer. Taking new projects.
+        </p>
+        <h1 class="hero-title" data-load>A GoHighLevel account that follows up with every lead, so you don’t have to.</h1>
+        <p class="hero-sub" data-load>I build full GHL systems for agencies and small businesses: funnels, pipelines, workflows and campaigns that handle most of your lead follow-up on their own.</p>
 
-    <div class="hero-art rv">
-      <div class="orbit" aria-hidden="true">
-        <div class="ring r1"></div><div class="ring r2"></div>
-        <div class="orbit-spin">
-          <span class="ob" style="--a:0deg;--c:#10B981"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01"/></svg></span>
-          <span class="ob" style="--a:60deg;--c:#A855F7"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span>
-          <span class="ob" style="--a:120deg;--c:#EF4444"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span>
-          <span class="ob" style="--a:180deg;--c:#F59E0B"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>
-          <span class="ob" style="--a:240deg;--c:#E5281E"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></span>
-          <span class="ob" style="--a:300deg;--c:#0EA5E9"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+        <div class="hero-actions" data-load>
+          <a href="#work" class="btn btn-primary">See client work</a>
+          <a href="#book" class="btn btn-ghost">Book a 30-minute call</a>
+        </div>
+
+        <dl class="hero-facts" data-load>
+          <div><dt>4–5 years</dt><dd>building in GoHighLevel</dd></div>
+          <div><dt><span data-count="25">25</span>+ clients</dt><dd>across industries</dd></div>
+          <div><dt>80–90%</dt><dd>of follow-up automated</dd></div>
+        </dl>
+      </div>
+
+      <!-- Signature visual: a live pipeline -->
+      <div class="hero-visual" data-load aria-hidden="true">
+        <div class="board">
+          <div class="board-head">
+            <div class="board-title">
+              <span class="board-dots"><i></i><i></i><i></i></span>
+              Enquiries pipeline
+            </div>
+            <span class="board-live"><span class="status-dot"></span>Running</span>
+          </div>
+
+          <div class="board-cols" id="boardCols">
+            <div class="col" data-stage="0"><p class="col-name">New lead</p><div class="col-list">
+              <div class="lead lead-ghost"><b></b><i></i></div>
+            </div></div>
+            <div class="col" data-stage="1"><p class="col-name">Contacted</p><div class="col-list">
+              <div class="lead lead-ghost"><b></b><i></i></div>
+              <div class="lead lead-ghost"><b></b><i></i></div>
+            </div></div>
+            <div class="col" data-stage="2"><p class="col-name">Booked</p><div class="col-list">
+              <div class="lead lead-ghost"><b></b><i></i></div>
+            </div></div>
+            <div class="col" data-stage="3"><p class="col-name">Won</p><div class="col-list">
+              <div class="lead lead-ghost lead-ghost-won"><b></b><i></i></div>
+            </div></div>
+          </div>
+
+          <!-- The lead that moves (JS relocates it between columns) -->
+          <template id="leadTpl">
+            <div class="lead lead-live" id="liveLead">
+              <span class="lead-avatar">AR</span>
+              <span class="lead-text"><strong>Amira R.</strong><small>Facial consult</small></span>
+            </div>
+          </template>
+
+          <div class="board-log">
+            <p class="log-title">Automation log</p>
+            <ol class="log-list" id="logList"></ol>
+          </div>
         </div>
       </div>
-      <div class="avatar">
-        <img src="/assets/img/ghayas-ahmed.webp" alt="Ghayas Ahmed" width="720" height="900" fetchpriority="high">
-        <span class="avail"><i></i>Available</span>
-      </div>
-      <div class="name-card">
-        <strong>Ghayas Ahmed</strong>
-        <span class="role">GoHighLevel Developer</span>
-        <small>Founder, ZG HighLevel Devs. Serving agencies, businesses and coaches.</small>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ ABOUT ============ -->
-<section class="sec" id="about">
-  <div class="wrap about">
-    <div class="about-photo rv">
-      <span class="float-badge fb-top"><svg class="i" viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span><small>Experience</small>4–5 years in GHL</span></span>
-      <div class="photo-frame"><img src="/assets/img/ghayas-ahmed.webp" alt="Ghayas Ahmed" width="720" height="900" loading="lazy"></div>
-      <span class="float-badge fb-bottom"><i class="gdot"></i><span><small class="c-green">Available</small>New projects</span></span>
-    </div>
-    <div class="about-copy">
-      <p class="tag-pill rv"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M19 8v6M16 11h6"/></svg>About Me</p>
-      <h2 class="h2 rv">A hands-on <span class="grad-text">GoHighLevel</span> developer who builds full systems, not just pages.</h2>
-      <p class="rv">Hi, I’m Ghayas, founder of ZG HighLevel Devs. I build full GoHighLevel systems end to end (funnels, pipelines, automations, workflows, campaigns and CRM setups) for agencies and small businesses that need their lead follow-up to run without them.</p>
-      <p class="rv">Over 4–5 years and 25+ clients across different industries, I’ve taken businesses from little or no system to setups that handle 80–90% of their lead management and follow-up automatically.</p>
-      <p class="rv">I understand what makes leads convert, and how to turn a GHL account into a complete sales and automation engine. My focus is simple: fewer leads slipping through the cracks, less manual work, better follow-up, and more opportunities turning into paying customers.</p>
-      <a class="link ab-more rv" href="/v2/about/">Read my full story <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <div class="mini-grid">
-        <div class="mini rv"><span class="mi" style="--c:#E5281E"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/></svg></span><div><strong>CRM &amp; Pipelines</strong><p>GHL setup, contact organisation and opportunity stage mapping.</p></div></div>
-        <div class="mini rv"><span class="mi" style="--c:#F97316"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M6 8.5V12a6 6 0 0 0 6 6h3.5"/></svg></span><div><strong>Workflow Automation</strong><p>Triggers, conditions and multi-channel follow-up that run reliably.</p></div></div>
-        <div class="mini rv"><span class="mi" style="--c:#0EA5E9"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01"/></svg></span><div><strong>AI Voice &amp; Follow-up</strong><p>AI calls, SMS and email that react to every reply.</p></div></div>
-        <div class="mini rv"><span class="mi" style="--c:#A855F7"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/></svg></span><div><strong>A2P 10DLC &amp; SMS</strong><p>Registration done to carrier rules, with an approval guarantee.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SERVICES ============ -->
-<section class="sec sec-soft" id="services">
-  <div class="wrap">
-    <header class="head-c">
-      <p class="tag-pill rv"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>Services</p>
-      <h2 class="h2 rv">Reliable GoHighLevel Builds <span class="grad-text">for Your Business</span></h2>
-      <p class="sub rv">Chosen around where your business is losing leads today, not sold as a fixed package.</p>
-    </header>
-    <div class="svc-grid">
-      <article class="svc rv" style="--c:#E5281E"><div class="svc-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M10 21v-4h4v4"/></svg></span><b>01</b></div><p class="cat">Foundation</p><h3>Full Agency Setup</h3><p>Sub-accounts, snapshots, users and account structure built from zero, so every client launches the same proven way.</p><div class="svc-foot"><span class="hire">Available for Hire</span><span class="out">A clean account your team runs daily</span></div></article>
-      <article class="svc rv" style="--c:#F97316"><div class="svc-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><b>02</b></div><p class="cat">Automation</p><h3>Workflows &amp; AI Follow-up</h3><p>Missed-call text-back, nurture sequences, AI voice calls and review requests that react to what each lead does.</p><div class="svc-foot"><span class="hire">Available for Hire</span><span class="out">Follow-up that runs when you can’t</span></div></article>
-      <article class="svc rv" style="--c:#10B981"><div class="svc-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4Z"/></svg></span><b>03</b></div><p class="cat">Acquisition</p><h3>Funnels &amp; Websites</h3><p>Sales pages, application funnels, membership sites and booking flows built in GHL and connected to your pipeline.</p><div class="svc-foot"><span class="hire">Available for Hire</span><span class="out">Visitors turned into booked calls</span></div></article>
-      <article class="svc rv" style="--c:#0EA5E9"><div class="svc-top"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></svg></span><b>04</b></div><p class="cat">Sales</p><h3>Pipelines &amp; Appointments</h3><p>Every lead as an opportunity in a stage you can see, with calendars, reminders and dashboards that show how deals move.</p><div class="svc-foot"><span class="hire">Available for Hire</span><span class="out">Nothing forgotten between stages</span></div></article>
-      <article class="svc rv" style="--c:#A855F7"><div class="svc-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span><b>05</b></div><p class="cat">Outreach</p><h3>Email &amp; SMS Campaigns</h3><p>Branded email templates and SMS campaigns, mapped to where each lead actually sits in your pipeline.</p><div class="svc-foot"><span class="hire">Available for Hire</span><span class="out">The right message at the right time</span></div></article>
-      <article class="svc rv" style="--c:#16A34A"><div class="svc-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.2 2.2 4.4-4.6"/></svg></span><b>06</b></div><p class="cat">Compliance</p><h3>A2P 10DLC Verification</h3><p>Brand and campaign registration prepared to carrier rules. If it’s rejected, I fix and resubmit it free until it’s approved.</p><div class="svc-foot"><span class="hire">Approval Guaranteed</span><span class="out">Texts delivered, not blocked</span></div></article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SKILLS + TWO WAYS (dark) ============ -->
-<section class="dark" id="skills">
-  <div class="wrap">
-    <div class="dark-panel">
-      <header class="head-c">
-        <p class="tag-pill tp-dark rv"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>Technical Capabilities</p>
-        <h2 class="h2 rv">Technical Skills &amp; Systems Proficiency</h2>
-        <p class="sub rv">Platform configuration, workflow automation, funnels and compliance: the tools behind every service above.</p>
+  <!-- ============ WORK ============ -->
+  <section class="section" id="work">
+    <div class="container">
+      <header class="section-head reveal">
+        <h2 class="section-title">Client builds, live right now</h2>
+        <p class="section-lede">Funnels and websites built end to end inside GoHighLevel. Every one is a real client site you can open.</p>
       </header>
-      <ul class="skills">
-        <li class="sk hot rv"><small>CRM &amp; Data</small><strong>GoHighLevel CRM</strong><span>Core Platform</span></li>
-        <li class="sk rv"><small>CRM &amp; Data</small><strong>Sub-accounts &amp; Snapshots</strong><span>Account Structure</span></li>
-        <li class="sk rv"><small>CRM &amp; Data</small><strong>Tags &amp; Custom Values</strong><span>Contact Organisation</span></li>
-        <li class="sk rv"><small>Lead Mgmt</small><strong>Pipelines &amp; Opportunities</strong><span>Stage Mapping</span></li>
-        <li class="sk rv"><small>Automation</small><strong>Workflow Automation</strong><span>Triggers &amp; Actions</span></li>
-        <li class="sk rv"><small>Web &amp; Funnels</small><strong>Funnels &amp; Landing Pages</strong><span>Lead Capture</span></li>
-        <li class="sk rv"><small>Lead Capture</small><strong>Forms &amp; Calendars</strong><span>Booking Setup</span></li>
-        <li class="sk hot rv"><small>AI Solutions</small><strong>AI Voice Calls</strong><span>Automated Follow-up</span></li>
-        <li class="sk rv"><small>Follow-up</small><strong>Missed-Call Text-Back</strong><span>Instant Response</span></li>
-        <li class="sk rv"><small>Compliance</small><strong>A2P 10DLC Registration</strong><span>SMS Deliverability</span></li>
-        <li class="sk rv"><small>Marketing</small><strong>Email Templates</strong><span>Merge Fields</span></li>
-        <li class="sk rv"><small>Marketing</small><strong>SMS Campaigns</strong><span>Re-engagement</span></li>
-        <li class="sk rv"><small>Web &amp; Presence</small><strong>Membership Sites</strong><span>Member Access</span></li>
-        <li class="sk rv"><small>Reputation</small><strong>Review Requests</strong><span>Google Reviews</span></li>
-        <li class="sk hot rv"><small>Reporting</small><strong>Pipeline Dashboards</strong><span>Deal Tracking</span></li>
-      </ul>
-    </div>
 
-    <div class="ways-wrap" id="work-with-me">
-      <header class="head-c">
-        <p class="tag-pill tp-dark rv"><svg class="i" viewBox="0 0 24 24"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01"/></svg>Two Ways To Work With Me</p>
-        <h2 class="h2 rv">Ongoing Systems Support or Done-For-You Builds</h2>
-        <p class="sub rv">Whether you need a full GHL system built from scratch or regular support for the account you already have, I tailor the work to your goals.</p>
-      </header>
-      <div class="ways">
-        <article class="way rv" style="--c:#10B981"><b class="ghost-n">1</b><span class="mi"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span><p class="line">Service Line 1</p><h3>Ongoing Systems Support</h3><p>CRM management, workflow improvements, fixes, new campaigns and reporting for agencies and businesses that want their account tuned as they grow.</p><ul class="tags"><li>Monthly Support</li><li>Automation Builds</li><li>CRM Management</li><li>Reporting</li></ul><div class="way-foot"><span>For agencies &amp; business owners</span><a href="#contact" data-svc="1" role="button">Learn More <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article>
-        <div class="or" aria-hidden="true">OR</div>
-        <article class="way rv" style="--c:#0EA5E9"><b class="ghost-n">2</b><span class="mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><p class="line">Service Line 2</p><h3>Done-For-You System Build</h3><p>A defined project: audit, system map, then a full build of funnels, workflows, pipelines and campaigns, tested end to end before launch.</p><ul class="tags"><li>Full Agency Setup</li><li>Funnels &amp; Sites</li><li>Workflows</li><li>A2P Setup</li></ul><div class="way-foot"><span>For businesses starting fresh</span><a href="#contact" data-svc="2" role="button">Learn More <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article>
+      <div class="work-grid">
+        <a class="project project-feature reveal" href="https://clientsuccessmachine.com/" target="_blank" rel="noopener">
+          <figure class="project-shot">
+            <img src="/assets/img/client-success-machine.webp" alt="Client Success Machine homepage" width="760" height="374" loading="lazy" decoding="async">
+          </figure>
+          <div class="project-info">
+            <h3>Client Success Machine</h3>
+            <p>Sales platform site with account sign-up and member login, built for lead capture.</p>
+            <ul class="tags"><li>Website</li><li>Funnel</li><li>Membership</li></ul>
+            <span class="project-link">Visit live site <svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+        </a>
+
+        <a class="project reveal" href="https://dropshipunlocked.com/" target="_blank" rel="noopener">
+          <figure class="project-shot">
+            <img src="/assets/img/dropship-unlocked.webp" alt="Dropship Unlocked homepage" width="760" height="376" loading="lazy" decoding="async">
+          </figure>
+          <div class="project-info">
+            <h3>Dropship Unlocked</h3>
+            <ul class="tags"><li>Website</li><li>Funnel</li></ul>
+            <span class="project-link">Visit live site <svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+        </a>
+
+        <a class="project reveal" href="https://shereignscreative.com" target="_blank" rel="noopener">
+          <figure class="project-shot">
+            <img src="/assets/img/she-reigns-creative.webp" alt="She Reigns Creative homepage" width="760" height="378" loading="lazy" decoding="async">
+          </figure>
+          <div class="project-info">
+            <h3>She Reigns Creative</h3>
+            <ul class="tags"><li>Website</li><li>Funnel</li></ul>
+            <span class="project-link">Visit live site <svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+        </a>
+
+        <a class="project project-wide reveal" href="https://7stepstosalesmastery.com/" target="_blank" rel="noopener">
+          <figure class="project-shot">
+            <img src="/assets/img/7-steps-sales-mastery.webp" alt="7 Steps to Sales Mastery homepage for Paul Broome" width="1200" height="590" loading="lazy" decoding="async">
+          </figure>
+          <div class="project-info">
+            <h3>7 Steps to Sales Mastery</h3>
+            <p>Sales coaching site for Paul Broome, built around a 2-minute Sales Leak Assessment that turns visitors into booked discovery calls.</p>
+            <ul class="tags"><li>Website</li><li>Assessment funnel</li><li>Booking</li></ul>
+            <span class="project-link">Visit live site <svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ EXPERIENCE ============ -->
-<section class="sec" id="experience">
-  <div class="wrap">
-    <header class="head-c">
-      <p class="tag-pill rv"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>Experience</p>
-      <h2 class="h2 rv">Hands-on Background &amp; <span class="grad-text">Organised Systems</span></h2>
-      <p class="sub rv">Years of GoHighLevel building combined with client success, and a clear five-stage process for turning manual follow-up into automated systems.</p>
-    </header>
-    <div class="exp">
-      <article class="exp-card rv">
-        <div class="exp-top"><p class="lbl">Current Role</p><span class="pill-tag">GHL &amp; Automation</span></div>
-        <h3>GoHighLevel Developer</h3>
-        <p class="org">Founder, ZG HighLevel Devs</p>
-        <p>Building complete GoHighLevel systems for agencies and small businesses, from agency setup and funnels to workflows, pipelines and campaigns.</p>
-        <ul class="dots">
-          <li>Built full agency setups with sub-accounts and snapshots.</li>
-          <li>Designed multi-step workflows with SMS, email and AI voice calls.</li>
-          <li>Managed A2P 10DLC brand and campaign registrations.</li>
-        </ul>
-      </article>
-      <article class="exp-card rv">
-        <div class="exp-top"><p class="lbl">Client Success</p><span class="pill-tag pt-orange">25+ Clients</span></div>
-        <h3>Client Success &amp; Lead Systems</h3>
-        <p class="org">Agencies, coaches, clinics, law firms and e-commerce</p>
-        <p>Taking businesses from little or no system to setups that handle 80–90% of their lead management and follow-up automatically.</p>
-        <div class="exp-minis">
-          <div><strong>Conversion-focused</strong><span>Knows what makes leads convert and builds the journey around it.</span></div>
-          <div><strong>Clear communication</strong><span>Replies within 24 hours and keeps you updated through every stage.</span></div>
+  <!-- ============ ABOUT ============ -->
+  <section class="section section-alt" id="about">
+    <div class="container about-grid">
+      <figure class="about-photo reveal">
+        <img src="/assets/img/ghayas-ahmed.webp" alt="Ghayas Ahmed" width="720" height="900" loading="lazy" decoding="async">
+        <figcaption>Ghayas Ahmed<br><span>Founder, ZG HighLevel Devs</span></figcaption>
+      </figure>
+
+      <div class="about-copy reveal">
+        <h2 class="section-title">Fewer leads slipping through the cracks.</h2>
+        <p class="about-lead">I build complete GoHighLevel systems for agencies and small businesses that need lead follow-up to run without them.</p>
+        <p>Over 4–5 years and 25+ clients, I’ve taken businesses from little or no system to setups that handle 80–90% of their lead management and follow-up automatically.</p>
+        <p>I know what makes leads convert, and how to turn a GHL account into a full sales and automation engine: high-converting funnels, sales pipelines, complex workflows, AI automations, appointment systems, nurture campaigns and end-to-end client journeys.</p>
+        <p>The goal is always the same: less manual work, better follow-up, and more opportunities turning into paying customers.</p>
+        <a href="#book" class="btn btn-ghost">Talk through your setup</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS (bento grid) ============ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <header class="section-head reveal">
+        <h2 class="section-title">What I build inside GoHighLevel</h2>
+        <p class="section-lede">Chosen around where your business is losing leads today, not sold as a fixed package. Tap any tile to see the work up close.</p>
+      </header>
+
+      <div class="bento">
+        <!-- Workflows (feature) -->
+        <article class="bt bt-workflows bt-feature reveal">
+          <div class="bt-inner">
+          <header class="bt-head">
+            <span class="bt-icon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span>
+            <div class="bt-titles"><h3>Workflows and automation</h3><p>Follow-up that runs when you can’t: SMS, email and AI calls that react to every lead.</p></div>
+            <span class="sk-badge sk-badge-real">Real builds</span>
+          </header>
+          <button type="button" class="bt-media bt-cycle" data-lightbox-group aria-label="View workflow screenshots">
+            <img class="bt-img is-on" src="/assets/img/workflow-ai-outbound-law.webp" alt="GoHighLevel workflow for a law firm AI outbound campaign" width="1600" height="808" loading="lazy" decoding="async" data-title="Real build: AI outbound campaign for a law firm" data-desc="Outbound follow-up that mixes SMS, email and AI voice calls. It waits for each lead to reply, has the AI call anyone who answers “call me”, retries after two days with no response, and takes leads out of the sequence once they book." style="object-position:center top"><img class="bt-img" src="/assets/img/workflow-email-nurture.webp" alt="GoHighLevel email nurture workflow with engagement branches" width="1600" height="686" loading="lazy" decoding="async" data-title="Real build: email nurture with engagement branches" data-desc="Sends an email, waits a day, then branches on what the contact did. Opens and clicks lead to the next email, or exit once they’ve booked. Unsubscribes, spam complaints and bounces are tagged and set to Do Not Disturb." style="object-position:center top"><img class="bt-img" src="/assets/img/proof-workflow.webp" alt="Example new-lead follow-up workflow" width="1600" height="1000" loading="lazy" decoding="async" data-title="Example: new-lead follow-up workflow" data-desc="A form submission triggers an instant SMS and email, then the workflow checks whether the lead booked. Booked leads move stage and get reminders; the rest get a nudge and a call task." style="object-position:center top">
+            <span class="bt-toasts" aria-hidden="true">
+              <span class="bt-toast"><i style="--c:#7FB89A"></i><b>Lead replied “call me”</b><small>Law firm campaign</small></span>
+              <span class="bt-toast"><i style="--c:#8E7CF6"></i><b>AI call placed</b><small>triggered automatically</small></span>
+              <span class="bt-toast"><i style="--c:#8FB4E8"></i><b>Consultation booked</b><small>removed from sequence</small></span>
+            </span>
+            <span class="bt-view"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span>View 3 workflows</span></span>
+          </button>
+          <ul class="chips bt-chips"><li>Missed-call text-back</li><li>AI voice calls</li><li>Nurture sequences</li><li>Review requests</li></ul>
+          </div>
+        </article>
+
+        <!-- A2P -->
+        <a class="bt bt-a2p bt-feature reveal" href="#a2p" data-lightbox-src="/assets/img/proof-a2p-approved.webp">
+          <div class="bt-inner">
+          <header class="bt-head">
+            <span class="bt-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.2 2.2 4.4-4.6"/></svg></span>
+            <div class="bt-titles"><h3>A2P 10DLC verification</h3><p>Registration done to carrier rules, so texts get delivered.</p></div>
+            <span class="sk-badge sk-badge-won">Guaranteed</span>
+          </header>
+          <div class="bt-seal" aria-hidden="true">
+            <svg class="bt-seal-ring" viewBox="0 0 200 200"><defs><path id="btSeal" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs>
+              <text textLength="500" lengthAdjust="spacing"><textPath href="#btSeal" textLength="500" lengthAdjust="spacing">APPROVAL GUARANTEED • A2P 10DLC • APPROVAL GUARANTEED • A2P 10DLC •</textPath></text></svg>
+            <div class="bt-seal-core"><strong><span data-bt-count="100">100</span>%</strong><span>approval</span></div>
+          </div>
+          <ol class="bt-track" aria-label="Registration steps">
+            <li>Brand</li><li>Campaign</li><li>Carrier review</li><li>Approved</li>
+          </ol>
+          <span class="bt-link">See the guarantee <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+
+        <!-- Pipelines -->
+        <article class="bt bt-pipelines reveal">
+          <div class="bt-inner">
+          <header class="bt-head">
+            <span class="bt-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></svg></span>
+            <div class="bt-titles"><h3>Pipelines and opportunities</h3><p>Every lead in a stage you can see.</p></div>
+            <span class="sk-badge sk-badge-real">Real builds</span>
+          </header>
+          <button type="button" class="bt-media bt-cycle" data-lightbox-group aria-label="View pipeline screenshots">
+            <img class="bt-img is-on" src="/assets/img/pipeline-wiserweb-board.webp" alt="WiserWeb opportunities board" width="1600" height="728" loading="lazy" decoding="async" data-title="WiserWeb: sales pipeline" data-desc="Opportunity board in WiserWeb’s white-label account. Leads move from New Lead to Contacted, Proposal Sent and Closed, with SMS, tags, notes, tasks and booking one click away on each card." style="object-position:left top"><img class="bt-img" src="/assets/img/pipeline-wiserweb-dashboard.webp" alt="WiserWeb pipeline dashboard" width="1600" height="753" loading="lazy" decoding="async" data-title="WiserWeb: pipeline dashboard" data-desc="Reporting dashboard showing opportunity status, pipeline value, conversion rate, funnel and stage distribution." style="object-position:left top"><img class="bt-img" src="/assets/img/pipeline-influx-board.webp" alt="Influx opportunities board" width="1600" height="728" loading="lazy" decoding="async" data-title="Influx: branded pipeline" data-desc="The same pipeline structure in Influx, another white-label agency, with its own logo, colours and colour-coded stages." style="object-position:left top"><img class="bt-img" src="/assets/img/pipeline-wiserweb-conversations.webp" alt="WiserWeb conversation view with opportunity event" width="1600" height="756" loading="lazy" decoding="async" data-title="WiserWeb: conversations linked to deals" data-desc="When an opportunity is created it’s logged in the contact’s conversation, so SMS, WhatsApp and email replies sit right next to the deal." style="object-position:left top">
+            <span class="bt-caption" aria-hidden="true">WiserWeb: sales pipeline</span>
+            <span class="bt-view"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span>View 4 screens</span></span>
+          </button>
+          </div>
+        </article>
+
+        <!-- Email -->
+        <article class="bt bt-email reveal">
+          <div class="bt-inner">
+          <header class="bt-head">
+            <span class="bt-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+            <div class="bt-titles"><h3>Email and SMS campaigns</h3><p>Branded emails sent at the right moment.</p></div>
+            <span class="sk-badge sk-badge-real">Built for GHL</span>
+          </header>
+          <button type="button" class="bt-media bt-fan" data-lightbox-group aria-label="View email templates">
+            <img class="bt-card" src="/assets/img/email-review-request.webp" alt="Review request email" width="1600" height="1000" loading="lazy" decoding="async" data-title="Review request email" data-desc="Goes out after a visit. Every star links to the Google review page, unhappy clients are invited to reply privately, and a rebooking prompt brings them back."><img class="bt-card" src="/assets/img/email-appointment-reminder.webp" alt="Appointment reminder email" width="1600" height="1000" loading="lazy" decoding="async" data-title="Appointment reminder email" data-desc="Sent by a workflow before each booking, with the date, time and address pulled from the appointment, add-to-calendar and reschedule buttons, and a prep checklist."><img class="bt-card" src="/assets/img/email-consultation-offer.webp" alt="Consultation offer email" width="1600" height="1000" loading="lazy" decoding="async" data-title="Consultation offer email" data-desc="Promotional email with an offer banner, a single booking button and three quick benefits. Personalised with the contact’s first name and built to stack on phones.">
+            <span class="bt-view"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span>View 3 templates</span></span>
+          </button>
+          </div>
+        </article>
+
+        <!-- Funnels -->
+        <article class="bt bt-funnels reveal">
+          <div class="bt-inner">
+          <header class="bt-head">
+            <span class="bt-icon"><svg viewBox="0 0 24 24"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4Z"/></svg></span>
+            <div class="bt-titles"><h3>Funnels and websites</h3><p>Pages built to convert, not just to exist.</p></div>
+            <span class="sk-badge sk-badge-real">Live sites</span>
+          </header>
+          <button type="button" class="bt-media bt-fan bt-fan-sites" data-lightbox-group aria-label="View funnel and website builds">
+            <img class="bt-card bt-site" src="/assets/img/dropship-unlocked.webp" alt="Dropship Unlocked homepage" width="760" height="376" loading="lazy" decoding="async" data-title="Dropship Unlocked" data-desc="Website and funnel built end to end in GoHighLevel."><img class="bt-card bt-site" src="/assets/img/she-reigns-creative.webp" alt="She Reigns Creative homepage" width="760" height="378" loading="lazy" decoding="async" data-title="She Reigns Creative" data-desc="Website and funnel built end to end in GoHighLevel."><img class="bt-card bt-site" src="/assets/img/client-success-machine.webp" alt="Client Success Machine homepage" width="760" height="374" loading="lazy" decoding="async" data-title="Client Success Machine" data-desc="Sales platform site with account sign-up and member login, built for lead capture."><img class="bt-card bt-site" src="/assets/img/7-steps-sales-mastery.webp" alt="7 Steps to Sales Mastery homepage" width="1200" height="590" loading="lazy" decoding="async" data-title="7 Steps to Sales Mastery" data-desc="Sales coaching site for Paul Broome, built around a 2-minute Sales Leak Assessment that books discovery calls.">
+            <span class="bt-view"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span>View 4 sites</span></span>
+          </button>
+          </div>
+        </article>
+
+        <!-- Agency (wide) -->
+        <article class="bt bt-agency reveal">
+          <div class="bt-inner">
+            <div class="bt-agency-copy">
+              <header class="bt-head">
+            <span class="bt-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1M10 21v-4h4v4"/></svg></span>
+            <div class="bt-titles"><h3>Agency setup</h3><p>Sub-accounts, snapshots and structure built from zero, so every new client launches the same proven way.</p></div>
+            <span class="sk-badge sk-badge-ex">Example</span>
+          </header>
+              <ul class="chips bt-chips"><li>Sub-accounts</li><li>Snapshots</li><li>Account structure</li><li>CRM setup</li><li>User roles</li></ul>
+            </div>
+            <button type="button" class="bt-media" data-lightbox-group aria-label="View agency setup example">
+              <img class="bt-img is-on" src="/assets/img/proof-subaccounts.webp" alt="Example agency view listing sub-accounts" width="1600" height="1000" loading="lazy" decoding="async" data-title="Example: sub-accounts and snapshots" data-desc="An agency view listing each client sub-account, the snapshot it was built from, and its A2P status." style="object-position:left top">
+              <span class="bt-view"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span>View example</span></span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A2P GUARANTEE ============ -->
+  <section class="section a2p-section" id="a2p">
+    <div class="container">
+      <div class="a2p-card reveal">
+        <div class="a2p-copy">
+          <p class="a2p-kicker">
+            <svg class="i" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/></svg>
+            A2P 10DLC verification
+          </p>
+          <h2 class="section-title">100% A2P approval guarantee</h2>
+          <p class="a2p-promise">Approved, or I keep fixing and resubmitting it free.</p>
+          <p class="a2p-lede">US carriers block or filter business texts sent from unregistered numbers. Rejections usually come from small details, like a missing opt-in line or a sample message that doesn’t match your use case. I prepare everything carriers check, submit it, and handle any rejection until your campaign is approved.</p>
+
+          <ul class="a2p-list">
+            <li><svg class="i" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Business details that match your EIN and registration records</li>
+            <li><svg class="i" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Campaign use case and sample messages written to carrier rules</li>
+            <li><svg class="i" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Opt-in forms, privacy policy and terms set up on your site</li>
+            <li><svg class="i" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Resubmissions handled at no extra cost if anything is rejected</li>
+          </ul>
+
+          <div class="a2p-actions">
+            <a href="#contact" class="btn btn-primary" data-need="A2P 10DLC verification">Get my A2P approved</a>
+            <a href="#book" class="btn btn-ghost">Ask about my rejection</a>
+          </div>
+          <p class="a2p-terms">The guarantee covers my registration work: if your campaign is rejected, I fix and resubmit it free until it’s approved. Carrier and registration fees are paid separately, and businesses in categories carriers don’t allow aren’t eligible.</p>
         </div>
-      </article>
-    </div>
-    <p class="brands-lbl rv">Businesses I’ve built for</p>
-    <div class="marquee rv">
-      <div class="mq-track">
-        <span class="mq-main">Paul Broome Sales Coach</span><span>AI Exit Plan</span><span>Boxmedia</span><span>7 Steps to Sales Mastery</span><span>Client Success Machine</span><span>Dropship Unlocked</span><span>She Reigns Creative</span><span>RB Business Academy</span><span>Hockey Training Center</span><span>WiserWeb</span><span>Influx</span>
-        <span class="mq-main" aria-hidden="true">Paul Broome Sales Coach</span><span aria-hidden="true">AI Exit Plan</span><span aria-hidden="true">Boxmedia</span><span aria-hidden="true">7 Steps to Sales Mastery</span><span aria-hidden="true">Client Success Machine</span><span aria-hidden="true">Dropship Unlocked</span><span aria-hidden="true">She Reigns Creative</span><span aria-hidden="true">RB Business Academy</span><span aria-hidden="true">Hockey Training Center</span><span aria-hidden="true">WiserWeb</span><span aria-hidden="true">Influx</span>
+
+        <div class="a2p-visual" aria-hidden="true">
+          <div class="seal">
+            <svg class="seal-ring" viewBox="0 0 200 200">
+              <defs><path id="sealPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+              <text textLength="486" lengthAdjust="spacing"><textPath href="#sealPath" startOffset="0" textLength="486" lengthAdjust="spacing">A2P 10DLC • APPROVAL GUARANTEED • A2P 10DLC • APPROVAL GUARANTEED •</textPath></text>
+            </svg>
+            <div class="seal-core">
+              <strong>100%</strong>
+              <span>approval<br>guarantee</span>
+            </div>
+          </div>
+
+          <ol class="a2p-track" id="a2pTrack">
+            <li><span class="dot"></span><div><b>Brand registered</b><small>Business details verified</small></div></li>
+            <li><span class="dot"></span><div><b>Campaign submitted</b><small>Use case and samples</small></div></li>
+            <li><span class="dot"></span><div><b>Carrier review</b><small>Checked by carriers</small></div></li>
+            <li class="is-final"><span class="dot"></span><div><b>Approved</b><small>Texts deliver normally</small></div></li>
+          </ol>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Process -->
-    <div class="process" id="process">
-      <p class="tag-pill rv"><i class="rdot"></i>How I Approach Every Project</p>
-      <h2 class="h2 h2-left rv">5 Stages to an Automated Business System</h2>
-      <p class="sub sub-left rv">Automation should solve real business problems, not add complexity.</p>
-      <ol class="stages">
-        <li class="rv" style="--c:#E5281E"><div class="st-top"><span class="mi"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><b>01</b></div><h3>Audit</h3><p>A short teardown of your setup: where leads drop off and what’s missing.</p></li>
-        <li class="rv" style="--c:#F59E0B"><div class="st-top"><span class="mi"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M6 8.5V12a6 6 0 0 0 6 6h3.5"/></svg></span><b>02</b></div><h3>Map</h3><p>Pipeline, automations and funnels planned before anything is built.</p></li>
-        <li class="rv" style="--c:#0EA5E9"><div class="st-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></span><b>03</b></div><h3>Build</h3><p>The full GHL setup built inside your account.</p></li>
-        <li class="rv" style="--c:#10B981"><div class="st-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2l-5-10V3"/></svg></span><b>04</b></div><h3>Launch</h3><p>Tested end to end, then switched on live.</p></li>
-        <li class="rv" style="--c:#A855F7"><div class="st-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></svg></span><b>05</b></div><h3>Support</h3><p>Ongoing tuning as your business and lead volume change.</p></li>
+  <!-- ============ PROCESS (timeline) ============ -->
+  <section class="section section-alt" id="process">
+    <div class="container process-grid">
+      <header class="section-head section-head-stack reveal">
+        <h2 class="section-title">Five stages, so you always know where your project stands</h2>
+        <p class="section-lede">Most builds move from audit to launch in a few weeks. Support continues after go-live.</p>
+      </header>
+
+      <ol class="timeline">
+        <li class="reveal"><span class="t-num">1</span><div><h3>Audit</h3><p>A short teardown of your current setup: where leads drop off and what’s missing.</p></div></li>
+        <li class="reveal"><span class="t-num">2</span><div><h3>Map</h3><p>Your pipeline, automations and funnel structure planned before anything is built.</p></div></li>
+        <li class="reveal"><span class="t-num">3</span><div><h3>Build</h3><p>The full GHL setup (funnels, workflows, campaigns) built inside your account.</p></div></li>
+        <li class="reveal"><span class="t-num">4</span><div><h3>Launch</h3><p>Tested end to end, then switched on live.</p></div></li>
+        <li class="reveal"><span class="t-num">5</span><div><h3>Support</h3><p>Ongoing tuning as your business and lead volume change.</p></div></li>
       </ol>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ PORTFOLIO + WHY (dark) ============ -->
-<section class="dark" id="portfolio">
-  <div class="wrap">
-    <header class="head-c">
-      <p class="tag-pill tp-dark rv"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4V8Z"/></svg>Portfolio &amp; Work Demos</p>
-      <h2 class="h2 rv">Real Builds &amp; Workflow Demonstrations</h2>
-      <p class="sub rv">Real workflows, pipelines, websites and email templates from client builds. Pick a project to preview it, then open it full size.</p>
-    </header>
-    <div class="pf" id="pf">
-      <div class="pf-side">
-        <div class="pf-list" id="pfList" role="tablist" aria-label="Projects"></div>
-        <div class="brief" id="brief">
-          <div class="brief-top"><span class="mi mi-sm" style="--c:#F97316"><svg viewBox="0 0 24 24"><path d="M9 11 12 14 22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><div><small id="bfNum">Project 1 Briefing</small><strong>Summary &amp; Key Takeaways</strong></div><span class="time" id="bfType"></span></div>
-          <p class="bf-lbl">Core focus</p><p class="bf-focus" id="bfFocus"></p>
-          <p class="bf-lbl">What this demonstrates</p><ul class="bf-list" id="bfShows"></ul>
-          <p class="bf-lbl">Skills showcased</p><ul class="tags tags-dark" id="bfSkills"></ul>
-          <p class="bf-best" id="bfBest"></p>
-        </div>
-      </div>
-      <div class="player">
-        <div class="pl-head"><span class="mi mi-sm" style="--c:#E5281E"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span><div><small id="plKicker">Project 1</small><h3 id="plTitle"></h3></div><span class="live"><i></i>Real Build</span></div>
-        <button type="button" class="pl-stage" id="plStage" aria-label="View full size">
-          <img id="plImg" src="/assets/img/workflow-ai-outbound-law.webp" alt="" width="1600" height="808">
-          <span class="pl-chip c1" id="plChip1"></span><span class="pl-chip c2" id="plChip2"></span>
-          <span class="pl-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Click to view full size</span>
-        </button>
-        <div class="pl-bar"><span>Preview</span><i><b id="plProg"></b></i><span>Full build</span></div>
-        <p class="bf-lbl bf-red">What you’ll see</p>
-        <ul class="see" id="plSee"></ul>
-        <p class="pl-desc" id="plDesc"></p>
-        <div class="pl-actions">
-          <a class="btn btn-outline-d btn-sm" id="plOpen" target="_blank" rel="noopener" hidden>Open Live Site</a>
-          <button type="button" class="btn btn-red btn-sm" id="plFull">View Full Size</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Why me -->
-    <div class="why-wrap" id="why">
-      <header class="head-c">
-        <p class="tag-pill tp-dark rv"><svg class="i" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8L12 2Z"/></svg>Why Work With Me</p>
-        <h2 class="h2 rv">Why Businesses Trust Me With Their GoHighLevel</h2>
+  <!-- ============ REVIEWS ============ -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <header class="section-head reveal">
+        <h2 class="section-title">Clients, in their own words</h2>
+        <p class="section-lede">Unscripted video reviews. Tap to play.</p>
       </header>
-      <div class="why">
-        <article class="rv" style="--c:#E5281E"><div class="w-top"><span class="mi mi-sm"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 6h7M18 8.5v7"/></svg></span><b>01</b></div><h3>Systems Thinking</h3><p>Funnels, pipelines, workflows and campaigns are planned together, so every lead has a clear path from first click to paying customer.</p></article>
-        <article class="rv" style="--c:#F97316"><div class="w-top"><span class="mi mi-sm"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><b>02</b></div><h3>Automation That Carries the Load</h3><p>My builds handle 80–90% of lead management and follow-up, which frees your team for the conversations that close.</p></article>
-        <article class="rv" style="--c:#0EA5E9"><div class="w-top"><span class="mi mi-sm"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span><b>03</b></div><h3>Proven Across Industries</h3><p>25+ clients, from coaching and e-commerce to clinics, law firms and white-label agencies.</p></article>
-        <article class="rv" style="--c:#10B981"><div class="w-top"><span class="mi mi-sm"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.2 2.2 4.4-4.6"/></svg></span><b>04</b></div><h3>A2P Approval Guaranteed</h3><p>If your campaign registration is rejected, I fix and resubmit it free until it’s approved.</p></article>
-        <article class="rv" style="--c:#EC4899"><div class="w-top"><span class="mi mi-sm"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span><b>05</b></div><h3>Clear Communication</h3><p>Replies within 24 hours and plain-language updates on what’s done and what’s next. No jargon, no guesswork.</p></article>
-        <article class="rv" style="--c:#A855F7"><div class="w-top"><span class="mi mi-sm"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span><b>06</b></div><h3>Support After Launch</h3><p>Ongoing tuning as your business and lead volume change, so the system keeps working long after go-live.</p></article>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ REVIEWS ============ -->
-<section class="sec" id="reviews">
-  <div class="wrap">
-    <header class="head-c">
-      <p class="tag-pill rv"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>Client Recommendations</p>
-      <h2 class="h2 rv">Trusted by Business Owners &amp;<br><span class="grad-text">Growth Agencies</span></h2>
-      <p class="sub rv">Real feedback from agency owners and business owners I’ve built GoHighLevel systems for.</p>
-    </header>
-    <article class="reel rv" id="reel">
-      <div class="reel-media">
-        <div class="reel-phone">
-          <video id="reelVideo" playsinline preload="metadata" poster="/assets/img/poster-testimonials.webp" width="720" height="1280">
-            <source src="/assets/video/client-testimonials.mp4" type="video/mp4">
+      <div class="reviews-row">
+        <figure class="review reveal">
+          <video class="review-video" controls playsinline preload="none" poster="/assets/img/poster-pablo.webp" width="480" height="698">
+            <source src="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037303/05e2910e-5dbd-49de-8417-d493eadb35c5_-_Copy.mp4" type="video/mp4">
           </video>
-          <button class="reel-play" id="reelPlay" type="button" aria-label="Play client testimonials video">
-            <span class="reel-ring"></span><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
-          </button>
-          <span class="reel-dur" id="reelDur">2:24</span>
-        </div>
+          <figcaption>Pablo</figcaption>
+        </figure>
+        <figure class="review reveal">
+          <video class="review-video" controls playsinline preload="none" poster="/assets/img/poster-mike.webp" width="480" height="723">
+            <source src="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037661/a3138cf9-c265-4c53-bf5b-7036d7bb322b.mp4" type="video/mp4">
+          </video>
+          <figcaption>Mike</figcaption>
+        </figure>
+        <figure class="review reveal">
+          <video class="review-video" controls playsinline preload="none" poster="/assets/img/poster-paul.webp" width="480" height="709">
+            <source src="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037476/fc7b5054-8f54-4f98-8e04-9ef83d034e9e.mp4" type="video/mp4">
+          </video>
+          <figcaption>Paul</figcaption>
+        </figure>
+        <figure class="review reveal">
+          <video class="review-video" controls playsinline preload="none" poster="/assets/img/poster-patrick.webp" width="480" height="734">
+            <source src="https://res.cloudinary.com/qwr7mojn/video/upload/v1789038506/VID_20250518_104842_1.mp4" type="video/mp4">
+          </video>
+          <figcaption>Patrick</figcaption>
+        </figure>
       </div>
-      <div class="reel-body">
-        <p class="reel-kicker"><span class="rec"></span>Client Showreel</p>
-        <h3>Hear it straight from the clients</h3>
-        <p class="reel-text">Agency owners and business owners I’ve built GoHighLevel systems for, talking about what we built together and what it changed for their business. Unscripted and in their own words.</p>
-        <div class="reel-stats">
-          <div><strong>4</strong><span>clients featured</span></div>
-          <div><strong>2:24</strong><span>minutes</span></div>
-          <div><strong class="stars-s">★★★★★</strong><span>rated work</span></div>
-        </div>
-        <ul class="reel-faces" aria-label="Featured clients">
-          <li><img src="/assets/img/poster-paul.webp" alt="" width="480" height="709" loading="lazy"><span>Paul</span></li>
-          <li><img src="/assets/img/poster-patrick.webp" alt="" width="480" height="734" loading="lazy"><span>Patrick</span></li>
-          <li><img src="/assets/img/poster-mike.webp" alt="" width="480" height="723" loading="lazy"><span>Mike</span></li>
-          <li><img src="/assets/img/poster-pablo.webp" alt="" width="480" height="698" loading="lazy"><span>Pablo</span></li>
-        </ul>
-        <div class="reel-actions">
-          <button class="btn btn-red btn-sm" type="button" id="reelBtn"><svg class="i" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg>Watch the showreel</button>
-          <a class="btn btn-white btn-sm" href="#contact">Start your project</a>
-        </div>
-      </div>
-    </article>
-    <p class="rev-more rv">Or watch each review on its own</p>
-    <div class="rev-row">
-      <figure class="rev-card rv"><video controls playsinline preload="none" poster="/assets/img/poster-pablo.webp" width="480" height="698"><source src="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037303/05e2910e-5dbd-49de-8417-d493eadb35c5_-_Copy.mp4" type="video/mp4"></video><figcaption><strong>Pablo</strong><span>Client video review</span></figcaption></figure>
-      <figure class="rev-card rv"><video controls playsinline preload="none" poster="/assets/img/poster-mike.webp" width="480" height="723"><source src="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037661/a3138cf9-c265-4c53-bf5b-7036d7bb322b.mp4" type="video/mp4"></video><figcaption><strong>Mike</strong><span>Client video review</span></figcaption></figure>
-      <figure class="rev-card rv"><video controls playsinline preload="none" poster="/assets/img/poster-paul.webp" width="480" height="709"><source src="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037476/fc7b5054-8f54-4f98-8e04-9ef83d034e9e.mp4" type="video/mp4"></video><figcaption><strong>Paul</strong><span>Client video review</span></figcaption></figure>
-      <figure class="rev-card rv"><video controls playsinline preload="none" poster="/assets/img/poster-patrick.webp" width="480" height="734"><source src="https://res.cloudinary.com/qwr7mojn/video/upload/v1789038506/VID_20250518_104842_1.mp4" type="video/mp4"></video><figcaption><strong>Patrick</strong><span>Client video review</span></figcaption></figure>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ CONTACT ============ -->
-<section class="sec sec-soft" id="contact">
-  <div class="wrap contact">
-    <div class="c-left">
-      <p class="tag-pill rv"><svg class="i" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7Z"/></svg>Let’s Connect</p>
-      <h2 class="h2 h2-left rv">Let’s Build a System That Follows Up for You.</h2>
-      <p class="sub sub-left rv">Looking for someone to set up your GoHighLevel account, build workflows, organise your pipeline or create a funnel? Tell me where leads are slipping through.</p>
-      <a class="cc rv" href="mailto:zghighleveldevs@gmail.com"><span class="mi mi-sm" style="--c:#E5281E"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>Email</small>zghighleveldevs@gmail.com</span></a>
-      <a class="cc rv" href="https://wa.me/923104168315" target="_blank" rel="noopener"><span class="mi mi-sm" style="--c:#16A34A"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span><span><small>WhatsApp</small>+92 310 4168315</span></a>
-      <div class="sched rv">
-        <div class="sched-top"><span class="mi mi-sm" style="--c:#E5281E"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span><div><strong>Prefer to schedule a call?</strong><small>Book a 30-minute consultation</small></div></div>
-        <a class="btn btn-red btn-block btn-sm" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a Consultation</a>
+  <!-- ============ CONTACT ============ -->
+  <section class="section section-alt" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-intro reveal">
+        <h2 class="section-title">Tell me where leads are slipping through.</h2>
+        <p class="section-lede">Send a short note and I’ll reply within 24 hours, usually with a first idea for your setup.</p>
+
+        <ul class="channels">
+          <li>
+            <span class="channel-label">Email</span>
+            <div class="channel-row">
+              <a href="mailto:zghighleveldevs@gmail.com" id="emailText">zghighleveldevs@gmail.com</a>
+              <button type="button" class="copy-btn" id="copyEmail" aria-label="Copy email address">
+                <svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </li>
+          <li>
+            <span class="channel-label">WhatsApp</span>
+            <a href="https://wa.me/923104168315" target="_blank" rel="noopener">+92 310 4168315</a>
+          </li>
+          <li>
+            <span class="channel-label">Calendar</span>
+            <a href="#book">Book a 30-minute call</a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" novalidate>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required minlength="2">
+          <p class="field-error" data-for="f-name">Enter your name.</p>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+          <p class="field-error" data-for="f-email">Enter a valid email, like name@company.com.</p>
+        </div>
+        <div class="field field-full">
+          <label for="f-need">What do you need help with?</label>
+          <select id="f-need" name="need" required>
+            <option value="">Choose one</option>
+            <option>Full agency setup</option>
+            <option>Workflows and automation</option>
+            <option>Funnel or website</option>
+            <option>Pipelines and opportunities</option>
+            <option>Email and SMS campaigns</option>
+            <option>A2P 10DLC verification</option>
+            <option>Not sure yet</option>
+          </select>
+          <p class="field-error" data-for="f-need">Choose the closest option.</p>
+        </div>
+        <div class="field field-full">
+          <label for="f-msg">About your business and current setup</label>
+          <textarea id="f-msg" name="message" rows="5" required minlength="15"></textarea>
+          <p class="field-error" data-for="f-msg">Add a few more words (at least 15 characters).</p>
+        </div>
+        <!-- honeypot (spam trap) -->
+        <input type="text" name="company_site" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-foot field-full">
+          <button type="submit" class="btn btn-primary" id="formSubmit">Send message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ BOOK ============ -->
+  <section class="section" id="book">
+    <div class="container">
+      <header class="section-head reveal">
+        <h2 class="section-title">Or pick a time that suits you</h2>
+        <p class="section-lede">30 minutes to walk through your current setup and where a GHL system would help most.</p>
+      </header>
+      <div class="calendly-shell reveal">
+        <!-- Calendly loads only when this section nears the viewport (see main.js) -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/zghighleveldevs/30min?hide_gdpr_banner=1&background_color=181a31&text_color=ecebfa&primary_color=8e7cf6"></div>
+        <noscript><a href="https://calendly.com/zghighleveldevs/30min">Open the booking page</a></noscript>
       </div>
     </div>
-    <form class="form rv" id="form" novalidate>
-      <div class="f-full"><h3>Send Ghayas a Message</h3><p class="f-sub">Fill out the form and I’ll reply within 24 hours.</p></div>
-      <div class="f"><label for="n">Your Name *</label><input id="n" name="name" placeholder="e.g. Sarah Jenkins" required minlength="2" autocomplete="name"><p class="err">Enter your name.</p></div>
-      <div class="f"><label for="e">Email Address *</label><input id="e" name="email" type="email" placeholder="e.g. sarah@agency.com" required autocomplete="email"><p class="err">Enter a valid email address.</p></div>
-      <div class="f"><label for="ph">Phone Number *</label><input id="ph" name="phone" type="tel" inputmode="tel" placeholder="e.g. +1 512 555 0148" required minlength="7" pattern="[\d\s\+\(\)\.\-]{7,20}" autocomplete="tel"><p class="err">Enter a valid phone number, including country code.</p></div>
-      <div class="f"><label for="w">I am a…</label><select id="w" name="who"><option>Agency / Established Business</option><option>Small Business Owner</option><option>Coach / Consultant</option><option>Other</option></select></div>
-      <div class="f f-full"><label for="t">Primary Service Needed</label><select id="t" name="need"><option>Full GHL System Build</option><option>Workflows &amp; AI Follow-up</option><option>Funnel or Website</option><option>Pipelines &amp; Appointments</option><option>Email &amp; SMS Campaigns</option><option>A2P 10DLC Verification</option><option>Ongoing Systems Support</option></select></div>
-      <div class="f f-full"><label for="m">How can I help your business? *</label><textarea id="m" name="message" rows="5" required minlength="15" placeholder="Tell me about your business and goals: what systems or workflows need automation, setup or ongoing management?"></textarea><p class="err">Add a few more words (at least 15 characters).</p></div>
-      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="f-full"><button class="btn btn-red btn-block" type="submit"><svg class="i" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7Z"/></svg>Send Message to Ghayas</button><p class="status" id="status" role="status" aria-live="polite"></p></div>
-    </form>
-  </div>
-</section>
+  </section>
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="ftr">
-  <div class="wrap ftr-grid">
-    <div class="ftr-about">
-      <div class="ftr-id"><img class="ftr-logo" src="/assets/img/logo-brand-white.webp" alt="ZG HighLevel Devs" width="526" height="96" loading="lazy"></div>
-      <p>Founder of ZG HighLevel Devs, building complete GoHighLevel systems that help agencies and businesses follow up with every lead automatically.</p>
-      <span class="ftr-chip">Remote · Agencies &amp; Businesses</span>
-    </div>
-    <div><h4>Quick Navigation</h4><ul><li><a href="#about">About Ghayas</a></li><li><a href="#services">Services</a></li><li><a href="#skills">Technical Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#process">5-Stage Approach</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#reviews">Client Reviews</a></li><li><a href="#contact">Get in Touch</a></li></ul></div>
-    <div><h4>Specialisations</h4><ul class="bul"><li>CRM &amp; Opportunity Pipelines</li><li>Workflow &amp; Trigger Automation</li><li>AI Voice Calls &amp; Follow-up</li><li>A2P 10DLC Registration</li><li>Funnels, Landing Pages &amp; Booking</li><li>Email &amp; SMS Campaigns</li></ul></div>
-    <div><h4>Direct Contacts</h4>
-      <a class="fc" href="mailto:zghighleveldevs@gmail.com"><span class="fci"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>Email</small>zghighleveldevs@gmail.com</span></a>
-      <a class="fc" href="https://wa.me/923104168315" target="_blank" rel="noopener"><span class="fci"><svg class="i" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span><span><small>WhatsApp</small>+92 310 4168315</span></a>
-      <a class="fc" href="https://calendly.com/zghighleveldevs/30min" data-cal><span class="fci"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span><span><small>Book a call</small>30-minute consultation</span></a>
-    </div>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <img src="/assets/img/logo.webp" alt="ZG HighLevel Devs" width="526" height="96" loading="lazy" class="footer-logo logo-dark">
+    <img src="/assets/img/logo-light.webp" alt="ZG HighLevel Devs" width="526" height="96" loading="lazy" class="footer-logo logo-light">
+    <nav aria-label="Footer" class="footer-links">
+      <a href="mailto:zghighleveldevs@gmail.com">Email</a>
+      <a href="https://wa.me/923104168315" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#book">Book a call</a>
+    </nav>
+    <p class="footer-copy">© <span id="year">2026</span> Ghayas Ahmed</p>
   </div>
-  <div class="wrap ftr-bottom"><span>© <span id="yr">2026</span> Ghayas Ahmed. All rights reserved.</span><span><a href="/">Original site</a> <i>•</i> <b>Systems &amp; Automation</b></span></div>
 </footer>
 
-<button class="totop" id="totop" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<button class="to-top" id="toTop" aria-label="Back to top">
+  <svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
-<dialog class="svm" id="svm1" style="--c:#10B981" aria-labelledby="svmT1">
-  <div class="svm-card">
-    <span class="svm-blob b1" aria-hidden="true"></span><span class="svm-blob b2" aria-hidden="true"></span>
-    <button class="svm-x" type="button" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-    <div class="svm-head"><span class="svm-ic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span><div><p class="svm-line">Service Line 1</p><h3 id="svmT1">Ongoing Systems Support</h3></div></div>
-    <p class="svm-sub">GoHighLevel Management &amp; Automation Services</p>
-    <p class="svm-desc">Ongoing work focused on improving, extending and maintaining your GoHighLevel account over time, so your follow-up, pipelines and campaigns keep running cleanly in the background while you focus on growth.</p>
-    <p class="svm-lbl">Who it’s for</p>
-    <p class="svm-who">Agencies, established businesses and business owners who already use GoHighLevel and need reliable, ongoing technical support as they grow.</p>
-    <p class="svm-lbl">What’s included</p>
-    <ul class="svm-inc"><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>CRM setup, configuration &amp; optimisation</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Pipelines, custom fields &amp; contact management</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Workflow automation &amp; multi-step triggers</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>New funnels, forms &amp; lead capture</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>AI voice &amp; AI-assisted follow-up</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Email &amp; SMS campaigns</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Reporting &amp; pipeline dashboards</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Troubleshooting &amp; ongoing maintenance</span></li></ul>
-    <p class="svm-lbl">Engagement models</p>
-    <ul class="svm-tags"><li>Monthly support</li><li>Hourly tasks</li><li>Ongoing optimisation</li></ul>
-    <a class="svm-btn svm-ghost" href="/v2/support/">View Full Service Details <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a class="svm-btn svm-cta" href="#contact" data-close data-need="Ongoing Systems Support">Let’s Talk About Your Project <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
-</dialog>
-<dialog class="svm" id="svm2" style="--c:#0EA5E9" aria-labelledby="svmT2">
-  <div class="svm-card">
-    <span class="svm-blob b1" aria-hidden="true"></span><span class="svm-blob b2" aria-hidden="true"></span>
-    <button class="svm-x" type="button" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-    <div class="svm-head"><span class="svm-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><div><p class="svm-line">Service Line 2</p><h3 id="svmT2">Done-For-You System Build</h3></div></div>
-    <p class="svm-sub">Complete GoHighLevel Builds</p>
-    <p class="svm-desc">A fixed-scope project with clear deliverables: I audit your current setup, map the system, then build it inside your account, tested end to end before it goes live.</p>
-    <p class="svm-lbl">Who it’s for</p>
-    <p class="svm-who">Businesses and agencies starting fresh in GoHighLevel, or replacing a setup that isn’t working, who want the whole system built properly in one go.</p>
-    <p class="svm-lbl">What’s included</p>
-    <ul class="svm-inc"><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Full agency setup, sub-accounts &amp; snapshots</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Sales pipelines &amp; calendars</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Funnels, websites &amp; booking pages</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Lead follow-up &amp; nurture workflows</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Missed-call text-back &amp; review requests</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Branded email templates</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>A2P 10DLC registration (approval guaranteed)</span></li><li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.9"/></svg><span>Testing, launch &amp; handover walkthrough</span></li></ul>
-    <p class="svm-lbl">Engagement models</p>
-    <ul class="svm-tags"><li>Defined project scope</li><li>One-time project fee</li><li>Optional ongoing support</li></ul>
-    <a class="svm-btn svm-ghost" href="/v2/build/">View Full Service Details <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a class="svm-btn svm-cta" href="#contact" data-close data-need="Full GHL System Build">Let’s Talk About Your Project <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
-</dialog>
-<dialog class="lb" id="lb" aria-label="Preview">
-  <button class="lb-x" type="button" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <img id="lbImg" src="" alt=""><p id="lbCap"></p>
+<dialog class="lightbox" id="lightbox" aria-label="Screenshot">
+  <button type="button" class="lightbox-close" aria-label="Close">
+    <svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <figure>
+    <img id="lightboxImg" src="" alt="">
+    <figcaption><strong id="lightboxTitle"></strong><span id="lightboxCap"></span><small id="lightboxCount"></small></figcaption>
+  </figure>
+  <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous screenshot"><svg class="i" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
+  <button type="button" class="lightbox-nav lightbox-next" aria-label="Next screenshot"><svg class="i" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
 </dialog>
 
-<script src="/v2/app.js" defer></script>
-<script src="/v2/cal.js" defer></script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/assets/js/main.js" defer></script>
 </body>
 </html>

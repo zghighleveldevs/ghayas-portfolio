@@ -30,7 +30,7 @@
       document.querySelectorAll(".ty-steps li").forEach(li => { li.classList.remove("now"); li.classList.add("done"); });
       document.getElementById("tyBooked").hidden = false;
       const first = (document.getElementById("tyName").textContent || "").replace(/^,\s*/, "");
-      setTimeout(() => { location.href = "/v2/booked/" + (first ? "?name=" + encodeURIComponent(first) : ""); }, 1400);
+      setTimeout(() => { location.href = "/booked/" + (first ? "?name=" + encodeURIComponent(first) : ""); }, 1400);
     }
   });
 })();

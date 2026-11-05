@@ -29,7 +29,7 @@
     if (ev === "calendly.date_and_time_selected") dlg.querySelectorAll(".cal-steps span").forEach((s, i) => s.classList.toggle("on", i === 1));
     if (ev === "calendly.event_scheduled") {
       dlg.querySelectorAll(".cal-steps span").forEach(s => s.classList.add("on"));
-      if (dlg.open) setTimeout(() => { location.href = "/v2/booked/"; }, 900);   // only for bookings made in this popup
+      if (dlg.open) setTimeout(() => { location.href = "/booked/"; }, 900);   // only for bookings made in this popup
     }
   });
   function open(e) {
