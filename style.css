@@ -1216,3 +1216,6 @@ body.svm-open { overflow: hidden; }
 @media (max-width: 600px) { .hcta-b { width: 100%; } .hcta-b .btn { flex: 1 1 100%; } .hcta-2 { margin: 0 auto; } .hcta-av { width: 54px; height: 54px; } }
 @media (prefers-reduced-motion: reduce) { .hcta::before { animation: none; } }
 .hcta { grid-column: 1 / -1; width: 100%; }
+.sv-rows .hcta { margin: 0 0 1rem; }
+.dt-list .hcta { margin-top: .25rem; }
+.dt-list .hcta .hcta-l { flex-basis: 300px; }
