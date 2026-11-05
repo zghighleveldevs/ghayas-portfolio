@@ -1039,3 +1039,4 @@ body.svm-open { overflow: hidden; }
 .ex-pr-body small { font: 700 .66rem var(--head); text-transform: uppercase; letter-spacing: .1em; color: var(--red); }
 .ex-pr-body strong { font: 800 1.02rem var(--head); }
 .ex-pr-body span { font-size: .84rem; color: var(--muted); }
+@media (min-width: 1000px) { .skcats .skcat:nth-child(5) { grid-column: auto; } }
