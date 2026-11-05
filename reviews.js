@@ -51,7 +51,12 @@
   new IntersectionObserver(function (es) { if (es[0].isIntersecting) st.classList.add("in"); else if (!rsV.paused) rsV.pause(); }, { threshold: .25 }).observe(st);
 
   // tiles
-  $$(".rt, .rb-face").forEach(function (t) { t.addEventListener("click", function () { openV(t); }); });
+  $$(".rt, .rb-face, .rcs-card").forEach(function (t) { t.addEventListener("click", function () { openV(t); }); });
+  $$(".rcs-watch").forEach(function (b) { b.addEventListener("click", function () { openV($(".rcs-card", b.closest(".rcs"))); }); });
+  if (HOVER && !RM) $$(".rcs-card").forEach(function (t) {
+    t.addEventListener("pointermove", function (e) { var r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; t.style.setProperty("--ry", ((x - .5) * 18) + "deg"); t.style.setProperty("--rx", ((.5 - y) * 14) + "deg"); });
+    t.addEventListener("pointerleave", function () { t.style.removeProperty("--ry"); t.style.removeProperty("--rx"); });
+  });
   if (HOVER && !RM) $$(".rt").forEach(function (t) {
     var inn = $(".rt-in", t);
     t.addEventListener("pointermove", function (e) { var r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; inn.style.transform = "rotateX(" + ((.5 - y) * 14) + "deg) rotateY(" + ((x - .5) * 16) + "deg) translateZ(14px)"; t.style.setProperty("--gx", x * 100 + "%"); t.style.setProperty("--gy", y * 100 + "%"); });
