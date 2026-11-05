@@ -24,32 +24,37 @@
     })();
   }
 
-  /* ---- Sticky scroll story ---- */
+  /* ---- Auto-playing story: layers drop in one by one, then loop ---- */
   var story = $("#story"), iso = $("#iso"), bar = $("#psBar");
   var texts = $$(".ps-txt"), dots = $$(".ps-dot"), layers = $$(".iso-l");
-  var N = layers.length, cur = -1;
+  var N = layers.length, cur = -1, timer = null, visible = false, STEP = 3200;
   function setStage(i) {
-    if (i === cur) return; cur = i;
-    story.dataset.stage = i;
+    cur = i; story.dataset.stage = i;
     texts.forEach(function (t, j) { t.classList.toggle("on", j === i); });
     dots.forEach(function (d, j) { d.classList.toggle("on", j === i); d.classList.toggle("done", j < i); });
     layers.forEach(function (l, j) { l.classList.toggle("in", j <= i); l.classList.toggle("on", j === i); });
+    bar.style.transform = "scaleX(" + ((i + 1) / N) + ")";
   }
-  function onScroll() {
-    var r = story.getBoundingClientRect(), total = r.height - innerHeight;
-    var p = Math.max(0, Math.min(1, -r.top / total));
-    bar.style.transform = "scaleX(" + p + ")";
-    setStage(Math.min(N - 1, Math.floor(p * N * 0.999)));
+  function reset() {   // lift every layer away, then start again from stage 1
+    layers.forEach(function (l) { l.classList.remove("in", "on"); });
+    bar.style.transform = "scaleX(0)";
   }
+  function next() {
+    clearTimeout(timer);
+    if (!visible) return;
+    if (cur >= N - 1) { timer = setTimeout(function () { reset(); timer = setTimeout(function () { setStage(0); schedule(); }, 900); }, STEP); return; }
+    setStage(cur + 1); schedule();
+  }
+  function schedule() { clearTimeout(timer); if (visible && !RM) timer = setTimeout(next, STEP); }
   if (story) {
-    addEventListener("scroll", onScroll, { passive: true }); addEventListener("resize", onScroll); onScroll();
+    if (RM) setStage(N - 1);
+    new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting;
+      if (visible && !RM) { if (cur < 0) { cur = -1; next(); } else schedule(); } else clearTimeout(timer);
+    }, { threshold: .35 }).observe(story);
     dots.forEach(function (d) {
-      d.addEventListener("click", function () {
-        var i = +d.dataset.go, r = story.getBoundingClientRect(), total = r.height - innerHeight;
-        scrollTo({ top: scrollY + r.top + total * (i + .5) / N, behavior: RM ? "auto" : "smooth" });
-      });
+      d.addEventListener("click", function () { setStage(+d.dataset.go); schedule(); });
     });
-    // pointer tilt on the isometric scene
     var sc = $("#isoScene");
     if (!RM && matchMedia("(hover: hover)").matches) {
       sc.addEventListener("pointermove", function (e) { var r = sc.getBoundingClientRect(); var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; iso.style.setProperty("--tx", (y * -8) + "deg"); iso.style.setProperty("--tz", (x * 10) + "deg"); });

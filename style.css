@@ -1178,3 +1178,9 @@ body.svm-open { overflow: hidden; }
   .iso { width: min(200px, 50vw); }
 }
 @media (max-width: 959px) { .iso { --gap: 22px; --lift: 18px; } .ps-right { margin-top: 4.5rem; } }
+
+/* Process story: auto-play instead of scroll */
+.ps { height: auto; }
+.ps-sticky { position: relative; height: auto; min-height: min(100vh, 760px); padding: clamp(4rem, 8vw, 6rem) 0; }
+.ps-bar i { transition: transform 3s linear; }
+@media (max-width: 959px) { .ps-sticky { padding-top: 3.5rem; } .ps-right { margin-top: 2rem; } }
