@@ -30,7 +30,7 @@ const links = $$(".nav a");
 const secObs = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
 }), { rootMargin: "-45% 0px -50% 0px" });
-links.forEach(a => { const s = $(a.getAttribute("href")); if (s) secObs.observe(s); });
+links.forEach(a => { const h = a.getAttribute("href"); if (!h.startsWith("#")) return; const s = $(h); if (s) secObs.observe(s); });
 
 /* Scroll reveal */
 const rvObs = new IntersectionObserver(es => es.forEach(e => {
