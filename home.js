@@ -35,8 +35,29 @@
     });
     good.classList.toggle("on", !dropped.size); bad.classList.toggle("on", !!dropped.size);
   }
-  tiles.forEach((t, i) => t.addEventListener("click", () => { dropped.has(i) ? dropped.delete(i) : dropped.add(i); render(); }));
+  // 3D journey: the lead orb travels until the first dropped moment
+  const row = $("#hmMos"), scene = $("#ljScene"), orb = $("#ljOrb");
+  const stopAt = () => { for (let i = 0; i < tiles.length; i++) if (dropped.has(i)) return i; return tiles.length; };
+  let loop;
+  function run() {
+    const stop = stopAt();
+    row.style.setProperty("--stop", stop);
+    row.classList.toggle("lost", stop < tiles.length); row.classList.toggle("won", stop === tiles.length);
+    if (RM) { orb.style.setProperty("--pos", stop); orb.classList.add("arrived"); return; }
+    orb.classList.remove("arrived"); orb.classList.add("reset"); orb.style.setProperty("--pos", -1);
+    void orb.offsetWidth; orb.classList.remove("reset");
+    orb.style.setProperty("--dur", (0.55 * (stop + 1)) + "s");
+    requestAnimationFrame(() => orb.style.setProperty("--pos", stop));
+    clearTimeout(orb._t); orb._t = setTimeout(() => orb.classList.add("arrived"), 550 * (stop + 1));
+  }
+  function start() { clearInterval(loop); run(); if (!RM) loop = setInterval(run, 5200); }
+  tiles.forEach((t, i) => t.addEventListener("click", () => { dropped.has(i) ? dropped.delete(i) : dropped.add(i); render(); start(); }));
   render();
+  new IntersectionObserver(es => { if (es[0].isIntersecting) start(); else clearInterval(loop); }, { threshold: .3 }).observe(scene);
+  if (matchMedia("(hover: hover)").matches && !RM) {
+    scene.addEventListener("pointermove", e => { const r = scene.getBoundingClientRect(); scene.style.setProperty("--my", ((e.clientX - r.left) / r.width - .5) * 14 + "deg"); scene.style.setProperty("--mx", (24 - ((e.clientY - r.top) / r.height - .5) * 10) + "deg"); });
+    scene.addEventListener("pointerleave", () => { scene.style.removeProperty("--my"); scene.style.removeProperty("--mx"); });
+  }
 
   // client video popup
   const rl = $("#rl"), media = $("#rlMedia");
@@ -53,6 +74,19 @@
   rl.addEventListener("click", e => { if (e.target === rl) rl.close(); });
   rl.addEventListener("close", () => { media.innerHTML = ""; document.body.classList.remove("svm-open"); });
   $$("[data-cal]", rl).forEach(a => a.addEventListener("click", () => rl.close()));
+
+  // Sound familiar: flip cards + switch
+  const pbs = $$(".pb"), sw = $(".pb-switch");
+  const HOV = matchMedia("(hover: hover)").matches;
+  pbs.forEach(c => {
+    c.addEventListener("click", () => { if (!HOV) c.classList.toggle("flip"); });
+    c.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); c.classList.toggle("flip"); } });
+  });
+  if (sw) $$("button", sw).forEach(b => b.addEventListener("click", () => {
+    const fix = b.dataset.v === "fix";
+    $$("button", sw).forEach(x => x.classList.toggle("on", x === b)); sw.classList.toggle("fix", fix);
+    pbs.forEach((c, i) => setTimeout(() => c.classList.toggle("flip", fix), RM ? 0 : i * 70));
+  }));
 
   // FAQ: one open at a time
   const qs = $$(".wq"); qs.forEach(d => d.addEventListener("toggle", () => { if (d.open) qs.forEach(o => { if (o !== d) o.open = false; }); }));

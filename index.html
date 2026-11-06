@@ -145,7 +145,7 @@
         <div class="mini rv"><span class="mi" style="--c:#A855F7"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/></svg></span><div><strong>SMS That Gets Delivered</strong><p>UK and US texting set up properly, including A2P registration for US numbers.</p></div></div>
       </div>
     </div>
-    
+
       <div class="hcta rv">
         <div class="hcta-l">
           <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
@@ -165,13 +165,82 @@
       <h2 class="h2 rv">Every lead passes through <span class="grad-text">5 moments.</span> Drop one and the lead goes cold.</h2>
       <p class="sub rv">Most businesses don’t have a lead problem. They have a follow-up problem. The lead didn’t say no. Nobody got back to them in time, so they went with whoever did.</p>
     </header>
-    <p class="hm-try rv">Tap a moment to drop it or hold it.</p>
-    <div class="hm-mos rv" id="hmMos"><button class="hm-mo" type="button" data-k="0" aria-pressed="true"><span class="hm-mo-n">1</span><b>Respond</b><small>Held</small></button><button class="hm-mo" type="button" data-k="1" aria-pressed="true"><span class="hm-mo-n">2</span><b>Capture</b><small>Held</small></button><button class="hm-mo" type="button" data-k="2" aria-pressed="true"><span class="hm-mo-n">3</span><b>Follow up</b><small>Held</small></button><button class="hm-mo" type="button" data-k="3" aria-pressed="true"><span class="hm-mo-n">4</span><b>Book &amp; remind</b><small>Held</small></button><button class="hm-mo" type="button" data-k="4" aria-pressed="true"><span class="hm-mo-n">5</span><b>Win back</b><small>Held</small></button></div>
-    <div class="hm-outs">
+    <p class="hm-try rv">Tap a moment to drop it or hold it, and watch what happens to the lead.</p>
+    <div class="lj-scene rv" id="ljScene">
+      <div class="lj-floor" aria-hidden="true"><span class="lj-track"><i></i></span></div>
+      <div class="lj-row" id="hmMos" style="--stop:5">
+        <span class="lj-start" aria-hidden="true">New lead</span>
+        <button class="hm-mo" type="button" data-k="0" aria-pressed="true"><span class="lj-face"><span class="lj-ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span><span class="hm-mo-n">1</span><b>Respond</b><small>Held</small></span><i class="lj-side" aria-hidden="true"></i></button><button class="hm-mo" type="button" data-k="1" aria-pressed="true"><span class="lj-face"><span class="lj-ic"><svg viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1Z"/></svg></span><span class="hm-mo-n">2</span><b>Capture</b><small>Held</small></span><i class="lj-side" aria-hidden="true"></i></button><button class="hm-mo" type="button" data-k="2" aria-pressed="true"><span class="lj-face"><span class="lj-ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></span><span class="hm-mo-n">3</span><b>Follow up</b><small>Held</small></span><i class="lj-side" aria-hidden="true"></i></button><button class="hm-mo" type="button" data-k="3" aria-pressed="true"><span class="lj-face"><span class="lj-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M9 15l2 2 4-4"/></svg></span><span class="hm-mo-n">4</span><b>Book &amp; remind</b><small>Held</small></span><i class="lj-side" aria-hidden="true"></i></button><button class="hm-mo" type="button" data-k="4" aria-pressed="true"><span class="lj-face"><span class="lj-ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><span class="hm-mo-n">5</span><b>Win back</b><small>Held</small></span><i class="lj-side" aria-hidden="true"></i></button>
+        <span class="lj-goal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Booked</span>
+        <span class="lj-orb" id="ljOrb" aria-hidden="true"><i></i><em>Lead</em></span>
+      </div>
+    </div>
+    <div class="hm-outs lj-outs">
       <div class="hm-out good" id="hmGood"><b>Hold all 5 → the lead books itself in.</b><p>They get a reply in minutes, hear from you until they answer, turn up to the appointment and leave a review.</p></div>
       <div class="hm-out bad" id="hmBad"><b>Drop one → “Sorry, we’ve gone with someone else.”</b><p>The money you spent getting that lead is gone, and you never find out why.</p></div>
     </div>
   </div>
+</section>
+
+<!-- ============ SOUND FAMILIAR: PROBLEMS -> FIXES ============ -->
+<section class="sec pb-sec" id="sound-familiar">
+  <div class="wrap">
+    <header class="head-c">
+      <p class="tag-pill rv"><svg class="i" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>Sound Familiar?</p>
+      <h2 class="h2 rv">Here’s where your money is <span class="grad-text">leaking right now</span></h2>
+      <p class="sub rv">These are the problems we see in almost every account, and where they lead if nothing changes. Flip a card to see how it gets fixed.</p>
+      <div class="pb-switch rv" role="group" aria-label="Show problems or fixes"><button type="button" class="on" data-v="now">Right now</button><button type="button" data-v="fix">After we fix it</button><i></i></div>
+    </header>
+    <div class="pb-grid" id="pbGrid"><article class="pb rv" style="--i:0" tabindex="0" aria-label="Paying for ads, then nobody follows up">
+  <div class="pb-in">
+    <div class="pb-face pb-front"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Right now</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></span><h3>Paying for ads, then nobody follows up</h3><p class="pb-fut"><b>If nothing changes:</b> Your ad spend keeps rising while bookings stay flat.</p></div>
+    <div class="pb-face pb-back"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What we fix</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></span><h3>Ad leads followed up instantly</h3><p>Every ad lead gets an instant reply and a follow-up sequence, so the money you spend on ads turns into booked calls.</p></div>
+  </div>
+</article><article class="pb rv" style="--i:1" tabindex="0" aria-label="Plain emails that look like everyone else’s">
+  <div class="pb-in">
+    <div class="pb-face pb-front"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Right now</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span><h3>Plain emails that look like everyone else’s</h3><p class="pb-fut"><b>If nothing changes:</b> Your offers get ignored and blend into the inbox.</p></div>
+    <div class="pb-face pb-back"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What we fix</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span><h3>Emails that look like your brand</h3><p>Branded email templates built in GoHighLevel, personalised with each lead’s name and designed to look sharp on phones.</p></div>
+  </div>
+</article><article class="pb rv" style="--i:2" tabindex="0" aria-label="Emailing people who already marked you as spam">
+  <div class="pb-in">
+    <div class="pb-face pb-front"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Right now</span><span class="pb-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></span><h3>Emailing people who already marked you as spam</h3><p class="pb-fut"><b>If nothing changes:</b> Your domain gets flagged and even good customers stop seeing your emails.</p></div>
+    <div class="pb-face pb-back"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What we fix</span><span class="pb-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></span><h3>Only emailing people who want to hear from you</h3><p>Unsubscribes, bounces and spam complaints removed automatically, so your emails land in the inbox and your domain stays healthy.</p></div>
+  </div>
+</article><article class="pb rv" style="--i:3" tabindex="0" aria-label="Missed calls that never get a reply">
+  <div class="pb-in">
+    <div class="pb-face pb-front"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Right now</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span><h3>Missed calls that never get a reply</h3><p class="pb-fut"><b>If nothing changes:</b> Callers ring the next business on Google.</p></div>
+    <div class="pb-face pb-back"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What we fix</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span><h3>Every missed call answered</h3><p>Missed-call text-back replies in seconds, and an AI voice agent can pick up when your team can’t.</p></div>
+  </div>
+</article><article class="pb rv" style="--i:4" tabindex="0" aria-label="Leads scattered across inboxes and spreadsheets">
+  <div class="pb-in">
+    <div class="pb-face pb-front"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Right now</span><span class="pb-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></span><h3>Leads scattered across inboxes and spreadsheets</h3><p class="pb-fut"><b>If nothing changes:</b> Hot leads go cold while someone hunts for their details.</p></div>
+    <div class="pb-face pb-back"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What we fix</span><span class="pb-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></span><h3>Every lead in one place</h3><p>Every lead in one GoHighLevel pipeline, with instant alerts so your team always knows who to call next.</p></div>
+  </div>
+</article><article class="pb rv" style="--i:5" tabindex="0" aria-label="People book, then don’t turn up">
+  <div class="pb-in">
+    <div class="pb-face pb-front"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Right now</span><span class="pb-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M9.5 14.5l5 5M14.5 14.5l-5 5"/></svg></span><h3>People book, then don’t turn up</h3><p class="pb-fut"><b>If nothing changes:</b> Empty slots and wasted prep time, every week.</p></div>
+    <div class="pb-face pb-back"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What we fix</span><span class="pb-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M9.5 14.5l5 5M14.5 14.5l-5 5"/></svg></span><h3>People turn up</h3><p>Automatic confirmations and reminders by SMS and email, so far more people show up.</p></div>
+  </div>
+</article><article class="pb rv" style="--i:6" tabindex="0" aria-label="Old leads and past customers forgotten">
+  <div class="pb-in">
+    <div class="pb-face pb-front"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Right now</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><h3>Old leads and past customers forgotten</h3><p class="pb-fut"><b>If nothing changes:</b> Money you already paid for sits untouched in your CRM.</p></div>
+    <div class="pb-face pb-back"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What we fix</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><h3>Old leads brought back</h3><p>Win-back campaigns and review requests that bring old leads and past customers back.</p></div>
+  </div>
+</article><article class="pb rv" style="--i:7" tabindex="0" aria-label="Doing it all by hand">
+  <div class="pb-in">
+    <div class="pb-face pb-front"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>Right now</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg></span><h3>Doing it all by hand</h3><p class="pb-fut"><b>If nothing changes:</b> You and your team spend hours chasing instead of selling.</p></div>
+    <div class="pb-face pb-back"><span class="pb-tag"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>What we fix</span><span class="pb-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg></span><h3>Follow-up on autopilot</h3><p>Automations handle 80–90% of follow-up, so your team only talks to people who are ready.</p></div>
+  </div>
+</article></div>
+  
+      <div class="hcta rv">
+        <div class="hcta-l">
+          <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
+          <div class="hcta-t"><p class="hcta-k">Free 30-minute call · Available now</p><strong>Like what you see?</strong><span>Let’s talk about the system your business needs.</span></div>
+        </div>
+        <div class="hcta-b"><a class="btn btn-white" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a free call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hcta-2" href="/portfolio/">View the work <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+</div>
 </section>
 
 <!-- ============ SERVICES ============ -->
@@ -188,14 +257,6 @@
       <ul class="hub-orbit"><li class="hub-n" style="--c:#0EA5E9;--a:-90.0deg;--k:0"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></span><b>Websites &amp; Funnels</b></span></li><li class="hub-n" style="--c:#2563EB;--a:-50.0deg;--k:1"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><path d="M4 15c0-5 2-9 4.5-9S13 15 15.5 15 20 11 20 8"/><path d="M4 15c0 2 1 3 2.2 3 2.3 0 3.6-4 5.8-9"/></svg></span><b>Meta Ads</b></span></li><li class="hub-n" style="--c:#F59E0B;--a:-10.0deg;--k:2"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 17h5l3-5 3 5h5Z"/></svg></span><b>Google Ads</b></span></li><li class="hub-n" style="--c:#16A34A;--a:30.0deg;--k:3"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span><b>SEO</b></span></li><li class="hub-n" style="--c:#E5281E;--a:70.0deg;--k:4"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="11" rx="1"/><rect x="17" y="4" width="4" height="7" rx="1"/></svg></span><b>CRM &amp; Pipelines</b></span></li><li class="hub-n" style="--c:#A855F7;--a:110.0deg;--k:5"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><b>Workflows &amp; AI</b></span></li><li class="hub-n" style="--c:#EC4899;--a:150.0deg;--k:6"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span><b>Email &amp; SMS</b></span></li><li class="hub-n" style="--c:#F97316;--a:190.0deg;--k:7"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span><b>Calendars &amp; Booking</b></span></li><li class="hub-n" style="--c:#0891B2;--a:230.0deg;--k:8"><span class="hub-line"><i></i></span><span class="hub-node"><span class="hub-ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><b>Reporting</b></span></li></ul>
       <div class="hub-core"><span class="hub-core-ring"></span><span class="hub-core-in"><small>All inside</small><strong>GoHighLevel</strong><em>One account</em></span></div>
     </div>
-
-      <div class="hcta rv">
-        <div class="hcta-l">
-          <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
-          <div class="hcta-t"><p class="hcta-k">Free 30-minute call · Available now</p><strong>Like what you see?</strong><span>Let’s talk about the system your business needs.</span></div>
-        </div>
-        <div class="hcta-b"><a class="btn btn-white" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a free call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hcta-2" href="/portfolio/">View the work <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      </div>
 </div>
 </section>
 
@@ -215,6 +276,14 @@
       <article class="svc rv" style="--c:#16A34A"><div class="svc-top"><span class="mi"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.2 2.2 4.4-4.6"/></svg></span><b>06</b></div><p class="cat">US texting</p><h3>A2P 10DLC Verification</h3><p>Texting US customers? Brand and campaign registration prepared to US carrier rules, resubmitted free until it’s approved. Not needed for UK-only texting.</p><div class="svc-foot"><span class="hire">Approval Guaranteed</span><span class="out">Texts delivered, not blocked</span></div></article>
     </div>
     <div class="sv-all-link rv"><a class="btn btn-red" href="/services/">View all services <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+
+      <div class="hcta rv">
+        <div class="hcta-l">
+          <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
+          <div class="hcta-t"><p class="hcta-k">Free 30-minute call · Available now</p><strong>Want this built for your business?</strong><span>Tell me what you need and I’ll map it out.</span></div>
+        </div>
+        <div class="hcta-b"><a class="btn btn-white" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a free call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hcta-2" href="https://wa.me/923104168315" target="_blank" rel="noopener">Message on WhatsApp <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
 </div>
 </section>
 
@@ -260,14 +329,6 @@
         <article class="way rv" style="--c:#10B981"><b class="ghost-n">2</b><span class="mi"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span><p class="line">Monthly</p><h3>Ongoing Systems Support</h3><p>For agencies and businesses already on GoHighLevel who want it kept healthy and improving.</p><ul class="way-list"><li><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>CRM clean-up and new automations</li><li><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Fixes, health checks and integrations</li><li><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Campaigns, templates and reporting</li><li><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Scope agreed up front, regular updates</li></ul><div class="way-foot"><span>Monthly plan</span><a href="#contact" data-svc="1" role="button">Learn More <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article>
       </div>
     </div>
-
-      <div class="hcta rv hcta-dark">
-        <div class="hcta-l">
-          <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
-          <div class="hcta-t"><p class="hcta-k">Free 30-minute call · Available now</p><strong>Want this built for your business?</strong><span>Tell me what you need and I’ll map it out.</span></div>
-        </div>
-        <div class="hcta-b"><a class="btn btn-red" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a free call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hcta-2" href="https://wa.me/923104168315" target="_blank" rel="noopener">Message on WhatsApp <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      </div>
 </div>
 </section>
 
@@ -326,6 +387,14 @@
       </ol>
       <div class="sv-all-link rv"><a class="btn btn-red" href="/process/">See the full process <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
+
+      <div class="hcta rv">
+        <div class="hcta-l">
+          <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
+          <div class="hcta-t"><p class="hcta-k">Free 30-minute call · Available now</p><strong>Not sure where to start?</strong><span>I’ll look at your setup and recommend the next step.</span></div>
+        </div>
+        <div class="hcta-b"><a class="btn btn-white" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a free call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hcta-2" href="/contact/">Send a message <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
 </div>
 </section>
 
@@ -380,14 +449,6 @@
       </div>
       <p class="sv-all-link rv"><a class="btn btn-red" href="/why/">See why clients choose me <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
     </div>
-
-      <div class="hcta rv hcta-dark">
-        <div class="hcta-l">
-          <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
-          <div class="hcta-t"><p class="hcta-k">Free 30-minute call · Available now</p><strong>Not sure where to start?</strong><span>I’ll look at your setup and recommend the next step.</span></div>
-        </div>
-        <div class="hcta-b"><a class="btn btn-red" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a free call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hcta-2" href="/contact/">Send a message <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      </div>
 </div>
 </section>
 
@@ -436,6 +497,14 @@
     <p class="rev-more rv">Each client, what they needed and what I built</p>
     <div class="hm-crs"><article class="hm-cr rv"><button class="hm-cr-vid" type="button" data-v="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037476/fc7b5054-8f54-4f98-8e04-9ef83d034e9e.mp4" data-n="Paul Broome" data-c="Home improvement sales coach, UK" data-p="/assets/img/poster-paul.webp" aria-label="Watch Paul’s review"><img src="/assets/img/poster-paul.webp" alt="Paul Broome" width="480" height="700" loading="lazy"><span class="hm-cr-play"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg></span></button><div class="hm-cr-body"><p class="hm-kick">Client result</p><h3>Paul Broome</h3><p class="hm-cr-biz">Home improvement sales coach, UK</p><p><b>The problem:</b> Not technical. Had spoken to lots of providers and needed a system he could run without effort.</p><p><b>What I built:</b> His coaching site with a 2-minute Sales Leak Assessment that qualifies visitors and books discovery calls, feeding a pipeline he updates in one click.</p><p class="hm-cr-res">“So now I’m not technical. I just click buttons now.”</p><button class="hm-cr-watch" type="button"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>Watch Paul’s review</button></div></article><article class="hm-cr rv"><button class="hm-cr-vid" type="button" data-v="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037661/a3138cf9-c265-4c53-bf5b-7036d7bb322b.mp4" data-n="Mike" data-c="Client video review" data-p="/assets/img/poster-mike.webp" aria-label="Watch Mike’s review"><img src="/assets/img/poster-mike.webp" alt="Mike" width="480" height="700" loading="lazy"><span class="hm-cr-play"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg></span></button><div class="hm-cr-body"><p class="hm-kick">Client result</p><h3>Mike</h3><p><b>The problem:</b> His team was contacting leads by hand and clients went quiet between stages.</p><p><b>What I built:</b> A full sales and marketing CRM that contacts every lead automatically and keeps clients engaged on WhatsApp through their whole journey.</p><p class="hm-cr-res">Fully working in about 2 weeks.</p><button class="hm-cr-watch" type="button"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>Watch Mike’s review</button></div></article><article class="hm-cr rv"><button class="hm-cr-vid" type="button" data-v="https://res.cloudinary.com/qwr7mojn/video/upload/v1789037303/05e2910e-5dbd-49de-8417-d493eadb35c5_-_Copy.mp4" data-n="Pablo" data-c="Client video review" data-p="/assets/img/poster-pablo.webp" aria-label="Watch Pablo’s review"><img src="/assets/img/poster-pablo.webp" alt="Pablo" width="480" height="700" loading="lazy"><span class="hm-cr-play"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg></span></button><div class="hm-cr-body"><p class="hm-kick">Client result</p><h3>Pablo</h3><p><b>The problem:</b> Calls, enquiries and client details were scattered, and the team kept checking for updates.</p><p><b>What I built:</b> An AI voice agent that answers when the team is away and takes details, forms that send data straight into GoHighLevel, and Slack alerts.</p><p class="hm-cr-res">“I’ve not struggled at all and it’s been grand.”</p><button class="hm-cr-watch" type="button"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>Watch Pablo’s review</button></div></article><article class="hm-cr rv"><button class="hm-cr-vid" type="button" data-v="https://res.cloudinary.com/qwr7mojn/video/upload/v1789038506/VID_20250518_104842_1.mp4" data-n="Patrick" data-c="Client video review" data-p="/assets/img/poster-patrick.webp" aria-label="Watch Patrick’s review"><img src="/assets/img/poster-patrick.webp" alt="Patrick" width="480" height="700" loading="lazy"><span class="hm-cr-play"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg></span></button><div class="hm-cr-body"><p class="hm-kick">Client result</p><h3>Patrick</h3><p><b>The problem:</b> An existing system that wasn’t doing its job and needed a proper look under the bonnet.</p><p><b>What I built:</b> A full audit of the setup, then the automation work to fix what was broken and missing.</p><p class="hm-cr-res">“We hired him for our system audit and automation role.”</p><button class="hm-cr-watch" type="button"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>Watch Patrick’s review</button></div></article></div>
     <p class="sv-all-link rv"><a class="btn btn-red" href="/reviews/">See all reviews <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+
+      <div class="hcta rv">
+        <div class="hcta-l">
+          <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
+          <div class="hcta-t"><p class="hcta-k">Free 30-minute call · Available now</p><strong>Your follow-up could run itself</strong><span>Most builds go live within a few weeks.</span></div>
+        </div>
+        <div class="hcta-b"><a class="btn btn-white" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a free call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hcta-2" href="/process/">See the process <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
 </div>
 </section>
 
@@ -448,14 +517,6 @@
       <h2 class="h2 rv">But what <span class="grad-text">if…?</span></h2>
     </header>
     <details class="wq rv"><summary>“I’ve already paid someone to set up GoHighLevel and it didn’t work.”<i></i></summary><p>That’s more common than you’d think, and it’s why every project starts with an audit. I find what’s broken or missing and fix it inside the account you already have, so the money you’ve spent isn’t wasted.</p></details><details class="wq rv"><summary>“I’m not technical.”<i></i></summary><p>You don’t need to be. You get a plain-English handover, and day to day you just move leads along with a click while the automations run in the background. As Paul put it: “I just click buttons now.”</p></details><details class="wq rv"><summary>“Will I lose control of my account?”<i></i></summary><p>No. Everything is built in your own account, and you keep ownership of the account, your domains and your data. You add me as a user, so you never share your main login.</p></details><details class="wq rv"><summary>“How long will it take?”<i></i></summary><p>Most builds go live within a few weeks, and you get a clear timeline before work starts. Mike’s full sales and marketing CRM was working in about two weeks.</p></details><details class="wq rv"><summary>“Do you work with UK businesses?”<i></i></summary><p>Yes. I work with agencies and businesses across the UK, US and beyond, including Paul Broome in the UK. Calls are booked in your own time zone.</p></details><details class="wq rv"><summary>“What will it cost?”<i></i></summary><p>It depends on what you need. Builds are a fixed scope and price agreed before work starts, and ongoing support is a monthly plan with the scope agreed up front. We work it out on the free call, with no obligation.</p></details>
-  
-      <div class="hcta rv">
-        <div class="hcta-l">
-          <span class="hcta-av"><img src="/assets/img/ghayas-ahmed.webp" alt="" width="720" height="900" loading="lazy"><i></i></span>
-          <div class="hcta-t"><p class="hcta-k">Free 30-minute call · Available now</p><strong>Your follow-up could run itself</strong><span>Most builds go live within a few weeks.</span></div>
-        </div>
-        <div class="hcta-b"><a class="btn btn-white" href="https://calendly.com/zghighleveldevs/30min" data-cal>Book a free call <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hcta-2" href="/process/">See the process <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      </div>
 </div>
 </section>
 
