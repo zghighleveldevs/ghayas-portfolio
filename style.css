@@ -1965,3 +1965,6 @@ body.svm-open { overflow: hidden; }
 .hub-steps .hub-sn { display: grid; color: #fff; font: 900 .95rem var(--head); line-height: 1; }
 .ways { align-items: stretch; }
 .hm-calc-top { flex-wrap: wrap; row-gap: .2rem; }
+.sv-prob { margin-top: .6rem; padding: .7rem .9rem; border-radius: 12px; font-size: .94rem; line-height: 1.55; color: #7F1D1D; background: #FEF2F2; border-left: 3px solid var(--red); }
+.sv-prob b, .sv-desc b { color: var(--ink); }
+.sv-prob + .sv-desc { margin-top: .7rem; }
