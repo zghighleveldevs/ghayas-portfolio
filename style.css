@@ -1968,3 +1968,21 @@ body.svm-open { overflow: hidden; }
 .sv-prob { margin-top: .6rem; padding: .7rem .9rem; border-radius: 12px; font-size: .94rem; line-height: 1.55; color: #7F1D1D; background: #FEF2F2; border-left: 3px solid var(--red); }
 .sv-prob b, .sv-desc b { color: var(--ink); }
 .sv-prob + .sv-desc { margin-top: .7rem; }
+
+/* About: problem / fix / what changed cards */
+.ab-pfr { display: grid; gap: .65rem; margin-top: 1rem; }
+.ab-pfr > div { padding: .7rem .85rem; border-radius: 12px; background: var(--soft); border: 1px solid var(--line); }
+.ab-pfr > div:first-child { background: #FEF2F2; border-color: rgba(229,40,30,.18); }
+.ab-pfr > div:last-child { background: color-mix(in srgb, var(--c) 8%, #fff); border-color: color-mix(in srgb, var(--c) 30%, transparent); }
+.ab-pfr dt { font: 800 .7rem var(--head); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.ab-pfr > div:first-child dt { color: #B91C1C; }
+.ab-pfr > div:last-child dt { color: var(--c); }
+.ab-pfr dd { margin: .2rem 0 0; font-size: .88rem; line-height: 1.55; color: var(--ink-2); }
+.ab-exp { display: flex; flex-direction: column; }
+/* About founder: what changes for you */
+.ab-f-lbl { margin-top: 1.2rem; font: 800 .74rem var(--head); letter-spacing: .14em; text-transform: uppercase; color: #FF8A7A; }
+.ab-easy { display: grid; gap: .55rem; margin: .7rem 0 1.2rem; }
+@media (min-width: 700px) { .ab-easy { grid-template-columns: 1fr 1fr; } }
+.ab-easy li { display: flex; gap: .6rem; align-items: flex-start; padding: .75rem .85rem; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid var(--d-line); font-size: .88rem; line-height: 1.5; color: #CFCFDA; }
+.ab-easy li b { color: #fff; }
+.ab-easy svg { flex: none; width: 20px; height: 20px; padding: 3px; margin-top: .1rem; border-radius: 50%; background: #16A34A; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
