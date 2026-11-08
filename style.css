@@ -2256,3 +2256,29 @@ body.svm-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .gl-vbtn::before { animation: none; } }
 .gl-vplay img { position: absolute; inset: 0; display: block; }
 .gl-vplay img { top: -7%; height: 107%; }
+/* ---------- "Businesses I've built for": glass logo strip ---------- */
+.mq-glass { position: relative; padding: 1.4rem 0; margin-top: .4rem; }
+.mq-glass::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(420px 120px at 18% 50%, rgba(229,40,30,.16), transparent 70%), radial-gradient(420px 120px at 52% 50%, rgba(249,115,22,.14), transparent 70%), radial-gradient(420px 120px at 85% 50%, rgba(14,165,233,.13), transparent 70%); filter: blur(6px); }
+.mq-glass .mq-track { gap: 1rem; padding: .4rem 0; animation-duration: 48s; }
+.mq-chip { display: inline-flex; align-items: center; gap: .75rem; padding: .7rem 1.3rem .7rem .7rem; border-radius: 999px; white-space: nowrap;
+  background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.42));
+  -webkit-backdrop-filter: blur(14px) saturate(160%); backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.9); box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(20,10,10,.04), 0 14px 32px -20px rgba(20,10,10,.35), 0 0 0 1px rgba(20,10,10,.04);
+  transition: transform .35s var(--ease), box-shadow .35s, border-color .35s; position: relative; overflow: hidden; }
+.mq-chip::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; transform: skewX(-20deg); background: linear-gradient(90deg, transparent, rgba(255,255,255,.75), transparent); transition: left .7s var(--ease); pointer-events: none; }
+.mq-chip:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 45%, #fff); box-shadow: inset 0 1px 0 #fff, 0 20px 36px -18px color-mix(in srgb, var(--c) 55%, transparent); }
+.mq-chip:hover::after { left: 120%; }
+.mq-logo { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; overflow: hidden; font: 900 .82rem var(--head); letter-spacing: .02em; color: #fff;
+  background: linear-gradient(140deg, color-mix(in srgb, var(--c) 80%, #fff), var(--c)); box-shadow: 0 6px 14px -6px var(--c), inset 0 1px 0 rgba(255,255,255,.4); }
+.mq-logo img { width: 100%; height: 100%; object-fit: contain; background: #fff; padding: 5px; }
+.mq-name { font: 800 1.05rem var(--head); letter-spacing: -.01em; color: var(--ink); }
+.mq-chip.mq-main { background: linear-gradient(135deg, rgba(255,240,238,.85), rgba(255,255,255,.5)); border-color: rgba(229,40,30,.35); }
+.mq-chip.mq-main .mq-name { color: var(--red); }
+@media (max-width: 600px) { .mq-chip { padding: .5rem 1rem .5rem .5rem; gap: .55rem; } .mq-logo { width: 32px; height: 32px; font-size: .7rem; } .mq-name { font-size: .9rem; } }
+.mq-glass .mq-track span { padding: 0; filter: none; font: inherit; color: inherit; letter-spacing: normal; }
+.mq-glass .mq-track .mq-chip { padding: .7rem 1.3rem .7rem .7rem; }
+.mq-glass .mq-track .mq-logo { font: 900 .82rem var(--head); color: #fff; letter-spacing: .02em; }
+.mq-glass .mq-track .mq-name { font: 800 1.05rem var(--head); color: var(--ink); letter-spacing: -.01em; }
+.mq-glass .mq-track .mq-chip.mq-main .mq-name { color: var(--red); }
+@media (max-width: 600px) { .mq-glass .mq-track .mq-chip { padding: .5rem 1rem .5rem .5rem; } .mq-glass .mq-track .mq-logo { font-size: .7rem; } .mq-glass .mq-track .mq-name { font-size: .9rem; } }
