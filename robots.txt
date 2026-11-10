@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ghayas-portfolio.vercel.app/sitemap.xml
+Sitemap: https://zghighleveldevs.com/sitemap.xml
