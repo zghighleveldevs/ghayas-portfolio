@@ -3,7 +3,7 @@
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "ghayas-portfolio.vercel.app" }],
-      "destination": "https://zghighleveldevs.com/:path*",
+      "destination": "https://www.zghighleveldevs.com/:path*",
       "permanent": true
     }
   ]

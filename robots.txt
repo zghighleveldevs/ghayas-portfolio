@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zghighleveldevs.com/sitemap.xml
+Sitemap: https://www.zghighleveldevs.com/sitemap.xml
