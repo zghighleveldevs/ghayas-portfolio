@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "ghayas-portfolio.vercel.app" }],
+      "destination": "https://zghighleveldevs.com/:path*",
+      "permanent": true
+    }
+  ]
+}
