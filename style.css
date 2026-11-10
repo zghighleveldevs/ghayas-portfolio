@@ -2255,3 +2255,4 @@ body.svm-open { overflow: hidden; }
 @media (max-width: 520px) { .gl-vbtn { width: 50px; height: 50px; } .gl-vname b { font-size: .95rem; } .gl-vid figcaption { font-size: .8rem; padding: .7rem .8rem; } }
 @media (prefers-reduced-motion: reduce) { .gl-vbtn::before { animation: none; } }
 .gl-vplay img { position: absolute; inset: 0; display: block; }
+.gl-vplay img { top: -7%; height: 107%; }
