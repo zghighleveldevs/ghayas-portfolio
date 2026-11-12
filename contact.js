@@ -2,6 +2,17 @@
 (function () {
   const $ = (s, e = document) => e.querySelector(s), $$ = (s, e = document) => [...e.querySelectorAll(s)];
   const ENDPOINT = "https://formsubmit.co/ajax/zghighleveldevs@gmail.com", EMAIL = "zghighleveldevs@gmail.com";
+  const GHL_HOOK = "https://services.leadconnectorhq.com/hooks/65eRbQqIPWfYH6wIDGDd/webhook-trigger/d0e65d1a-0cd2-4310-b926-4c404e0f410e";
+  // Send the lead to the GoHighLevel inbound webhook (creates/updates the contact and runs the workflow)
+  const toGHL = (d, page) => {
+    if (d._honey) return Promise.resolve({ ok: true });
+    const parts = (d.name || "").trim().split(/\s+/);
+    return fetch(GHL_HOOK, { method: "POST", keepalive: true, headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ first_name: parts[0] || "", last_name: parts.slice(1).join(" "), full_name: (d.name || "").trim(),
+        email: d.email || "", phone: d.phone || "", who: d.who || "", service_needed: d.need || "", message: d.message || "",
+        source: "Website - " + page, page_url: location.href, submitted_at: new Date().toISOString() }) })
+      .then(r => ({ ok: r.ok })).catch(() => ({ ok: false }));
+  };
 
   // form
   const f = $("#form"), status = $("#status"), fields = $$("input[required], textarea[required]", f);
@@ -24,8 +35,11 @@
       try { sessionStorage.setItem("zgLead", JSON.stringify({ name: d.name, email: d.email, need: d.need })); } catch {}
       location.href = "/thank-you/?name=" + encodeURIComponent(d.name.split(" ")[0]);
     };
-    const send = fetch(ENDPOINT, { method: "POST", keepalive: true, headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) })
+    const ghl = toGHL(d, "Contact page");
+    const mail = fetch(ENDPOINT, { method: "POST", keepalive: true, headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) })
       .then(r => r.json().catch(() => ({})).then(j => ({ ok: r.ok, j })));
+    // success if either GoHighLevel or the email copy accepted it
+    const send = Promise.all([ghl, mail.catch(() => ({ ok: false }))]).then(([g, m]) => ({ ok: g.ok || m.ok, j: m.j }));
     const timeout = new Promise(r => setTimeout(() => r({ timeout: true }), 2500));
     try {
       const r = await Promise.race([send, timeout]);
