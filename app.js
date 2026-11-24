@@ -96,65 +96,61 @@ const PROJECTS = [
     shows: [["Personalised", "First name, appointment and location merge fields."], ["Mobile layout", "Columns stack into one on phones."], ["Workflow ready", "Each template is sent by a workflow at the right time."]],
     skills: ["Email Templates", "Merge Fields", "Workflows"], best: "Clinics and service businesses sending reminders and offers." },
 ];
-const SXV = new URLSearchParams(location.search).get("sx");
-(function portfolio() {
-  if (SXV === "3") return;
-  if (SXV === "2") $("#pf").classList.add("v2");
-  const list = $("#pfList"), img = $("#plImg"), stage = $("#plStage"), card = $("#sxCard");
-  const q = id => document.getElementById(id);
-  let cur = 0;
-  const tabs = PROJECTS.map((p, i) => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "sx-tab"; b.setAttribute("role", "tab"); b.id = "sxTab" + i;
-    b.innerHTML = `<img src="/assets/img/${p.img}.webp" alt="" loading="lazy"><span><small></small><strong></strong></span>`;
-    b.querySelector("small").textContent = p.kind; b.querySelector("strong").textContent = p.title;
-    b.addEventListener("click", () => show(i));
-    list.appendChild(b); return b;
+(function coverflow() {
+  const stage = $("#cfStage"), track = $("#cfTrack"), dots = $("#cfDots"), info = $("#sxCard");
+  if (!stage) return;
+  const q = id => document.getElementById(id), N = PROJECTS.length;
+  let cur = 0, timer = null, hover = false;
+  const slides = PROJECTS.map((p, i) => {
+    const el = document.createElement("button");
+    el.type = "button"; el.className = "cf-slide"; el.setAttribute("aria-label", `${p.title} (${p.kind})`);
+    el.innerHTML = `<span class="cf-frame"><span class="cf-bar"><i></i><i></i><i></i><em></em></span><span class="cf-img"><img src="/assets/img/${p.img}.webp" alt="" loading="${i < 3 ? "eager" : "lazy"}"></span><span class="cf-shine"></span><span class="cf-cap"><small></small><strong></strong></span></span><span class="cf-reflect" aria-hidden="true"></span>`;
+    el.querySelector("em").textContent = p.kind; el.querySelector(".cf-cap small").textContent = `${String(i + 1).padStart(2, "0")} / ${String(N).padStart(2, "0")} · ${p.kind}`;
+    el.querySelector(".cf-cap strong").textContent = p.title;
+    el.addEventListener("click", () => { if (i === cur) openLb(`/assets/img/${p.img}.webp`, p.title, p.title); else go(i); });
+    track.appendChild(el); return el;
   });
-  function show(i, focus) {
-    cur = (i + PROJECTS.length) % PROJECTS.length; const p = PROJECTS[cur];
-    tabs.forEach((b, j) => { b.setAttribute("aria-selected", String(j === cur)); b.tabIndex = j === cur ? 0 : -1; });
-    card.setAttribute("aria-labelledby", "sxTab" + cur);
-    const t = tabs[cur]; if (list.scrollWidth > list.clientWidth) list.scrollTo({ left: t.offsetLeft - list.clientWidth / 2 + t.offsetWidth / 2, behavior: RM ? "auto" : "smooth" });
-    const set = () => { img.src = `/assets/img/${p.img}.webp`; img.alt = p.title; const done = () => img.classList.remove("swap"); img.complete ? requestAnimationFrame(done) : img.addEventListener("load", done, { once: true }); };
-    if (RM) set(); else { img.classList.add("swap"); setTimeout(set, 200); }
-    q("sxKind").textContent = p.kind;
-    q("sxCount").textContent = `${p.kind} · Project ${cur + 1} of ${PROJECTS.length}`;
-    q("plTitle").textContent = p.title;
-    q("sxProb").textContent = p.prob; q("plDesc").textContent = p.desc; q("sxRes").textContent = p.res;
-    q("bfBest").textContent = p.best;
-    const open = q("plOpen"); open.hidden = !p.url; if (p.url) open.href = p.url;
-    if (!RM) { card.classList.remove("fade"); void card.offsetWidth; card.classList.add("fade"); }
-    if (focus) tabs[cur].focus();
+  const dotEls = PROJECTS.map((p, i) => { const d = document.createElement("button"); d.type = "button"; d.setAttribute("role", "tab"); d.setAttribute("aria-label", p.title); d.addEventListener("click", () => go(i)); dots.appendChild(d); return d; });
+  function layout() {
+    const narrow = stage.clientWidth < 700;
+    slides.forEach((el, i) => {
+      let d = i - cur; if (d > N / 2) d -= N; if (d < -N / 2) d += N;
+      const a = Math.abs(d), s = Math.sign(d);
+      const x = narrow ? d * 74 : s * (a === 0 ? 0 : 40 + (a - 1) * 22);
+      const tf = `translate(-50%, -50%) translateX(${x}%) translateZ(${-a * (narrow ? 220 : 260)}px) rotateY(${-s * Math.min(a, 2) * (narrow ? 28 : 38)}deg)`;
+      el.style.transform = tf; el.style.zIndex = String(10 - a);
+      el.style.opacity = a > (narrow ? 1 : 2) ? "0" : "1"; el.style.setProperty("--dim", a === 0 ? "0" : a === 1 ? ".5" : ".7");
+      el.style.pointerEvents = a > (narrow ? 1 : 2) ? "none" : "auto";
+      el.classList.toggle("on", a === 0); el.tabIndex = a === 0 ? 0 : -1; el.setAttribute("aria-hidden", String(a > 1));
+    });
   }
-  list.addEventListener("keydown", e => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); show(cur + (e.key === "ArrowRight" ? 1 : -1), true); } });
-  q("sxPrev").addEventListener("click", () => show(cur - 1)); q("sxNext").addEventListener("click", () => show(cur + 1));
-  const full = () => openLb(img.src, img.alt, PROJECTS[cur].title);
-  stage.addEventListener("click", full); q("plFull").addEventListener("click", full);
-  show(0);
-})();
-
-/* Preview-only variant 3: case-study grid */
-(function sxGrid() {
-  if (SXV !== "3") return;
-  const root = $("#pf"); root.classList.add("v3"); root.replaceChildren();
-  const grid = document.createElement("div"); grid.className = "sg";
-  PROJECTS.forEach((p, i) => {
-    const a = document.createElement("article"); a.className = "sg-card" + (i > 3 ? " sg-more" : "");
-    a.innerHTML = `<button type="button" class="sg-img"><img src="/assets/img/${p.img}.webp" alt="" loading="lazy"><span class="sx-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Enlarge</span></button>
-      <div class="sg-body"><p class="sx-count"></p><h3></h3>
-      <p class="sg-row sg-p"><span>Problem</span><em></em></p><p class="sg-row sg-r"><span>Result</span><em></em></p>
-      <div class="sg-foot"><button type="button" class="btn btn-red btn-sm sg-see">See the build</button></div></div>`;
-    a.querySelector(".sx-count").textContent = p.kind; a.querySelector("h3").textContent = p.title;
-    a.querySelector(".sg-p em").textContent = p.prob; a.querySelector(".sg-r em").textContent = p.res;
-    const open = () => openLb(`/assets/img/${p.img}.webp`, p.title, p.title + " \u2014 " + p.desc);
-    a.querySelector(".sg-img").addEventListener("click", open); a.querySelector(".sg-see").addEventListener("click", open);
-    if (p.url) { const l = document.createElement("a"); l.className = "btn btn-outline-d btn-sm"; l.href = p.url; l.target = "_blank"; l.rel = "noopener"; l.textContent = "Open live site"; a.querySelector(".sg-foot").append(l); }
-    grid.append(a);
+  function fill() {
+    const p = PROJECTS[cur];
+    q("sxCount").textContent = `${p.kind} · Project ${cur + 1} of ${N}`; q("plTitle").textContent = p.title;
+    q("sxProb").textContent = p.prob; q("plDesc").textContent = p.desc; q("sxRes").textContent = p.res; q("bfBest").textContent = p.best;
+    const open = q("plOpen"); open.hidden = !p.url; if (p.url) open.href = p.url;
+    dotEls.forEach((d, j) => d.setAttribute("aria-selected", String(j === cur)));
+    if (!RM) { info.classList.remove("in"); void info.offsetWidth; info.classList.add("in"); }
+  }
+  function go(i) { cur = (i + N) % N; layout(); fill(); restart(); }
+  const restart = () => { clearInterval(timer); if (!RM && !hover) timer = setInterval(() => { if (!document.hidden && isVis) go(cur + 1); }, 6000); };
+  let isVis = false; new IntersectionObserver(([e]) => { isVis = e.isIntersecting; }, { threshold: .4 }).observe(stage);
+  q("sxPrev").addEventListener("click", () => go(cur - 1)); q("sxNext").addEventListener("click", () => go(cur + 1));
+  q("plFull").addEventListener("click", () => openLb(`/assets/img/${PROJECTS[cur].img}.webp`, PROJECTS[cur].title, PROJECTS[cur].title));
+  stage.addEventListener("keydown", e => { if (e.key === "ArrowRight") { e.preventDefault(); go(cur + 1); } if (e.key === "ArrowLeft") { e.preventDefault(); go(cur - 1); } });
+  stage.addEventListener("mouseenter", () => { hover = true; clearInterval(timer); }); stage.addEventListener("mouseleave", () => { hover = false; restart(); });
+  let sx = null, sy = 0;
+  stage.addEventListener("pointerdown", e => { sx = e.clientX; sy = e.clientY; }, { passive: true });
+  stage.addEventListener("pointerup", e => { if (sx === null) return; const dx = e.clientX - sx, dy = e.clientY - sy; sx = null; if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1)); });
+  stage.addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  stage.addEventListener("touchend", e => { if (sx === null) return; const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy; sx = null; if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1)); }, { passive: true });
+  if (!RM && matchMedia("(hover: hover)").matches) stage.addEventListener("pointermove", e => {
+    const on = slides[cur], r = on.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) { on.style.removeProperty("--tx"); on.style.removeProperty("--ty"); return; }
+    on.style.setProperty("--tx", `${((e.clientY - r.top) / r.height - .5) * -8}deg`); on.style.setProperty("--ty", `${((e.clientX - r.left) / r.width - .5) * 10}deg`);
+    on.style.setProperty("--mx", `${(e.clientX - r.left) / r.width * 100}%`); on.style.setProperty("--my", `${(e.clientY - r.top) / r.height * 100}%`);
   });
-  const more = document.createElement("button"); more.type = "button"; more.className = "btn btn-outline-d sg-morebtn"; more.textContent = `Show ${PROJECTS.length - 4} more projects`;
-  more.addEventListener("click", () => { grid.classList.add("open"); more.remove(); });
-  root.append(grid, more);
+  addEventListener("resize", layout);
+  layout(); fill(); restart();
 })();
 
 /* Contact form */
