@@ -92,6 +92,19 @@ body.menu-open .burger i:after{transform:translateY(-7px) rotate(-45deg)}
 .where span{display:flex;align-items:center;gap:8px}
 .where i{width:8px;height:9px;background:var(--sage);clip-path:var(--hex)}
 
+/* floating 3D hexagonal prisms (from the Infinity mark) */
+.prisms{position:absolute;inset:0;pointer-events:none;perspective:900px}
+.prism{position:absolute;transform-style:preserve-3d;animation:spinP var(--d,26s) linear infinite}
+.prism .f{position:absolute;left:0;top:0;width:var(--s);height:var(--h);margin-left:calc(var(--s) / -2);margin-top:calc(var(--h) / -2);background:linear-gradient(180deg,rgba(192,198,192,.32),rgba(84,105,107,.18));border:1px solid rgba(233,238,234,.22);backface-visibility:visible}
+.prism .cap{position:absolute;left:0;top:0;width:calc(var(--s) * 2);height:calc(var(--s) * 1.732);margin-left:calc(var(--s) * -1);margin-top:calc(var(--s) * -.866);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:rgba(192,198,192,.42)}
+.prism-wrap{position:absolute;transition:transform .8s var(--ease)}
+@keyframes spinP{from{transform:rotateX(var(--rx,62deg)) rotateY(0) rotateZ(var(--rz,12deg))}to{transform:rotateX(var(--rx,62deg)) rotateY(360deg) rotateZ(var(--rz,12deg))}}
+
+/* 3D scroll entrances and tilt */
+[data-rise]{opacity:0;transform:perspective(1000px) rotateX(16deg) translateY(46px);transform-origin:50% 100%;transition:opacity .9s var(--ease),transform 1.1s var(--ease)}
+[data-rise].in{opacity:1;transform:none}
+[data-tilt]{transform-style:preserve-3d;transition:transform .5s var(--ease)}
+
 /* statement */
 .statement{background:var(--sage);padding:120px 0 110px}
 .statement .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
@@ -141,23 +154,40 @@ body.menu-open .burger i:after{transform:translateY(-7px) rotate(-45deg)}
 .tab[aria-selected=true] .list{grid-template-rows:1fr}
 .tab:hover .t{color:#fff}
 .tab:focus-visible{outline:3px solid #8fb3ae;outline-offset:4px}
-.frames{position:relative;aspect-ratio:.9}
-.frame{position:absolute;inset:0;margin:0;clip-path:var(--hex);overflow:hidden;opacity:0;transform:scale(1.04);transition:opacity .7s,transform 1.2s var(--ease)}
+.frames{position:relative;aspect-ratio:.9;perspective:1300px}
+.frame{position:absolute;inset:0;margin:0;clip-path:var(--hex);overflow:hidden;opacity:0;transform:rotateY(80deg) scale(.92);transition:opacity .6s,transform 1s var(--ease)}
 .frame.on{opacity:1;transform:none}
+.frame.out{transform:rotateY(-80deg) scale(.92)}
 .frame img{width:100%;height:100%;object-fit:cover}
 .frame figcaption{position:absolute;left:50%;bottom:17%;transform:translateX(-50%);background:rgba(42,54,56,.82);backdrop-filter:blur(6px);color:#fff;font-size:13px;padding:8px 14px;border-radius:999px;white-space:nowrap}
 
-/* reels */
-.reels{padding:130px 0 120px;overflow:hidden}
-.reel-row{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(20px,calc((100vw - 1200px)/2)) 22px;scroll-padding-inline:max(20px,calc((100vw - 1200px)/2));scrollbar-width:thin;scrollbar-color:var(--sage) transparent}
-.reel{all:unset;cursor:pointer;flex:none;width:220px;scroll-snap-align:start}
-.reel .pv{display:block;position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:var(--sage-soft)}
-.reel img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.reel:hover img{transform:scale(1.04)}
-.reel .play{position:absolute;left:14px;bottom:14px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
-.reel b{display:block;margin-top:12px;font-size:15px;font-weight:600;color:var(--slate)}
-.reel small{display:block;font-size:13px;color:var(--ink-soft)}
+/* reels: 3D story carousel */
+.reels{padding:130px 0 110px;overflow:hidden;background:linear-gradient(var(--paper),#eef1ee)}
+.ring-stage{position:relative;height:560px;perspective:1500px;perspective-origin:50% 40%;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.ring-stage.drag{cursor:grabbing}
+.ring{position:absolute;left:50%;top:20px;width:0;height:0;transform-style:preserve-3d}
+.reel{all:unset;position:absolute;left:-120px;top:0;width:240px;cursor:pointer;transform-style:preserve-3d;will-change:transform,opacity}
+.reel .pv{display:block;position:relative;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:var(--sage-soft);box-shadow:0 40px 60px -40px rgba(31,42,43,.55)}
+.reel img,.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel video{opacity:0;transition:opacity .5s}
+.reel.live video{opacity:1}
+.reel .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(31,42,43,.82),rgba(31,42,43,0) 46%);pointer-events:none}
+.reel .cap{position:absolute;left:18px;right:18px;bottom:18px;color:#fff;pointer-events:none}
+.reel .cap b{display:block;font-size:16px;font-weight:600;line-height:1.25}
+.reel .cap small{display:block;font-size:12px;opacity:.8;margin-top:3px}
+.reel .play{position:absolute;right:14px;top:14px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;transition:transform .3s}
+.reel.live .play{transform:scale(1.12)}
+.reel .live-tag{position:absolute;left:14px;top:14px;display:none;align-items:center;gap:6px;background:rgba(31,42,43,.7);color:#fff;font-size:11px;font-weight:600;padding:6px 10px;border-radius:999px}
+.reel.live .live-tag{display:flex}
+.reel .live-tag i{width:6px;height:6px;border-radius:50%;background:#9fd3b0;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
 .reel:focus-visible .pv{outline:3px solid var(--teal);outline-offset:3px}
+.ring-floor{position:absolute;left:50%;bottom:10px;width:min(900px,90%);height:80px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(42,54,56,.22),transparent);filter:blur(6px);pointer-events:none}
+.ring-ctrl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:8px}
+.ring-ctrl button{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--slate);background:none;color:var(--slate);cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s}
+.ring-ctrl button:hover{background:var(--slate);color:#fff}
+.ring-ctrl .now{min-width:220px;text-align:center;font-size:14px;color:var(--ink-soft)}
+.ring-ctrl .now b{display:block;color:var(--slate);font-size:15px}
 .player{position:fixed;inset:0;z-index:80;background:rgba(20,28,29,.92);display:none;align-items:center;justify-content:center;padding:20px}
 .player.open{display:flex}
 .player video{max-height:86vh;max-width:min(480px,100%);border-radius:18px;background:#000}
@@ -291,7 +321,9 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
   .statement,.path,.care,.reels,.pricing,.words,.locs,.faq{padding:84px 0}
   .intensive{padding:0 0 84px}
   .steps{grid-template-columns:1fr}
-  .reel{width:180px}
+  .ring-stage{height:440px;perspective:1100px}
+  .reel{width:180px;left:-90px}
+  .ring-ctrl .now{min-width:150px}
   .picker{gap:10px}
   .pick{padding:16px;border-radius:18px}
   .pick img{height:52px}
@@ -301,6 +333,8 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
   .dock{display:flex}
 }
 @media (prefers-reduced-motion:reduce){
+  [data-rise]{opacity:1!important;transform:none!important}
+  .prism{animation:none}
   *,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}
   .hero h1 .ln span,.hex-photo,.hero .sub,.hero .ctas,.coord{transform:none!important;opacity:1!important}
 }
@@ -328,6 +362,12 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 
 <section class="hero" id="hero">
   <canvas id="topo" aria-hidden="true"></canvas>
+  <div class="prisms" id="prisms" aria-hidden="true">
+    <div class="prism-wrap" data-depth="40" style="left:8%;top:22%"><div class="prism" style="--s:34px;--h:58px;--d:30s;--rx:64deg"></div></div>
+    <div class="prism-wrap" data-depth="70" style="left:47%;top:76%"><div class="prism" style="--s:22px;--h:40px;--d:22s;--rx:52deg;--rz:-18deg"></div></div>
+    <div class="prism-wrap" data-depth="25" style="left:90%;top:16%"><div class="prism" style="--s:46px;--h:76px;--d:38s;--rx:70deg;--rz:24deg"></div></div>
+    <div class="prism-wrap" data-depth="55" style="left:58%;top:12%"><div class="prism" style="--s:16px;--h:28px;--d:18s;--rx:58deg"></div></div>
+  </div>
   <div class="wrap grid">
     <div>
       <h1><span class="ln"><span>We believe in the</span></span><span class="ln"><span>body's infinite</span></span><span class="ln"><span>capacity to heal,</span></span><span class="ln"><span>grow, and thrive.</span></span></h1>
@@ -354,7 +394,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 </section>
 
 <section class="statement">
-  <div class="wrap grid">
+  <div class="wrap grid" data-rise>
     <h2>Enhance your child's focus, behavior, and well-being with Infinity.</h2>
     <div>
       <p>Our whole-child approach integrates functional neuroscience, chiropractic care, neuromotor rehabilitation and personalized nutrition to rewire brain-body connections. By addressing the root causes of developmental challenges, we foster lasting improvements in focus, behavior and confidence.</p>
@@ -367,11 +407,11 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 
 <section class="path" id="how">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-rise>
       <h2>From first call to a plan made for your child</h2>
       <p>Four clear steps. You know what happens next, and what it costs, before you commit to anything.</p>
     </div>
-    <div class="steps" id="steps">
+    <div class="steps" id="steps" data-rise>
       <div class="fill" id="fill"></div>
       <div class="step"><div class="hx"><b>1</b></div><span class="meta">Free</span><h3>Discovery call</h3><p>A Care Coordinator learns about your child, answers your questions and helps you choose the right next step.</p></div>
       <div class="step"><div class="hx"><b>2</b></div><span class="meta">One hour, $550</span><h3>Neurodevelopmental exam</h3><p>We assess reflexes, vestibular function and ocular skills to find what is holding your child back.</p></div>
@@ -383,11 +423,11 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 
 <section class="care" id="care">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-rise>
       <h2>Every piece of care, under one roof</h2>
       <p>Thirteen modalities and one coordinated team. Your child's plan draws on exactly the ones they need.</p>
     </div>
-    <div class="explorer">
+    <div class="explorer" data-rise>
       <div class="tabs" role="tablist" aria-label="Modalities of care">
         <button class="tab" type="button" role="tab" aria-selected="true" data-i="0"><span class="t">Brain and nervous system<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="list"><span><ul><li>Functional neuroscience</li><li>Primitive reflex integration</li><li>Vestibular rehabilitation</li><li>Ocular rehabilitation</li><li>Sensory integration</li></ul></span></span></button>
         <button class="tab" type="button" role="tab" aria-selected="false" data-i="1"><span class="t">Movement and therapy<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span><span class="list"><span><ul><li>Neuromotor rehabilitation</li><li>Physiotherapy</li><li>Speech therapy</li><li>Chiropractic care</li></ul></span></span></button>
@@ -406,12 +446,20 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 
 <section class="reels" id="stories">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-rise>
       <h2>See the progress for yourself</h2>
-      <p>Real Infinity families, before and after their intensives. Tap a story to watch.</p>
+      <p>Real Infinity families, before and after their intensives. Drag to spin, tap the front story to watch with sound.</p>
     </div>
   </div>
-  <div class="reel-row" id="reels"></div>
+  <div class="ring-stage" id="ringStage" aria-roledescription="carousel" aria-label="Patient story videos">
+    <div class="ring" id="ring"></div>
+    <div class="ring-floor"></div>
+  </div>
+  <div class="ring-ctrl">
+    <button type="button" id="rprev" aria-label="Previous story"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <div class="now" aria-live="polite"><b id="rnow">Intensive before and after</b><span id="rnum">1 of 9</span></div>
+    <button type="button" id="rnext" aria-label="Next story"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
 </section>
 
 <div class="player" id="player" role="dialog" aria-modal="true" aria-label="Patient story video">
@@ -421,7 +469,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 
 <section class="intensive">
   <div class="wrap grid">
-    <div class="ph">
+    <div class="ph" data-tilt data-rise>
       <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1000/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/6821fce97100370f21a72ac9.jpeg" alt="Infinity therapist working with a young child on a swing" loading="lazy">
       <span class="tag">Multi-week intensives</span>
     </div>
@@ -440,11 +488,11 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 
 <section class="pricing" id="pricing">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-rise>
       <h2>Clear pricing, no forms to unlock it</h2>
       <p>Your exact plan and total are confirmed in writing after the exam.</p>
     </div>
-    <div class="tiers">
+    <div class="tiers" data-rise>
       <div class="tier"><h3>Discovery call</h3><div class="amt">Free</div><p>Talk through your child's needs with a Care Coordinator and see if Infinity is the right fit.</p></div>
       <div class="tier"><h3>Neurodevelopmental exam</h3><div class="amt">$550</div><p>A one-hour evaluation of reflexes, vestibular function and ocular skills, followed by your individualized care plan.</p></div>
       <div class="tier"><h3>Intensive therapy</h3><div class="amt">$550<small> per hour</small></div><p>Minimum 9 hours a week, typically 1 to 3 weeks. A $1,000 deposit holds each week you schedule.</p></div>
@@ -454,7 +502,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 </section>
 
 <section class="words">
-  <div class="wrap quote-stage">
+  <div class="wrap quote-stage" data-rise>
     <div>
       <h2>In parents' own words</h2>
       <div class="qnav"><button type="button" id="qprev" aria-label="Previous story"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="qnext" aria-label="Next story"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div>
@@ -473,18 +521,18 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 
 <section class="locs" id="locations">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-rise>
       <h2>Three clinics, and care from home</h2>
       <p>Choose the clinic nearest you, or start with our virtual program.</p>
     </div>
-    <div class="loc-ui">
+    <div class="loc-ui" data-rise>
       <div class="picker" role="tablist" aria-label="Choose a location">
-        <button class="pick" type="button" role="tab" aria-selected="true" data-k="ia"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_300/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681bc4a56da8496ba3d31b6e.png" alt="" loading="lazy"><b>Iowa</b></button>
-        <button class="pick" type="button" role="tab" aria-selected="false" data-k="mn"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_300/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681bc4a528a2ef43e85a5d8d.png" alt="" loading="lazy"><b>Minnesota</b></button>
-        <button class="pick" type="button" role="tab" aria-selected="false" data-k="co"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_300/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681bc4a558e749f2758dcde8.png" alt="" loading="lazy"><b>Colorado</b></button>
-        <button class="pick" type="button" role="tab" aria-selected="false" data-k="vr"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_300/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681bc6f3ec114091865e9053.png" alt="" loading="lazy"><b>Virtual</b></button>
+        <button class="pick" data-tilt type="button" role="tab" aria-selected="true" data-k="ia"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_300/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681bc4a56da8496ba3d31b6e.png" alt="" loading="lazy"><b>Iowa</b></button>
+        <button class="pick" data-tilt type="button" role="tab" aria-selected="false" data-k="mn"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_300/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681bc4a528a2ef43e85a5d8d.png" alt="" loading="lazy"><b>Minnesota</b></button>
+        <button class="pick" data-tilt type="button" role="tab" aria-selected="false" data-k="co"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_300/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681bc4a558e749f2758dcde8.png" alt="" loading="lazy"><b>Colorado</b></button>
+        <button class="pick" data-tilt type="button" role="tab" aria-selected="false" data-k="vr"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_300/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681bc6f3ec114091865e9053.png" alt="" loading="lazy"><b>Virtual</b></button>
       </div>
-      <div class="panel" role="tabpanel">
+      <div class="panel" role="tabpanel" data-tilt>
         <canvas id="topo2" aria-hidden="true"></canvas>
         <div class="in" id="panel" aria-live="polite"></div>
       </div>
@@ -493,7 +541,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 </section>
 
 <section class="faq" id="faq">
-  <div class="wrap grid">
+  <div class="wrap grid" data-rise>
     <div>
       <h2>Questions parents ask</h2>
       <p class="aside">Still unsure? A Care Coordinator can answer anything on a free call.</p>
@@ -512,7 +560,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 
 <section class="close">
   <canvas id="topo3" aria-hidden="true"></canvas>
-  <div class="wrap in">
+  <div class="wrap in" data-rise>
     <h2>Your child's next chapter starts with one call</h2>
     <p>Book a free discovery call with a Care Coordinator. No pressure, just a clear picture of what could help.</p>
     <div class="ctas">
@@ -657,6 +705,39 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
     hero.addEventListener('pointerleave', function(){ tilt.style.transform = ''; });
   }
 
+  /* hero prisms parallax */
+  var prismWraps = document.querySelectorAll('.prism-wrap');
+  prismWraps.forEach(function(w){
+    var pr = w.querySelector('.prism');
+    var s = parseFloat(pr.style.getPropertyValue('--s')), apo = s * 0.866, html = '';
+    for(var k=0;k<6;k++) html += '<span class="f" style="transform:rotateY(' + (k*60) + 'deg) translateZ(' + apo.toFixed(1) + 'px)"></span>';
+    html += '<span class="cap" style="transform:rotateX(90deg) translateZ(calc(var(--h) / 2))"></span><span class="cap" style="transform:rotateX(-90deg) translateZ(calc(var(--h) / 2))"></span>';
+    pr.innerHTML = html;
+  });
+  if(!reduce && window.matchMedia('(pointer:fine)').matches){
+    hero.addEventListener('pointermove', function(e){
+      var x = e.clientX / window.innerWidth - .5, y = e.clientY / window.innerHeight - .5;
+      prismWraps.forEach(function(w){ var d = +w.dataset.depth; w.style.transform = 'translate3d(' + (-x*d).toFixed(1) + 'px,' + (-y*d).toFixed(1) + 'px,0)'; });
+    });
+  }
+
+  /* 3D scroll entrances */
+  if(!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, {rootMargin:'0px 0px -12% 0px'});
+    document.querySelectorAll('[data-rise]').forEach(function(el){ io.observe(el); });
+  } else { document.querySelectorAll('[data-rise]').forEach(function(el){ el.classList.add('in'); }); }
+
+  /* 3D tilt on cards */
+  if(!reduce && window.matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('[data-tilt]').forEach(function(el){
+      el.addEventListener('pointermove', function(e){
+        var r = el.getBoundingClientRect(), x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+        el.style.transform = 'perspective(900px) rotateY(' + (x*10).toFixed(2) + 'deg) rotateX(' + (-y*8).toFixed(2) + 'deg) translateZ(6px)';
+      });
+      el.addEventListener('pointerleave', function(){ el.style.transform = ''; });
+    });
+  }
+
   /* care path progress */
   var steps = document.getElementById('steps'), fill = document.getElementById('fill'), stepEls = steps.querySelectorAll('.step');
   function pathProgress(){
@@ -673,7 +754,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
     tb.addEventListener('click', function(){
       var i = +tb.dataset.i;
       tabs.forEach(function(x){ x.setAttribute('aria-selected', x === tb); });
-      frames.forEach(function(f, k){ f.classList.toggle('on', k === i); });
+      frames.forEach(function(f, k){ var was = f.classList.contains('on'); f.classList.toggle('out', was && k !== i); f.classList.toggle('on', k === i); if(k !== i && !was) f.classList.remove('out'); });
     });
   });
 
@@ -690,18 +771,82 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
     ['681d1433f47ce8d93e20f9e1.mp4','6822828425c6ca0ba4d37066.png','Photobiomodulation','Inside a session'],
     ['681cbcb302d0204116009372.mp4','6822828425c6caee1ad37068.png','Intensive before and after','Patient story']
   ];
-  var row = document.getElementById('reels');
-  reels.forEach(function(r){
+  var ring = document.getElementById('ring'), stage = document.getElementById('ringStage');
+  var N = reels.length, STEP = 360 / N, cards = [], angle = 0, vel = 0, dragging = false, hover = false, target = null, frontIdx = -1;
+  reels.forEach(function(r, i){
     var b = document.createElement('button');
     b.className = 'reel'; b.type = 'button';
     b.setAttribute('aria-label', 'Play video: ' + r[2]);
-    b.innerHTML = '<span class="pv"><img src="' + V + r[1] + '" alt="" loading="lazy" width="220" height="391"><span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="#2a3638"><path d="M7 4l13 8-13 8z"/></svg></span></span><b>' + r[2] + '</b><small>' + r[3] + '</small>';
-    b.addEventListener('click', function(){ openVideo(V + r[0], V + r[1]); });
-    row.appendChild(b);
+    b.innerHTML = '<span class="pv"><img src="' + V + r[1] + '" alt="" loading="lazy" width="240" height="427"><video muted loop playsinline preload="none" poster="' + V + r[1] + '"></video><span class="shade"></span><span class="live-tag"><i></i>Playing</span><span class="play"><svg width="15" height="15" viewBox="0 0 24 24" fill="#2a3638"><path d="M7 4l13 8-13 8z"/></svg></span><span class="cap"><b>' + r[2] + '</b><small>' + r[3] + '</small></span></span>';
+    b.addEventListener('click', function(){
+      if(moved > 6) return;
+      if(i === frontIdx) openVideo(V + r[0], V + r[1]); else goTo(i);
+    });
+    ring.appendChild(b); cards.push(b);
   });
+  function radius(){ var w = cards[0].offsetWidth; return Math.round((w/2) / Math.tan(Math.PI / N) + (w < 200 ? 26 : 40)); }
+  var R = radius();
+  window.addEventListener('resize', function(){ R = radius(); });
+  function norm(a){ a = ((a % 360) + 540) % 360 - 180; return a; }
+  function layout(){
+    var best = 999, bi = 0;
+    cards.forEach(function(c, i){
+      var a = norm(i*STEP + angle), ab = Math.abs(a);
+      var fade = Math.max(0, 1 - ab/150);
+      c.style.transform = 'rotateY(' + (i*STEP + angle).toFixed(2) + 'deg) translateZ(' + R + 'px)';
+      c.style.opacity = (0.25 + 0.75*fade).toFixed(3);
+      c.style.filter = ab > 30 ? 'saturate(' + (0.4 + 0.6*fade).toFixed(2) + ') brightness(' + (0.75 + 0.25*fade).toFixed(2) + ')' : 'none';
+      c.style.zIndex = Math.round(fade*100);
+      c.tabIndex = ab < STEP/2 ? 0 : -1;
+      if(ab < best){ best = ab; bi = i; }
+    });
+    if(bi !== frontIdx) setFront(bi);
+  }
+  function setFront(i){
+    frontIdx = i;
+    document.getElementById('rnow').textContent = reels[i][2];
+    document.getElementById('rnum').textContent = (i+1) + ' of ' + N;
+    cards.forEach(function(c, k){
+      var v = c.querySelector('video');
+      if(k === i && !reduce){
+        if(!v.src) v.src = V + reels[k][0];
+        var pr = v.play(); if(pr) pr.then(function(){ c.classList.add('live'); }).catch(function(){});
+      } else { v.pause(); c.classList.remove('live'); }
+    });
+  }
+  function goTo(i){ var cur = norm(-angle) ; var want = i*STEP; var d = norm(want - cur); target = angle - d; }
+  document.getElementById('rnext').addEventListener('click', function(){ goTo((frontIdx+1)%N); });
+  document.getElementById('rprev').addEventListener('click', function(){ goTo((frontIdx-1+N)%N); });
+  var px = 0, moved = 0, lastX = 0, lastT = 0;
+  stage.addEventListener('pointerdown', function(e){ dragging = true; moved = 0; px = lastX = e.clientX; lastT = performance.now(); target = null; stage.classList.add('drag'); });
+  window.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    var dx = e.clientX - lastX, now = performance.now();
+    angle += dx * 0.22; moved += Math.abs(dx);
+    vel = dx * 0.22 / Math.max(1, now - lastT) * 16;
+    lastX = e.clientX; lastT = now;
+  });
+  window.addEventListener('pointerup', function(){ if(!dragging) return; dragging = false; stage.classList.remove('drag'); setTimeout(function(){ moved = 0; }, 30); });
+  stage.addEventListener('pointerenter', function(){ hover = true; });
+  stage.addEventListener('pointerleave', function(){ hover = false; });
+  stage.addEventListener('keydown', function(e){ if(e.key === 'ArrowRight'){ goTo((frontIdx+1)%N); } if(e.key === 'ArrowLeft'){ goTo((frontIdx-1+N)%N); } });
+  var ringVisible = true;
+  new IntersectionObserver(function(e){ ringVisible = e[0].isIntersecting; if(!ringVisible) cards.forEach(function(c){ c.querySelector('video').pause(); c.classList.remove('live'); }); else { var f = frontIdx; frontIdx = -1; layout(); } }).observe(stage);
+  function spin(){
+    if(ringVisible && !player.classList.contains('open')){
+      if(target !== null){ var d = target - angle; angle += d * 0.09; if(Math.abs(d) < .05){ angle = target; target = null; } }
+      else if(!dragging){
+        if(Math.abs(vel) > .01){ angle += vel; vel *= .94; }
+        else if(!hover && !reduce){ angle -= 0.06; }
+      }
+      layout();
+    }
+    requestAnimationFrame(spin);
+  }
   var player = document.getElementById('player'), pv = document.getElementById('pv'), lastFocus;
-  function openVideo(src, poster){ lastFocus = document.activeElement; pv.poster = poster; pv.src = src; player.classList.add('open'); document.getElementById('pclose').focus(); var pr = pv.play(); if(pr) pr.catch(function(){}); }
-  function closeVideo(){ pv.pause(); pv.removeAttribute('src'); pv.load(); player.classList.remove('open'); if(lastFocus) lastFocus.focus(); }
+  layout(); requestAnimationFrame(spin);
+  function openVideo(src, poster){ cards.forEach(function(c){ c.querySelector('video').pause(); }); lastFocus = document.activeElement; pv.poster = poster; pv.src = src; player.classList.add('open'); document.getElementById('pclose').focus(); var pr = pv.play(); if(pr) pr.catch(function(){}); }
+  function closeVideo(){ pv.pause(); pv.removeAttribute('src'); pv.load(); player.classList.remove('open'); if(lastFocus) lastFocus.focus(); frontIdx = -1; layout(); }
   document.getElementById('pclose').addEventListener('click', closeVideo);
   player.addEventListener('click', function(e){ if(e.target === player) closeVideo(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && player.classList.contains('open')) closeVideo(); });
