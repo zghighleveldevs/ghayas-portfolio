@@ -784,7 +784,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
     });
     ring.appendChild(b); cards.push(b);
   });
-  function radius(){ var w = cards[0].offsetWidth; return Math.round((w/2) / Math.tan(Math.PI / N) + (w < 200 ? 26 : 40)); }
+  function radius(){ var w = cards[0].offsetWidth; return Math.round((w/2) / Math.tan(Math.PI / N) + (w < 200 ? 60 : 120)); }
   var R = radius();
   window.addEventListener('resize', function(){ R = radius(); });
   function norm(a){ a = ((a % 360) + 540) % 360 - 180; return a; }
