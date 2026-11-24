@@ -357,7 +357,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 .sec .intro{margin-top:18px;color:var(--ink-soft);max-width:60ch;font-size:18px}
 .sec.dark .intro{color:var(--on-dark-soft)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.two.top{align-items:start}
+.two.start{align-items:start}
 .muted{color:var(--ink-soft)}
 .body p+p{margin-top:16px}
 .body p{color:var(--ink-soft);font-size:17px}
