@@ -54,74 +54,78 @@ lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
 /* Portfolio player */
 const PROJECTS = [
   { img: "workflow-ai-outbound-law", kind: "Workflow", title: "AI Outbound Campaign for a Law Firm", chips: ["AI Voice", "Reply Branches"],
-    desc: "Outbound follow-up that mixes SMS, email and AI voice calls. It waits for each lead to reply, has the AI call anyone who answers “call me”, retries after two days with no response, and takes leads out once they book.",
+    prob: "Leads went cold because nobody followed up after the first message.", res: "Every lead gets SMS, email and an AI call when they ask for one, and stops being chased the moment they book.",
+    desc: "Outbound follow-up that mixes SMS, email and AI voice calls, with different paths for “call me”, other replies and no reply.",
     focus: "Multi-channel outbound follow-up with AI voice calls", see: ["Trigger", "SMS & Email", "AI Call", "Timeouts", "Exit on Booking"],
     shows: [["Reply-based branching", "Different paths for “call me”, other replies and no response."], ["AI voice follow-up", "The AI calls leads who ask for a call."], ["Clean exits", "Booked leads are removed from the sequence."]],
     skills: ["Workflow Automation", "AI Voice", "SMS", "Conditions"], best: "Firms that need every outbound lead followed up without manual chasing." },
   { img: "workflow-email-nurture", kind: "Workflow", title: "Email Nurture with Engagement Branches", chips: ["Email Events", "DND Handling"],
-    desc: "Sends an email, waits a day, then branches on what the contact did. Opens and clicks lead to the next email or exit once booked; unsubscribes, spam complaints and bounces are tagged and set to Do Not Disturb.",
+    prob: "Emails kept going to people who had unsubscribed, bounced or marked them as spam.", res: "Engaged leads keep moving toward a booking, and bad addresses are cleaned out automatically.",
+    desc: "An email sequence that reacts to what each contact does: opens and clicks move them on, unsubscribes, spam and bounces are tagged and set to Do Not Disturb.",
     focus: "Email nurture that reacts to engagement", see: ["Email 1", "Wait", "Email Events", "Tags", "DND"],
     shows: [["Event-based paths", "Opened, clicked, unsubscribed, spam and bounced each handled."], ["List hygiene", "Bad addresses and complaints set to Do Not Disturb."], ["Booking check", "Leads who book stop receiving nurture emails."]],
     skills: ["Email Automation", "Tags", "Conditions"], best: "Businesses running email nurture that must stay compliant and clean." },
   { img: "7-steps-sales-mastery", kind: "Website", title: "7 Steps to Sales Mastery", chips: ["Assessment Funnel", "Booking"], url: "https://7stepstosalesmastery.com/",
-    desc: "Sales coaching site for Paul Broome, built around a 2-minute Sales Leak Assessment that turns visitors into booked discovery calls.",
+    prob: "Visitors read the site and left without booking a call.", res: "Visitors take the assessment, see their result and go straight into booking a discovery call.",
+    desc: "A sales coaching site for Paul Broome built around a 2-minute Sales Leak Assessment, connected to his GoHighLevel CRM and calendar.",
     focus: "Coaching website with an assessment funnel", see: ["Hero", "Assessment", "Results", "Booking"],
     shows: [["Lead magnet funnel", "A short assessment captures and qualifies visitors."], ["Clear calls to action", "Every section leads to the assessment or a call."], ["Built in GHL", "Pages connect straight to the CRM and pipeline."]],
     skills: ["Funnels", "Website", "Forms", "Calendars"], best: "Coaches and consultants who sell through discovery calls." },
   { img: "client-success-machine", kind: "Website", title: "Client Success Machine", chips: ["Website", "Membership"], url: "https://clientsuccessmachine.com/",
-    desc: "Sales platform site with account sign-up and member login, built for lead capture.",
+    prob: "The product needed one place for people to sign up and log in.", res: "Every sign-up lands in the CRM, and members log in from the same site.",
+    desc: "A product website with one clear sign-up action, account creation and member login built in.",
     focus: "Product website with sign-up and member access", see: ["Hero", "Features", "Sign-up", "Member Login"],
     shows: [["Conversion-led layout", "One clear sign-up action above the fold."], ["Membership access", "Member login built into the site."], ["Lead capture", "Every sign-up lands in the CRM."]],
     skills: ["Website", "Membership", "Funnels"], best: "Software and service brands selling sign-ups online." },
   { img: "pipeline-wiserweb-board", kind: "Pipeline", title: "WiserWeb Sales Pipeline", chips: ["Opportunities", "White-label"],
-    desc: "Opportunity board in a white-label agency account. Leads move from New Lead to Contacted, Proposal Sent and Closed, with SMS, tags, notes, tasks and booking on every card.",
+    prob: "The team couldn’t see where each deal was or what to do next.", res: "Every lead sits in a clear stage, with SMS, notes, tasks and booking one click away.",
+    desc: "A sales pipeline in a white-label agency account: New Lead, Contacted, Proposal Sent and Closed.",
     focus: "Sales pipeline inside a white-label agency", see: ["New Lead", "Contacted", "Proposal Sent", "Closed"],
     shows: [["Clear stages", "Every lead sits in a stage the team can see."], ["Actions on every card", "SMS, tags, notes, tasks and booking in one click."], ["Linked conversations", "Each opportunity is logged in the contact’s inbox."]],
     skills: ["Pipelines", "Opportunities", "CRM"], best: "Agencies and sales teams tracking deals in GHL." },
   { img: "pipeline-wiserweb-dashboard", kind: "Dashboard", title: "WiserWeb Pipeline Dashboard", chips: ["Reporting", "Conversion"],
-    desc: "Dashboard tracking opportunity status, pipeline value, conversion rate, funnel and stage distribution.",
+    prob: "The owner had to dig through records to know how sales were going.", res: "Pipeline value, conversion rate and the stages where deals stall, all on one screen.",
+    desc: "A reporting dashboard for opportunity status, pipeline value, conversion and stage distribution.",
     focus: "Reporting on how deals move", see: ["Status", "Value", "Conversion", "Stage Distribution"],
     shows: [["At-a-glance status", "Open, won and lost opportunities in one view."], ["Pipeline value", "Revenue tracked across pipelines."], ["Stage distribution", "See where deals are stalling."]],
     skills: ["Dashboards", "Reporting"], best: "Owners who want to see pipeline health without digging." },
   { img: "email-consultation-offer", kind: "Email", title: "Branded Email Templates", chips: ["Merge Fields", "Mobile Ready"],
-    desc: "Offer, appointment reminder and review request emails built for GHL, personalised with merge fields and designed to stack cleanly on phones.",
+    prob: "Reminders and offers looked plain and broke on phones.", res: "On-brand, personalised emails that read cleanly on any phone, sent automatically at the right time.",
+    desc: "Offer, appointment reminder and review request templates with merge fields, sent by workflows.",
     focus: "Email templates that look good in every inbox", see: ["Offer", "Reminder", "Review Request"],
     shows: [["Personalised", "First name, appointment and location merge fields."], ["Mobile layout", "Columns stack into one on phones."], ["Workflow ready", "Each template is sent by a workflow at the right time."]],
     skills: ["Email Templates", "Merge Fields", "Workflows"], best: "Clinics and service businesses sending reminders and offers." },
 ];
 (function portfolio() {
-  const list = $("#pfList"), img = $("#plImg"), stage = $("#plStage");
+  const list = $("#pfList"), img = $("#plImg"), stage = $("#plStage"), card = $("#sxCard");
   const q = id => document.getElementById(id);
   let cur = 0;
-  PROJECTS.forEach((p, i) => {
+  const tabs = PROJECTS.map((p, i) => {
     const b = document.createElement("button");
-    b.type = "button"; b.className = "pf-item"; b.setAttribute("role", "tab");
-    b.innerHTML = `<img src="/assets/img/${p.img}.webp" alt="" loading="lazy"><span><small>0${i + 1} · ${p.kind}</small><strong></strong></span><svg class="i chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>`;
-    b.querySelector("strong").textContent = p.title;
+    b.type = "button"; b.className = "sx-tab"; b.setAttribute("role", "tab"); b.id = "sxTab" + i;
+    b.innerHTML = `<img src="/assets/img/${p.img}.webp" alt="" loading="lazy"><span><small></small><strong></strong></span>`;
+    b.querySelector("small").textContent = p.kind; b.querySelector("strong").textContent = p.title;
     b.addEventListener("click", () => show(i));
-    list.appendChild(b);
+    list.appendChild(b); return b;
   });
-  function li(text, html) { const el = document.createElement("li"); if (html) el.innerHTML = html; else el.textContent = text; return el; }
-  function show(i) {
-    cur = i; const p = PROJECTS[i];
-    $$(".pf-item", list).forEach((b, j) => b.setAttribute("aria-selected", String(j === i)));
+  function show(i, focus) {
+    cur = (i + PROJECTS.length) % PROJECTS.length; const p = PROJECTS[cur];
+    tabs.forEach((b, j) => { b.setAttribute("aria-selected", String(j === cur)); b.tabIndex = j === cur ? 0 : -1; });
+    card.setAttribute("aria-labelledby", "sxTab" + cur);
+    const t = tabs[cur]; if (list.scrollWidth > list.clientWidth) list.scrollTo({ left: t.offsetLeft - list.clientWidth / 2 + t.offsetWidth / 2, behavior: RM ? "auto" : "smooth" });
     const set = () => { img.src = `/assets/img/${p.img}.webp`; img.alt = p.title; const done = () => img.classList.remove("swap"); img.complete ? requestAnimationFrame(done) : img.addEventListener("load", done, { once: true }); };
-    if (RM) set(); else { img.classList.add("swap"); setTimeout(set, 220); }
-    q("plKicker").textContent = `Project ${i + 1} · ${p.kind}`;
+    if (RM) set(); else { img.classList.add("swap"); setTimeout(set, 200); }
+    q("sxKind").textContent = p.kind;
+    q("sxCount").textContent = `${p.kind} · Project ${cur + 1} of ${PROJECTS.length}`;
     q("plTitle").textContent = p.title;
-    q("plChip1").textContent = p.chips[0]; q("plChip2").textContent = p.chips[1];
-    q("plDesc").textContent = p.desc;
-    q("plProg").style.width = `${((i + 1) / PROJECTS.length) * 100}%`;
-    const see = q("plSee"); see.replaceChildren(...p.see.map((s, k) => { const e = li(); const b = document.createElement("b"); b.textContent = String(k + 1).padStart(2, "0"); e.append(b, s); return e; }));
+    q("sxProb").textContent = p.prob; q("plDesc").textContent = p.desc; q("sxRes").textContent = p.res;
+    q("bfBest").textContent = p.best;
     const open = q("plOpen"); open.hidden = !p.url; if (p.url) open.href = p.url;
-    q("bfNum").textContent = `Project ${i + 1} Briefing`;
-    q("bfType").textContent = p.kind;
-    q("bfFocus").textContent = p.focus;
-    q("bfShows").replaceChildren(...p.shows.map(([t, d]) => { const e = li(); const b = document.createElement("b"); b.textContent = t; e.append(b, d); return e; }));
-    q("bfSkills").replaceChildren(...p.skills.map(s => li(s)));
-    const best = q("bfBest"); best.replaceChildren(); const bb = document.createElement("b"); bb.textContent = "Best for: "; best.append(bb, p.best);
-    if (!RM) ["plTitle", "plDesc", "plSee", "bfFocus", "bfShows"].forEach(id => { const el = q(id); el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade"); });
+    if (!RM) { card.classList.remove("fade"); void card.offsetWidth; card.classList.add("fade"); }
+    if (focus) tabs[cur].focus();
   }
+  list.addEventListener("keydown", e => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); show(cur + (e.key === "ArrowRight" ? 1 : -1), true); } });
+  q("sxPrev").addEventListener("click", () => show(cur - 1)); q("sxNext").addEventListener("click", () => show(cur + 1));
   const full = () => openLb(img.src, img.alt, PROJECTS[cur].title);
   stage.addEventListener("click", full); q("plFull").addEventListener("click", full);
   show(0);
