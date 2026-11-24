@@ -96,7 +96,10 @@ const PROJECTS = [
     shows: [["Personalised", "First name, appointment and location merge fields."], ["Mobile layout", "Columns stack into one on phones."], ["Workflow ready", "Each template is sent by a workflow at the right time."]],
     skills: ["Email Templates", "Merge Fields", "Workflows"], best: "Clinics and service businesses sending reminders and offers." },
 ];
+const SXV = new URLSearchParams(location.search).get("sx");
 (function portfolio() {
+  if (SXV === "3") return;
+  if (SXV === "2") $("#pf").classList.add("v2");
   const list = $("#pfList"), img = $("#plImg"), stage = $("#plStage"), card = $("#sxCard");
   const q = id => document.getElementById(id);
   let cur = 0;
@@ -129,6 +132,29 @@ const PROJECTS = [
   const full = () => openLb(img.src, img.alt, PROJECTS[cur].title);
   stage.addEventListener("click", full); q("plFull").addEventListener("click", full);
   show(0);
+})();
+
+/* Preview-only variant 3: case-study grid */
+(function sxGrid() {
+  if (SXV !== "3") return;
+  const root = $("#pf"); root.classList.add("v3"); root.replaceChildren();
+  const grid = document.createElement("div"); grid.className = "sg";
+  PROJECTS.forEach((p, i) => {
+    const a = document.createElement("article"); a.className = "sg-card" + (i > 3 ? " sg-more" : "");
+    a.innerHTML = `<button type="button" class="sg-img"><img src="/assets/img/${p.img}.webp" alt="" loading="lazy"><span class="sx-zoom"><svg class="i" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Enlarge</span></button>
+      <div class="sg-body"><p class="sx-count"></p><h3></h3>
+      <p class="sg-row sg-p"><span>Problem</span><em></em></p><p class="sg-row sg-r"><span>Result</span><em></em></p>
+      <div class="sg-foot"><button type="button" class="btn btn-red btn-sm sg-see">See the build</button></div></div>`;
+    a.querySelector(".sx-count").textContent = p.kind; a.querySelector("h3").textContent = p.title;
+    a.querySelector(".sg-p em").textContent = p.prob; a.querySelector(".sg-r em").textContent = p.res;
+    const open = () => openLb(`/assets/img/${p.img}.webp`, p.title, p.title + " \u2014 " + p.desc);
+    a.querySelector(".sg-img").addEventListener("click", open); a.querySelector(".sg-see").addEventListener("click", open);
+    if (p.url) { const l = document.createElement("a"); l.className = "btn btn-outline-d btn-sm"; l.href = p.url; l.target = "_blank"; l.rel = "noopener"; l.textContent = "Open live site"; a.querySelector(".sg-foot").append(l); }
+    grid.append(a);
+  });
+  const more = document.createElement("button"); more.type = "button"; more.className = "btn btn-outline-d sg-morebtn"; more.textContent = `Show ${PROJECTS.length - 4} more projects`;
+  more.addEventListener("click", () => { grid.classList.add("open"); more.remove(); });
+  root.append(grid, more);
 })();
 
 /* Contact form */
