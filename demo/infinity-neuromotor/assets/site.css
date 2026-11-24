@@ -483,3 +483,6 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
   .page-hero h1,.page-hero .lead,.page-hero .ctas,.page-hero .hexpic,.page-hero .roundpic{opacity:1!important;transform:none!important}
 }
 .steps.vertical:before{display:none}
+.two>*,.page-hero .grid>*,.form>*{min-width:0}
+.contact-item span{word-break:break-word}
+@media (max-width:1020px){.two,.page-hero .grid{grid-template-columns:minmax(0,1fr)}}
