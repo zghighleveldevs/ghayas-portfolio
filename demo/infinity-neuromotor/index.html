@@ -49,17 +49,16 @@ p{margin:0}
 .top .bar{display:flex;align-items:center;height:84px;gap:32px}
 .top .logo img{height:46px;width:auto;transition:filter .35s}
 .top nav{margin-left:auto;display:flex;gap:30px}
-.top nav a{font-size:14px;font-weight:500;text-decoration:none;color:var(--on-dark);opacity:.86}
+.top nav a{font-size:14px;font-weight:500;text-decoration:none;color:var(--ink);opacity:.86}
 .top nav a:hover{opacity:1}
 .top .bar>.btn{min-height:44px;padding:0 20px;font-size:14px}
-.top:not(.solid) .logo img{filter:brightness(0) invert(1)}
-.top.solid{background:rgba(250,250,250,.92);backdrop-filter:saturate(1.4) blur(12px);box-shadow:0 1px 0 var(--hair)}
-.top.solid nav a{color:var(--ink)}
-.top.solid .bar>.btn-light{background:var(--slate);color:#fff}
+.top{background:rgba(250,250,250,.94);backdrop-filter:saturate(1.4) blur(12px)}
+.top.solid{box-shadow:0 1px 0 var(--hair)}
+.top .bar>.btn-light{background:var(--slate);color:#fff}
+.top .bar>.btn-light:hover{background:var(--teal)}
 .burger{display:none;margin-left:auto;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative;color:var(--ink)}
 .burger i,.burger i:before,.burger i:after{position:absolute;left:11px;width:22px;height:2px;border-radius:2px;background:currentColor;content:"";transition:transform .3s}
 .burger i{top:21px}.burger i:before{left:0;top:-7px}.burger i:after{left:0;top:7px}
-.top:not(.solid) .burger{color:#fff}
 body.menu-open .burger i{background:transparent}
 body.menu-open .burger i:before{transform:translateY(7px) rotate(45deg)}
 body.menu-open .burger i:after{transform:translateY(-7px) rotate(-45deg)}
@@ -68,7 +67,8 @@ body.menu-open .burger i:after{transform:translateY(-7px) rotate(-45deg)}
 .hero{position:relative;min-height:100svh;background:var(--slate);color:var(--on-dark);overflow:hidden;display:flex;align-items:center;padding:120px 0 96px}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%}
 .hero .grid{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:64px;align-items:center}
-.hero h1{font-size:clamp(40px,5.6vw,76px);color:#fff;max-width:13ch}
+.hero h1{font-size:clamp(34px,4.5vw,62px);color:#fff}
+.hero h1 .ln{white-space:nowrap}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
 .hero h1 .ln span{display:block;transform:translateY(105%);transition:transform 1.1s var(--ease)}
 .hero.go h1 .ln span{transform:none}
@@ -248,7 +248,8 @@ details p{padding:0 0 26px;color:var(--ink-soft);max-width:62ch}
 .close .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
 footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 0 120px}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
-.foot img{height:40px;width:auto;filter:brightness(0) invert(1);opacity:.85}
+.foot .brand{display:flex;align-items:center;gap:14px;color:#fff;font-weight:600;font-size:15px;text-decoration:none}
+.foot .brand img{width:40px;height:auto}
 .foot nav{display:flex;gap:26px;flex-wrap:wrap}
 .foot a,.made a{text-decoration:none;color:var(--on-dark)}
 .foot a:hover,.made a:hover{text-decoration:underline}
@@ -284,6 +285,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
   body.menu-open .top nav{top:72px}
   .hero{padding:104px 0 120px;min-height:auto}
   .hero .ctas .btn{width:100%}
+  .hero h1 .ln{white-space:normal}
   .where{bottom:22px;gap:8px 16px;font-size:12px}
   .where span:last-child{display:none}
   .statement,.path,.care,.reels,.pricing,.words,.locs,.faq{padding:84px 0}
@@ -525,7 +527,7 @@ footer{background:#222c2e;color:var(--on-dark-soft);font-size:14px;padding:56px 
 <footer>
   <div class="wrap">
     <div class="foot">
-      <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_600/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/674f3af9d31f23038fecbc84.png" alt="Infinity Neuromotor Development Center" width="172" height="40">
+      <a class="brand" href="#main"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_200/u_https://assets.cdn.filesafe.space/RvIK52c8TkPAkG6tDWzj/media/681d3e7502d020e476018b18.png" alt="" width="40" height="40">Infinity Neuromotor Development Center</a>
       <nav aria-label="Footer">
         <a href="https://infinityneuromotor.com/research-gate">Research library</a>
         <a href="https://infinityneuromotor.com/join">Careers</a>
